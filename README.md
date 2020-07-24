@@ -1,1 +1,2 @@
-# This is the wordpress theme for GudaNews.com website
+# WordPress
+Wordpress theme for GudaNews.com website
