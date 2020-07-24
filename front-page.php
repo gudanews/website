@@ -123,10 +123,39 @@ $result = $conn->query($sql);
 echo "<table align='center'>\n";
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-    echo "\t<tr>\n\t\t<td width=50%'>\n\t\t\t<div class='image_content_container'>\n\t\t\t\t<div class='img_content'>\n";
+    echo "\t<tr>\n\t\t<td width=50%'>\n\t\t\t<div class='img_content'>\n";
+
     echo "\t\t\t\t\t<img width='280' height='180' style='max-width: 100%;max-height: 100%;' src='"
-        . $row["path"] ."' />\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<a style='color:#000000;font-weight:bolder;' href='"
-    . $row["url"] ."'>" . $row["heading"]. "</a>\n\t\t\t<p>\n\t\t\t<i>" . $row["snippet"]. "</i>\n\t\t</td>\n";
+        . $row["path"] ."' />\n\t\t\t\t\n\t\t\t</div>\n\t\t\t<a class='heading' style='color:#000000;font-weight:bolder;' href='"
+    . $row["url"] ."'></div>"
+    . $row["heading"]. "</a>\n\t\t\t<p>\n\t\t\t<i>" . $row["snippet"]. "</i>\n\t\t</td>\n";
+    echo "<div class='dropdown'>
+      <button class='dropbtn'>News</button>
+      <div class='dropdown-content'>
+        <a href=''#'>Reuters</a>
+        <a href='#'>AP</a>
+        <a href='#'>UPI</a>
+        <a href='#'>AFP</a>
+        <a href='#'>CNN</a>
+        <a href='#'>BBC NEWS</a>
+        <a href='#'>NYT</a>
+        <a href='#'>FOX NEWS</a>
+        <a href='#'>DailyMail.com</a>
+        <a href='#'>The Guardian</a>
+        <a href='#'>The Washington Post</a>
+        <a href='#'>USA TODAY</a>
+        <a href='#'>NYPost</a>
+        <a href='#'>NBC News</a>
+        <a href='#'>NPR</a>
+        <a href='#'>HUFFPOST</a>
+        <a href='#'>Breitbart</a>
+        <a href='#'>POLITICO</a>
+        <a href='#'>WSJ</a>
+        <a href='#'>LA Times</a>
+        <a href='#'>CBS News</a>
+        <a href='#'>abcNEWS</a>
+      </div>
+    </div>";
     echo "\t</tr>\n";
   }
 } else {
@@ -135,5 +164,6 @@ if ($result->num_rows > 0) {
 echo "</table>\n";
 $conn->close();
 ?>
+
 
 <?php get_footer();?>
