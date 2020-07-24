@@ -16,5 +16,5 @@ function load_javascripts()
     wp_enqueue_script('customjs');
 }
 
-#add_action('wp_enqueue_scripts', 'load_javascripts');
+add_action('wp_enqueue_scripts', 'load_javascripts');
 ?>

@@ -29,3 +29,44 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+
+
+
+
+
+
+
+
+
+<div class="dropdown">
+<button class="dropbtn">News</button>
+<div class="dropdown-content">
+  <a href="#">Reuters</a>
+  <a href="#">AP</a>
+  <a href="#">UPI</a>
+  <a href="#">AFP</a>
+  <a href="#">CNN</a>
+  <a href="#">BBC NEWS</a>
+  <a href="#">NYT</a>
+  <a href="#">FOX NEWS</a>
+  <a href="#">DailyMail.com</a>
+  <a href="#">The Guardian</a>
+  <a href="#">The Washington Post</a>
+  <a href="#">USA TODAY</a>
+  <a href="#">NYPost</a>
+  <a href="#">NBC News</a>
+  <a href="#">NPR</a>
+  <a href="#">HUFFPOST</a>
+  <a href="#">Breitbart</a>
+  <a href="#">POLITICO</a>
+  <a href="#">WSJ</a>
+  <a href="#">LA Times</a>
+  <a href="#">CBS News</a>
+  <a href="#">abcNEWS</a>
+
+
+
+
+
+</div>
+</div>
