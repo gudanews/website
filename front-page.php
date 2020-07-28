@@ -28,39 +28,40 @@ $row_count = 0;
 $q = "";
 if ($_GET['q'] !== '') {
     $q = $_GET['q'];
-    # QUERY RESULT
-    $conn = new mysqli($servername, $username, $password, $name);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    # Display records
-    if (isset($q)) {
-        $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet, source.name as source FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 AND heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' GROUP BY news_headline.url ORDER BY quality, datetime DESC LIMIT " . $MAX_RECORD;
-    }
-    else {
-        $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 GROUP BY news_headline.url ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
-    }
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $row_count = $row_count + 1;
-            $heading[] = $row['heading'];
-            $snippet[] = $row['snippet'];
-            $image_path[] = $row['image'];
-            $url[] = $row['url'];
-        }
-    }
-    # Slide show records
-    $sql = "SELECT heading, image.url as image FROM news_headline,image WHERE news_headline.image_id = image.id AND image_id != 0 AND datetime > '" . $day_minus_2d . "' GROUP BY news_headline.url ORDER BY datetime, quality LIMIT 6";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $image_slideshow[] = $row["image"];
-            $heading_slideshow[] = $row["heading"];
-        }
-    }
-    $conn->close();
 }
+# QUERY RESULT
+$conn = new mysqli($servername, $username, $password, $name);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+# Display records
+if (isset($q)) {
+    $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet, source.name as source FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 AND heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' GROUP BY news_headline.url ORDER BY quality, datetime DESC LIMIT " . $MAX_RECORD;
+}
+else {
+    $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 GROUP BY news_headline.url ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+}
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $row_count = $row_count + 1;
+        $heading[] = $row['heading'];
+        $snippet[] = $row['snippet'];
+        $image_path[] = $row['image'];
+        $url[] = $row['url'];
+    }
+}
+# Slide show records
+$sql = "SELECT heading, image.url as image FROM news_headline,image WHERE news_headline.image_id = image.id AND image_id != 0 AND datetime > '" . $day_minus_2d . "' GROUP BY news_headline.url ORDER BY datetime, quality LIMIT 6";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $image_slideshow[] = $row["image"];
+        $heading_slideshow[] = $row["heading"];
+    }
+}
+$conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -89,32 +90,22 @@ ve();"/><input type="submit" id="searchBtn" value="Go!" onclick=""/>
 
 <?php
 # SLIDE SHOW
-for ($i=0; $i < 6; $i++) {
-    echo "<div class='caption_text'>" .$heading_slideshow[$i] . "</div>";
-}
-?>
-
-<div class="row">
-    <div class="container_slide">
-<?php
-for ($i=0; $i < 6; $i++) {
-  echo "<div class='mySlides'><div class='numbertext'>"
-      . strval($i + 1) . " / 6 </div><img src='"
-      . $image_slideshow[$i] . "' style='width:100%;height:100%' /></div>";
-}
-?>
-
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
-        <div class="caption-container">
-            <p id="caption" />
-        </div>
-        <div class="row">
-<?php
-for ($i=0; $i < 6; $i++) {
-  echo "<div class='column'><img class='demo cursor' src='"
-      . $image_slideshow[$i] ."' style='width:100%;height:100%' onclick='currentSlide("
-      . strval($i + 1). ")' alt='' /></div>";
+if (!isset($q)) {
+    for ($i=0; $i < 6; $i++) {
+        echo "<div class='caption_text'>" .$heading_slideshow[$i] . "</div>";
+    }
+    echo "<div class=row'><div class='container_slide'>";
+    for ($i=0; $i < 6; $i++) {
+      echo "<div class='mySlides'><div class='numbertext'>"
+          . strval($i + 1) . " / 6 </div><img src='"
+          . $image_slideshow[$i] . "' style='width:100%;height:100%' /></div>";
+    }
+    echo "<a class='prev' onclick='plusSlides(-1)'>❮</a><a class='next' onclick='plusSlides(1)'>❯</a><div class='caption-container'><p id='caption' /></div><div class='row'>";
+    for ($i=0; $i < 6; $i++) {
+      echo "<div class='column'><img class='demo cursor' src='"
+          . $image_slideshow[$i] ."' style='width:100%;height:100%' onclick='currentSlide("
+          . strval($i + 1). ")' alt='' /></div>";
+    }
 }
 ?>
         </div>
