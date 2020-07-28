@@ -1,59 +1,113 @@
-<?php get_header();?>
-
+<?php get_header(); ?>
 <?php
-$day_minus_2d = date('Y-m-d', strtotime('-3 days'));
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$date_today = date('Y-m-d', strtotime('+1 days'));
-
+// header('Location: index.php');
+$MAX_RECORD = 60;
 $servername = "192.168.1.49";
 $username = "gudaman";
 $password = "GudaN3w2";
 $name = "gudanews";
 
-$conn = new mysqli($servername, $username, $password, $name);
+$day_minus_2d = date('Y-m-d', strtotime('-2 days'));
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT path FROM news_headline,image WHERE news_headline.image_id = image.id AND datetime BETWEEN '"
-    . $day_minus_2d . "' AND '". $date_today ."' ORDER BY quality LIMIT 6";
-$result = $conn->query($sql);
+$heading = array();
+$snippet = array();
+$image_path = array();
+$url = array();
 $image_slideshow = array();
+$heading_slideshow = array();
+$row_count = 0;
+
+
+// if ($_GET['q'] == 'Search...') {
+//     header('Location: index.php');
+// }
+$q = "";
+if ($_GET['q'] !== '') {
+    $q = $_GET['q'];
+}
+# QUERY RESULT
+$conn = new mysqli($servername, $username, $password, $name);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+# Display records
+if (isset($q)) {
+    $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet, source.name as source FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 AND heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' GROUP BY news_headline.url ORDER BY quality, datetime DESC LIMIT " . $MAX_RECORD;
+}
+else {
+    $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 GROUP BY news_headline.url ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+}
+$result = $conn->query($sql);
 if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-  //array_push($image_slideshow, $row["path"]);
-  $image_slideshow[] = $row["path"];
-  }
-} else {
-    echo "";
+    while($row = $result->fetch_assoc()) {
+        $row_count = $row_count + 1;
+        $heading[] = $row['heading'];
+        $snippet[] = $row['snippet'];
+        $image_path[] = $row['image'];
+        $url[] = $row['url'];
+    }
+}
+# Slide show records
+$sql = "SELECT heading, image.url as image FROM news_headline,image WHERE news_headline.image_id = image.id AND image_id != 0 AND datetime > '" . $day_minus_2d . "' GROUP BY news_headline.url ORDER BY datetime, quality LIMIT 6";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $image_slideshow[] = $row["image"];
+        $heading_slideshow[] = $row["heading"];
+    }
 }
 $conn->close();
 
 ?>
 
-<div class="row">
-    <div class="container_slide">
-<?php
-        for ($i=0; $i < 6; $i++) {
-          echo "\t\t<div class='mySlides'>\n\t\t\t<div class='numbertext'>"
-              . strval($i + 1) . " / 6 </div>\n\t\t\t<img src='"
-              . $image_slideshow[$i] . "' style='width:100%;height:100%' />\n\t\t</div>\n";
-        }
-        ?>
+<!DOCTYPE html>
+        <script type="text/javascript">
+            function active(){
+                var searchbar = document.getElementById('searchbar');
 
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
-        <div class="caption-container">
-            <p id="caption" />
-        </div>
-        <div class="row">
-<?php
-            for ($i=0; $i < 6; $i++) {
-              echo "\t\t\t<div class='column'>\n\t\t\t\t<img class='demo cursor' src='"
-                  . $image_slideshow[$i] ."' style='width:100%;height:100%' onclick='currentSlide("
-                  . strval($i + 1). ")' alt='' />\n\t\t\t</div>\n";
+                if(searchbar.value == 'Search...'){
+                    searchbar.value = ''
+                    searchbar.placeholder = 'Search...'
+                }
             }
-            ?>
+            function inactive(){
+                var searchbar = document.getElementById('searchbar');
+
+                if(searchbar.value == ''){
+                    searchbar.value = 'Search...'
+                    searchbar.placeholder = ''
+                }
+            }
+        </script>
+        <form action="index.php" method="GET" id="searchForm" />
+            <input type="text" name="q" id="searchbar" placeholder="" value="Search..." maxlength="50" autocomplete="off" onMouseDown="active();" onBlur="inacti
+ve();"/><input type="submit" id="searchBtn" value="Go!" onclick=""/>
+        </form>
+
+<?php
+# SLIDE SHOW
+if (!isset($q)) {
+    for ($i=0; $i < 6; $i++) {
+        echo "<div class='caption_text'>" .$heading_slideshow[$i] . "</div>";
+    }
+    echo "<div class=row'><div class='container_slide'>";
+    for ($i=0; $i < 6; $i++) {
+      echo "<div class='mySlides'><div class='numbertext'>"
+          . strval($i + 1) . " / 6 </div><img src='"
+          . $image_slideshow[$i] . "' style='width:100%;height:100%' /></div>";
+    }
+    echo "<a class='prev' onclick='plusSlides(-1)'>❮</a><a class='next' onclick='plusSlides(1)'>❯</a><div class='caption-container'><p id='caption' /></div><div class='row'>";
+    for ($i=0; $i < 6; $i++) {
+      echo "<div class='column'><img class='demo cursor' src='"
+          . $image_slideshow[$i] ."' style='width:100%;height:100%' onclick='currentSlide("
+          . strval($i + 1). ")' alt='' /></div>";
+    }
+}
+?>
         </div>
     </div>
 </div>
@@ -74,96 +128,42 @@ $conn->close();
       var slides = document.getElementsByClassName("mySlides");
       var dots = document.getElementsByClassName("demo");
       var captionText = document.getElementById("caption");
+      var c_t = document.getElementsByClassName("caption_text");
       if (n > slides.length) {slideIndex = 1}
       if (n < 1) {slideIndex = slides.length}
       for (i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
-      }
+        }
       for (i = 0; i < dots.length; i++) {
           dots[i].className = dots[i].className.replace(" active", "");
+
+
       }
+      captionText.innerHTML = c_t[slideIndex-1].textContent;
       slides[slideIndex-1].style.display = "block";
       dots[slideIndex-1].className += " active";
-      captionText.innerHTML = dots[slideIndex-1].alt;
+      // captionText.innerHTML = dots[slideIndex-1].alt;
+
     }
 </script>
 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="topnav">
-    <div class="search-container">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
-    </div>
-</div>
+
 <?php
-
-$day_minus_2d = date('Y-m-d', strtotime('-3 days'));
-
-$date_today = date('Y-m-d', strtotime('+1 days'));
-
-
-$servername = "192.168.1.49";
-$username = "gudaman";
-$password = "GudaN3w2";
-$name = "gudanews";
-
-$conn = new mysqli($servername, $username, $password, $name);
-
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+echo "<table align='center'>";
+for ($i=0; $i < $row_count; $i++) {
+    echo "<tr><td width=50%'><div class='img_content'>"
+    . "<img width='280' height='180' style='max-width: 100%;max-height: 100%;'"
+    . " src='" . $image_path[$i] ."' /></div><a class='heading' "
+    . "style='color:#000000;font-weight:bolder;' href='" . $url[$i] . "'></div>"
+    . $heading[$i]. "</a>\<p><i>" . $snippet[$i]. "</i></td></tr>\n";
 }
-$sql = "SELECT heading,snippet,path,news_headline.url FROM news_headline, image WHERE image.id=news_headline.image_id AND datetime BETWEEN '"
-    . $day_minus_2d . "' AND '". $date_today ."' ORDER BY datetime,quality LIMIT 100";
-$result = $conn->query($sql);
-echo "<table align='center'>\n";
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-    echo "\t<tr>\n\t\t<td width=50%'>\n\t\t\t<div class='img_content'>\n";
-
-    echo "\t\t\t\t\t<img width='280' height='180' style='max-width: 100%;max-height: 100%;' src='"
-        . $row["path"] ."' />\n\t\t\t\t\n\t\t\t</div>\n\t\t\t<a class='heading' style='color:#000000;font-weight:bolder;' href='"
-    . $row["url"] ."'></div>"
-    . $row["heading"]. "</a>\n\t\t\t<p>\n\t\t\t<i>" . $row["snippet"]. "</i>\n\t\t</td>\n";
-    echo "<div class='dropdown'>
-      <button class='dropbtn'>News</button>
-      <div class='dropdown-content'>
-        <a href=''#'>Reuters</a>
-        <a href='#'>AP</a>
-        <a href='#'>UPI</a>
-        <a href='#'>AFP</a>
-        <a href='#'>CNN</a>
-        <a href='#'>BBC NEWS</a>
-        <a href='#'>NYT</a>
-        <a href='#'>FOX NEWS</a>
-        <a href='#'>DailyMail.com</a>
-        <a href='#'>The Guardian</a>
-        <a href='#'>The Washington Post</a>
-        <a href='#'>USA TODAY</a>
-        <a href='#'>NYPost</a>
-        <a href='#'>NBC News</a>
-        <a href='#'>NPR</a>
-        <a href='#'>HUFFPOST</a>
-        <a href='#'>Breitbart</a>
-        <a href='#'>POLITICO</a>
-        <a href='#'>WSJ</a>
-        <a href='#'>LA Times</a>
-        <a href='#'>CBS News</a>
-        <a href='#'>abcNEWS</a>
-      </div>
-    </div>";
-    echo "\t</tr>\n";
-  }
-} else {
-    echo "";
-}
-echo "</table>\n";
-$conn->close();
+echo "</table>";
 ?>
+
+
 
 
 <?php get_footer();?>
