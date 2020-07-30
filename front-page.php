@@ -36,10 +36,10 @@ if ($conn->connect_error) {
 }
 # Display records
 if (isset($q)) {
-    $sql = "SELECT heading, headline.url as url, image.path as image, snippet, source.name as source FROM headline, image, source WHERE source.id = headline.source_id AND image.id = headline.image_id AND headline.image_id !=0 AND heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' GROUP BY headline.url ORDER BY quality, datetime DESC LIMIT " . $MAX_RECORD;
+    $sql = "SELECT heading, hl.url as url, image.path as image, snippet FROM headline hl INNER JOIN image ON image.id = hl.image_id WHERE heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
 }
 else {
-    $sql = "SELECT heading, headline.url as url, image.path as image, snippet FROM headline, image, source WHERE source.id = headline.source_id AND image.id = headline.image_id AND headline.image_id !=0 GROUP BY headline.url ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+    $sql = "SELECT heading, hl.url as url, image.path as image, snippet FROM headline hl INNER JOIN image ON image.id = hl.image_id ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     }
 }
 # Slide show records
-$sql = "SELECT heading, image.path as image FROM headline,image WHERE headline.image_id = image.id AND image_id != 0 AND datetime > '" . $day_minus_2d . "' GROUP BY headline.url ORDER BY datetime, quality LIMIT 6";
+$sql = "SELECT heading, image.path as image FROM headline hl INNER JOIN image ON hl.image_id = image.id WHERE datetime > '" . $day_minus_2d . "' ORDER BY datetime DESC LIMIT 6";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -156,7 +156,7 @@ echo "<table align='center'>";
 for ($i=0; $i < $row_count; $i++) {
     echo "<tr><td width=50%'><div class='img_content'>"
     . "<img width='280' height='180' style='max-width: 100%;max-height: 100%;'"
-    . " src='" . $image_path[$i] ."' /></div><a class='heading' "
+    . " src='" . $image_path[$i] ."' /></div><a target='_blank' class='heading' "
     . "style='color:#000000;font-weight:bolder;' href='" . $url[$i] . "'></div>"
     . $heading[$i]. "</a>\<p><i>" . $snippet[$i]. "</i></td></tr>\n";
 }
