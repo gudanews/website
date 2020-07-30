@@ -36,10 +36,10 @@ if ($conn->connect_error) {
 }
 # Display records
 if (isset($q)) {
-    $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet, source.name as source FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 AND heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' GROUP BY news_headline.url ORDER BY quality, datetime DESC LIMIT " . $MAX_RECORD;
+    $sql = "SELECT heading, headline.url as url, image.path as image, snippet, source.name as source FROM headline, image, source WHERE source.id = headline.source_id AND image.id = headline.image_id AND headline.image_id !=0 AND heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' GROUP BY headline.url ORDER BY quality, datetime DESC LIMIT " . $MAX_RECORD;
 }
 else {
-    $sql = "SELECT heading, news_headline.url as url, image.url as image, snippet FROM news_headline, image, source WHERE source.id = news_headline.source_id AND image.id = news_headline.image_id AND news_headline.image_id !=0 GROUP BY news_headline.url ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+    $sql = "SELECT heading, headline.url as url, image.path as image, snippet FROM headline, image, source WHERE source.id = headline.source_id AND image.id = headline.image_id AND headline.image_id !=0 GROUP BY headline.url ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     }
 }
 # Slide show records
-$sql = "SELECT heading, image.url as image FROM news_headline,image WHERE news_headline.image_id = image.id AND image_id != 0 AND datetime > '" . $day_minus_2d . "' GROUP BY news_headline.url ORDER BY datetime, quality LIMIT 6";
+$sql = "SELECT heading, image.path as image FROM headline,image WHERE headline.image_id = image.id AND image_id != 0 AND datetime > '" . $day_minus_2d . "' GROUP BY headline.url ORDER BY datetime, quality LIMIT 6";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
