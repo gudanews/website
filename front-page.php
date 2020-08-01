@@ -36,10 +36,10 @@ if ($conn->connect_error) {
 }
 # Display records
 if (isset($q)) {
-    $sql = "SELECT heading, hl.url as url, image.path as image, snippet FROM headline hl INNER JOIN image ON image.id = hl.image_id WHERE heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+    $sql = "SELECT heading, hl.url as url, image.thumbnail as image, snippet FROM headline hl INNER JOIN image ON image.id = hl.image_id WHERE heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
 }
 else {
-    $sql = "SELECT heading, hl.url as url, image.path as image, snippet FROM headline hl INNER JOIN image ON image.id = hl.image_id ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+    $sql = "SELECT heading, hl.url as url, image.thumbnail as image, snippet FROM headline hl INNER JOIN image ON image.id = hl.image_id ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -155,10 +155,10 @@ if (!isset($q)) {
 echo "<table align='center'>";
 for ($i=0; $i < $row_count; $i++) {
     echo "<tr><td width=50%'><div class='img_content'>"
-    . "<img width='280' height='180' style='max-width: 100%;max-height: 100%;'"
+    . "<img width='200' height='150' style='max-width: 100%;max-height: 100%;'"
     . " src='" . $image_path[$i] ."' /></div><a target='_blank' class='heading' "
     . "style='color:#000000;font-weight:bolder;' href='" . $url[$i] . "'></div>"
-    . $heading[$i]. "</a>\<p><i>" . $snippet[$i]. "</i></td></tr>\n";
+    . $heading[$i]. "</a><p><i>" . $snippet[$i]. "</i></td></tr>\n";
 }
 echo "</table>";
 ?>
