@@ -6,11 +6,11 @@ echo <<<EOL
     <div class="image-card-media">
 EOL;
 
-for ($i = 0; $i < count($image); $i++) {
+for ($i = 0; $i < count($url); $i++) {
 echo <<<EOL
         <div class="card-$id-image">
             <a href="$url[$i]">
-                <img src="$image[$i]" style="max-width:100%; max-height=100%"/>
+                <img src="$image" class="card-image" style="max-width:100%; max-height=100%"/>
             </a>
         </div>
 EOL;
@@ -19,7 +19,8 @@ EOL;
 echo <<<EOL
     </div>
     <div class="image-card-info" vertical layout>
-    <div class="image-card-heading" >
+    <div class="image-card-heading">
+
 EOL;
 
 for ($i = 0; $i < count($heading); $i++) {
@@ -29,11 +30,13 @@ echo <<<EOL
                     $heading[$i]
                 </a>
             </div>
+
 EOL;
 }
 
 echo <<<EOL
         </div>
+        <div class="card-padding"></div>
         <div class="image-card-control" horizontal layout>
             <div class="image-card-meta">
             </div>

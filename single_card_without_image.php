@@ -1,10 +1,10 @@
 <?php
-function build_single_card_without_image($id, $heading, $source, $url) {
+function build_single_card_without_image($id, $heading, $snippet, $source, $url) {
 
 echo <<<EOL
 <div horizontal layout class="text-card">
     <div class="text-card-info" vertical layout>
-        <div class="text-card-heading" >
+        <div class="text-card-heading">
 EOL;
 
 for ($i = 0; $i < count($heading); $i++) {
@@ -19,6 +19,22 @@ EOL;
 
 echo <<<EOL
         </div>
+        <div class="text-card-snippet">
+EOL;
+
+for ($i = 0; $i < count($snippet); $i++) {
+echo <<<EOL
+            <div class="card-$id-snippet">
+                <a href="$url[$i]">
+                    $snippet[$i]
+                </a>
+            </div>
+EOL;
+}
+
+echo <<<EOL
+        </div>
+        <div class="card-padding"></div>
         <div class="text-card-control" horizontal layout>
             <div class="text-card-meta">
             </div>
@@ -40,7 +56,6 @@ echo <<<EOL
             </div>
         </div>
     </div>
-
 </div>
 
 
