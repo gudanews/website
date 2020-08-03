@@ -55,10 +55,39 @@ $conn->close();
     for ($i=0; $i < count($image_path); $i++) {
       if (!empty($image_path[$i])) {
         require_once "single_card_with_image.php";
-        build_single_card_with_image($image_path[$i], $url[$i], $heading[$i], $source[$i]);
+        build_single_card_with_image($i, $image_path[$i], $heading[$i], $source[$i], $url[$i]);
       }
       else {
         include "single_card_without_image.php";
       }
     }
+echo <<<EOL
+<script>
+    var cardIndex = 0;
+    for (x = 0; x < $row_count; x++) {
+        showCard(x, 0);
+    }
+
+    function currentCard(index, n) {
+        showCard(index, n);
+    }
+
+    function showCard(index, variant) {
+        var image_classname = "card-".concat(index, "-image");
+        var heading_classname = "card-".concat(index, "-heading");
+        var source_classname = "card-".concat(index, "-source");
+        var images = document.getElementsByClassName(image_classname);
+        var headings = document.getElementsByClassName(heading_classname);
+        var sources = document.getElementsByClassName(source_classname);
+        for (i = 0; i < images.length; i++) {
+            images[i].style.display = "none";
+            headings[i].style.display = "none";
+            sources[i].className = sources[i].className.replace(" active", "");
+        }
+        images[variant].style.display = "block";
+        headings[variant].style.display = "block";
+        sources[variant].className += " active";
+    }
+</script>
+EOL;
 ?>
