@@ -11,9 +11,11 @@ html,body {
 }
 
 .image-card {
-    display: inline-block;
+    display: flex;
+	flex-direction: row;
     width: 96%;
-    height: 300px;
+    min-height: 280px;
+    max-height: 360px;
     border: 1px solid lightgray;
     padding: 10px;
     margin: 10px;
@@ -25,12 +27,14 @@ html,body {
     padding-top: 10px;
     padding-left: 10px;
     display: inline-block;
-    width: 38%;
+    max-width: 38%;
+    min-width: 38%;
     height: 100%;
     vertical-align: top;
 }
 
 .card-image {
+    max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
@@ -38,8 +42,8 @@ html,body {
 .image-card-info {
     padding-top: 10px;
     padding-left: 30px;
-    display: inline-block;
-    width: 60%;
+    display: flex;
+	flex-direction: column;
     height: 100%;
     min-height: 260px;
 }
@@ -47,25 +51,27 @@ html,body {
 .image-card-heading {
     font-size: 32px;
     text-align: left;
+    flex: 1;
 }
 
 .image-card-control  {
     padding-top: 20px;
     width: 100%;
     display: inline-block;
-    vertical-align: bottom;
-    align: right;
+    position: relative;
+    height: auto;
 }
 
 .image-card-nav {
     font-size: 24px;
     font-weight: bolder;
     vertical-align: bottom;
+    float: right;
 }
 
-
 .text-card {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     width: 96%;
     min-height: 260px;
     max-height: 340px;
@@ -77,16 +83,19 @@ html,body {
 }
 
 .text-card-info {
-    padding-top: 10px;
-    padding-left: 30px;
-    display: inline-block;
-    width: 98%;
-    min-height: 220px;
+    display: flex;
+	flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    min-height: 260px;
+    max-height: 340px;
+    height: 100%;
 }
 
 .text-card-heading {
     font-size: 32px;
     text-align: left;
+    flex: 1;
 }
 
 .text-card-snippet {
@@ -96,6 +105,7 @@ html,body {
 
 .text-card-control {
     padding-top: 20px;
+    width: 100%;
     display: inline-block;
     vertical-align: bottom;
     text-align: right;
@@ -105,4 +115,5 @@ html,body {
     font-size: 24px;
     font-weight: bolder;
     vertical-align: bottom;
+    float: right;
 }

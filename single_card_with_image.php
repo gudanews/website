@@ -10,7 +10,7 @@ for ($i = 0; $i < count($url); $i++) {
 echo <<<EOL
         <div class="card-$id-image">
             <a href="$url[$i]">
-                <img src="$image" class="card-image" style="max-width:100%; max-height=100%"/>
+                <img src="$image" class="card-image" />
             </a>
         </div>
 EOL;
