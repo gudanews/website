@@ -1,5 +1,5 @@
 <?php
-$MAX_RECORD = 20;
+$MAX_RECORD = 10;
 $servername = "192.168.1.49";
 $username = "gudaman";
 $password = "GudaN3w2";
@@ -50,7 +50,7 @@ $conn->close();
 
 
 
-<div class="cards_container">
+<div class="cards-container">
 <?php
     for ($i=0; $i < count($image_path); $i++) {
       if (!empty($image_path[$i])) {
@@ -79,14 +79,20 @@ echo <<<EOL
         var images = document.getElementsByClassName(image_classname);
         var headings = document.getElementsByClassName(heading_classname);
         var sources = document.getElementsByClassName(source_classname);
-        for (i = 0; i < images.length; i++) {
-            images[i].style.display = "none";
-            headings[i].style.display = "none";
-            sources[i].className = sources[i].className.replace(" active", "");
+        if (variant < Math.min(images.length, headings.length, sources.length)) {
+            for (i = 0; i < images.length; i++) {
+                images[i].style.display = "none";
+            }
+            for (i = 0; i < headings.length; i++) {
+                headings[i].style.display = "none";
+            }
+            for (i = 0; i < sources.length; i++) {
+                sources[i].className = sources[i].className.replace(" active", "");
+            }
+            images[variant].style.display = "block";
+            headings[variant].style.display = "block";
+            sources[variant].className += " active";
         }
-        images[variant].style.display = "block";
-        headings[variant].style.display = "block";
-        sources[variant].className += " active";
     }
 </script>
 EOL;

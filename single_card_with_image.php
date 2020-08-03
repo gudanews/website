@@ -2,8 +2,8 @@
 function build_single_card_with_image($id, $image, $heading, $source, $url) {
 
 echo <<<EOL
-<div horizontal layout class="image-card" style="width: 100%; height: 100%;">
-    <div class="image-card-media" style="display: inline-block; width: 38%; height: 38%;">
+<div horizontal layout class="image-card">
+    <div class="image-card-media">
 EOL;
 
 for ($i = 0; $i < count($image); $i++) {
@@ -18,8 +18,8 @@ EOL;
 
 echo <<<EOL
     </div>
-    <div class="image-card-info" style="display: inline-block; width: 60%; height: 60%;" vertical layout>
-    <div class="image-card-heading">
+    <div class="image-card-info" vertical layout>
+    <div class="image-card-heading" >
 EOL;
 
 for ($i = 0; $i < count($heading); $i++) {
@@ -34,10 +34,10 @@ EOL;
 
 echo <<<EOL
         </div>
-        <div class="image-card-control" horizontal layout vertical-align="bottom">
+        <div class="image-card-control" horizontal layout>
             <div class="image-card-meta">
             </div>
-            <div class="iamge-card-nav">
+            <div class="image-card-nav">
                 <ul class="nav nav-pills card-header-pills">
 EOL;
 for ($i = 0; $i < count($source); $i++) {
