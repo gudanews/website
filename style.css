@@ -2,6 +2,10 @@
 Theme Name: GudaNews Theme
 Author: GudaNews.com
 */
+.cards-container {
+    text-align: center;
+}
+
 .image-card {
     display: inline-block;
     width: 96%;
@@ -10,10 +14,6 @@ Author: GudaNews.com
     padding: 10px;
     margin: 10px;
     text-align: left;
-}
-
-.cards-container {
-    text-align: center;
 }
 
 .image-card-media {
@@ -42,6 +42,40 @@ Author: GudaNews.com
     vertical-align: bottom;
 }
 .image-card-nav {
+    font-size: 24px;
+    font-weight: bolder;
+    vertical-align: bottom;
+}
+
+
+.text-card {
+    display: inline-block;
+    width: 96%;
+    height: 200px;
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+}
+
+.text-card-info {
+    padding-top: 10px;
+    padding-left: 30px;
+    display: inline-block;
+    font-size: 32px;
+    text-align: right;
+    width: 98%;
+    min-height: 260px;
+}
+.text-card-heading {
+    text-align: left;
+}
+.text-card-control  {
+    padding-top: 20px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+.text-card-nav {
     font-size: 24px;
     font-weight: bolder;
     vertical-align: bottom;
