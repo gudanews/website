@@ -31,12 +31,32 @@ these make the slideshow work
 
 .slides-body {
     min-height: 780px;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     text-align: center;
 }
 
 .slides-content {
-    padding: 40px;
+    padding: 20px 0 20px 0;
+}
+
+.slides-arrow {
+    padding: 20px;
+    padding-top: 28%;
+    display: inline-block;
+    vertical-align: middle;
+}
+/* Position the "next button" to the right */
+.slides-prev, .slides-next {
+    font-weight: bolder;
+    font-size: 5em;
+    -webkit-user-select: none;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.slides-prev:hover, .slides-next:hover {
+    background-color: rgba(128, 128, 128, 0.8);
 }
 
 .slide-image {
@@ -47,7 +67,7 @@ these make the slideshow work
 .slide-heading {
     padding-top: 40px;
     text-align: center;
-    font-size: xx-large;
+    font-size: 2.5em;
     font-weight: bolder;
 }
 
