@@ -2,64 +2,70 @@
 Theme Name: GudaNews Theme
 Author: GudaNews.com
 */
-html,body {
-    height:100%;
+.cards-container {
+    align: center;
 }
 
-.cards-container {
-    text-align: center;
+.image-card, .text-card {
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 12px;
 }
 
 .image-card {
     display: flex;
-	flex-direction: row;
-    width: 96%;
+    flex-direction: row;
     min-height: 280px;
     max-height: 360px;
-    border: 1px solid lightgray;
-    padding: 10px;
-    margin: 10px;
-    text-align: left;
-    border-radius: 12px;
 }
 
+.text-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    max-height: 300px;
+}
+
+
+
 .image-card-media {
-    padding-top: 10px;
-    padding-left: 10px;
-    display: inline-block;
+    padding: 10px;
     max-width: 38%;
-    min-width: 38%;
-    height: 100%;
+    flex: 1;
     vertical-align: top;
 }
 
-.card-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
 .image-card-info {
-    padding-top: 10px;
-    padding-left: 30px;
     display: flex;
 	flex-direction: column;
-    height: 100%;
-    min-height: 260px;
-}
-
-.image-card-heading {
-    font-size: 32px;
-    text-align: left;
+    padding: 10px;
+    padding-left: 20px;
+    padding-bottom: 20px;
     flex: 1;
 }
 
-.image-card-control  {
-    padding-top: 20px;
+.text-card-info {
+    display: flex;
+	flex-direction: column;
+    padding: 20px;
     width: 100%;
+    flex: 1;
+}
+
+
+
+.image-card-heading, .text-card-heading {
+    max-height: 80px;
+    text-align: left;
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.image-card-control, .text-card-control  {
+    padding-right: 40px;
     display: inline-block;
-    position: relative;
-    height: auto;
+    text-align: center;
 }
 
 .image-card-nav {
@@ -69,46 +75,9 @@ html,body {
     float: right;
 }
 
-.text-card {
-    display: flex;
-    flex-direction: column;
-    width: 96%;
-    min-height: 260px;
-    max-height: 340px;
-    border: 1px solid lightgray;
-    padding: 10px;
-    margin: 10px;
-    text-align: left;
-    border-radius: 12px;
-}
-
-.text-card-info {
-    display: flex;
-	flex-direction: column;
-    padding: 10px;
-    width: 100%;
-    min-height: 260px;
-    max-height: 340px;
-    height: 100%;
-}
-
-.text-card-heading {
-    font-size: 32px;
-    text-align: left;
-    flex: 1;
-}
-
 .text-card-snippet {
     font-size: 22px;
     text-align: left;
-}
-
-.text-card-control {
-    padding-top: 20px;
-    width: 100%;
-    display: inline-block;
-    vertical-align: bottom;
-    text-align: right;
 }
 
 .text-card-nav {
@@ -116,4 +85,29 @@ html,body {
     font-weight: bolder;
     vertical-align: bottom;
     float: right;
+}
+
+
+
+.card-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.card-heading {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-snippet {
+    font-size: 2vw;
+    font-weight: bold;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-padding {
+    flex: 1;
 }

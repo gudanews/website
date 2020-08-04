@@ -11,7 +11,9 @@ for ($i = 0; $i < count($heading); $i++) {
 echo <<<EOL
             <div class="card-$id-heading">
                 <a href="$url[$i]">
-                    $heading[$i]
+                    <p class="card-heading">
+                        $heading[$i]
+                    </p>
                 </a>
             </div>
 EOL;
@@ -26,7 +28,9 @@ for ($i = 0; $i < count($snippet); $i++) {
 echo <<<EOL
             <div class="card-$id-snippet">
                 <a href="$url[$i]">
-                    $snippet[$i]
+                    <p class="card-snippet">
+                        $snippet[$i]
+                    </p>
                 </a>
             </div>
 EOL;

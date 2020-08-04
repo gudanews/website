@@ -27,7 +27,9 @@ for ($i = 0; $i < count($heading); $i++) {
 echo <<<EOL
             <div class="card-$id-heading">
                 <a href="$url[$i]">
-                    $heading[$i]
+                    <p class="card-heading">
+                        $heading[$i]
+                    </p>
                 </a>
             </div>
 
