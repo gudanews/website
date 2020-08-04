@@ -30,7 +30,7 @@ these make the slideshow work
 }
 
 .slides-body {
-    min-height: 780px;
+    min-height: 750px;
     display: flex;
     flex-direction: row;
     justify-content: center;
