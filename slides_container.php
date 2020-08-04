@@ -86,6 +86,11 @@ var currentSlide = 0;
 var slideInterval = setInterval(nextSlide, 5000);
 showSlide(0);
 
+function resetInterval() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 5000);
+}
+
 function showSlide(id) {
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
@@ -96,6 +101,7 @@ function showSlide(id) {
     slides[currentSlide].style.display = "block";
     slides[currentSlide].className += " showing";
     slide_nav[currentSlide].className += " active";
+    resetInterval();
 }
 
 function nextSlide() {
