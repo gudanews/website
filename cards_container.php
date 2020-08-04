@@ -27,7 +27,7 @@ if ($result_headline->num_rows > 0) {
     while($row_headline = $result_headline->fetch_assoc()) {
         $headline_id = $row_headline["id"];
         #$sql = "SELECT heading, snippet, news.url as url, image.url as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id ORDER BY RAND() LIMIT 3";
-        $sql = "SELECT heading, news.url as url, snippet, image.thumbnail as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
+	$sql = "SELECT heading, news.url as url, snippet, image.thumbnail as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $image_path[] = array();

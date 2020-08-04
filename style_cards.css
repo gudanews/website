@@ -95,7 +95,7 @@ a:visited {
 }
 
 .card-heading {
-    font-weight: 520;
+    font-weight: 500;
 }
 
 .card-snippet {
@@ -112,12 +112,14 @@ a:visited {
     font-weight: bold;
     margin: 10px;
     color: black;
+    text-shadow: 0 0 2px white;
     text-align: center;
     vertical-align: middle;
 }
 
 .card-source.active {
     color: white;
+    text-shadow: 0 0 2px black;
 }
 
 .card-padding {
