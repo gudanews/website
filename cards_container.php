@@ -20,8 +20,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id FROM headline WHERE datetime > '" . $day_minus_2d . "' ORDER BY RAND() LIMIT " . $MAX_RECORD;
-#$sql = "SELECT id FROM headline WHERE datetime > '" . $day_minus_2d . "' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+$sql = "SELECT id FROM headline WHERE datetime > '" . $day_minus_2d . "' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
 $result_headline = $conn->query($sql);
 if ($result_headline->num_rows > 0) {
     while($row_headline = $result_headline->fetch_assoc()) {

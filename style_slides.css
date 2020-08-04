@@ -38,6 +38,7 @@ these make the slideshow work
 }
 
 .slides-content {
+    width: 90%;
     padding: 20px 0 20px 0;
 }
 
@@ -50,7 +51,7 @@ these make the slideshow work
 /* Position the "next button" to the right */
 .slides-prev, .slides-next {
     font-weight: bolder;
-    font-size: 5em;
+    font-size: 4em;
     -webkit-user-select: none;
 }
 
@@ -67,7 +68,8 @@ these make the slideshow work
 .slide-heading {
     padding-top: 40px;
     text-align: center;
-    font-size: 2.5em;
+    font-size: 3.5rem;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
     font-weight: bolder;
 }
 
