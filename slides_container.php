@@ -20,7 +20,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT heading, snippet, hl.url, image.url as image, source.name as source FROM headline hl INNER JOIN image ON hl.image_id = image.id INNER JOIN source ON hl.source_id = source.id WHERE hl.image_id > 0 AND snippet <> 'NULL' AND datetime > '" . $day_minus_1d . "' ORDER BY RAND() LIMIT " . $MAX_RECORD;
+$sql = "SELECT heading, snippet, hl.url, image.path as image, source.name as source FROM headline hl INNER JOIN image ON hl.image_id = image.id INNER JOIN source ON hl.source_id = source.id WHERE hl.image_id > 0 AND snippet <> 'NULL' AND datetime > '" . $day_minus_1d . "' ORDER BY RAND() LIMIT " . $MAX_RECORD;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -78,7 +78,7 @@ EOL;
 var slides = document.getElementsByClassName('slide');
 var slide_nav = document.getElementsByClassName('slide-index');
 var currentSlide = 0;
-var slideInterval = setInterval(nextSlide, 6000);
+var slideInterval = setInterval(nextSlide, 5000);
 showSlide(0);
 
 function showSlide(id) {

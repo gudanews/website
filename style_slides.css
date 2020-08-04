@@ -30,21 +30,24 @@ these make the slideshow work
 }
 
 .slides-body {
-    min-height: 800px;
+    min-height: 780px;
     display: inline-block;
     text-align: center;
 }
+
 .slides-content {
-    padding: 20px;
+    padding: 40px;
 }
 
 .slide-image {
+    object-fit: cover;
     border-radius: 20px;
 }
 
 .slide-heading {
+    padding-top: 40px;
     text-align: center;
-    font-size: xxx-large;
+    font-size: xx-large;
     font-weight: bolder;
 }
 
