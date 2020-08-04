@@ -5,7 +5,7 @@ $username = "gudaman";
 $password = "GudaN3w2";
 $name = "gudanews";
 
-$day_minus_1d = date('Y-m-d', strtotime('-1 days'));
+$day_minus_1d = date("Y-m-d", strtotime("-1 days"));
 
 $heading = array();
 $snippet = array();
@@ -50,6 +50,9 @@ EOL;
 ?>
     </div>
     <div class="slides-body" horizontal layout>
+        <div class="slides-arrow">
+            <a class="slides-prev" onclick="prevSlide()">❮</a>
+        </div>
         <div class="slides-content">
 <?php
 for ($i = 0; $i < $row_count; $i++) {
@@ -68,15 +71,17 @@ EOL;
 }
 ?>
         </div>
+        <div class="slides-arrow">
+            <a class="slides-next" onclick="nextSlide()">❯</a>
+        </div>
     </div>
 </div>
 
 
 <script>
 
-
-var slides = document.getElementsByClassName('slide');
-var slide_nav = document.getElementsByClassName('slide-index');
+var slides = document.getElementsByClassName("slide");
+var slide_nav = document.getElementsByClassName("slide-index");
 var currentSlide = 0;
 var slideInterval = setInterval(nextSlide, 5000);
 showSlide(0);
@@ -87,7 +92,7 @@ function showSlide(id) {
         slides[i].className = slides[i].className.replace(" showing", "");
         slide_nav[i].className = slide_nav[i].className.replace(" active", "");
     }
-    currentSlide = id % slides.length;
+    currentSlide = (slides.length + id) % slides.length;
     slides[currentSlide].style.display = "block";
     slides[currentSlide].className += " showing";
     slide_nav[currentSlide].className += " active";
@@ -97,47 +102,8 @@ function nextSlide() {
     showSlide(currentSlide + 1);
 }
 
-function previousSlide() {
+function prevSlide() {
     showSlide(currentSlide - 1);
 }
 
 </script>
-
-
-
-
-<!-- <div class = "slideshow_container">
-    <div class = "slideshow_arrow_container">
-      <div class = "slideshow_left_arrow">
-
-      </div>
-      <div class = "slideshow_right_arrow">
-
-      </div>
-    </div>
-    <div class = home_slideshow_image_container>
-      <div class = "image_slideshow_home_small">
-
-        </div>
-      </div>
-    </div>
-  </div>
-          <div class = "slideshow_content_container">
-            <div class = "slideshow_image_homepage_big">
-
-            </div>
-            <div class = "slideshow_heading">
-
-            </div>
-            <div class = "slideshow_snippet">
-
-            </div>
-            <div class = "slideshow_read_more_button">
-
-            </div>
-            <div class = "slideshow_content_sources_container">
-              <div class = "slideshow_content_sources">
-
-              </div>
-            </div>
-          </div> -->
