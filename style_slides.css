@@ -15,7 +15,7 @@ these make the slideshow work
 
 .slide-index {
     margin: 10px;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 .slide-index.active {
@@ -29,22 +29,8 @@ these make the slideshow work
     border-radius: 20px;
 }
 
-.slides-body {
-    min-height: 750px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-}
-
-.slides-content {
-    width: 90%;
-    padding: 20px 0 20px 0;
-}
-
 .slides-arrow {
-    padding: 20px;
-    padding-top: 28%;
+    padding: 10px 40px 10px 40px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -57,7 +43,21 @@ these make the slideshow work
 
 /* On hover, add a black background color with a little bit see-through */
 .slides-prev:hover, .slides-next:hover {
-    background-color: rgba(128, 128, 128, 0.8);
+    background-color: rgba(168, 168, 168, 0.6);
+}
+
+
+.slides-body {
+    min-height: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.slides-content {
+    width: 90%;
+    padding: 20px 0 20px 0;
 }
 
 .slide-image {
@@ -68,7 +68,7 @@ these make the slideshow work
 .slide-heading {
     padding-top: 40px;
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-weight: bolder;
 }

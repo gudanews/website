@@ -37,6 +37,9 @@ $conn->close();
 
 <div class="slides-container">
     <div class="slides-indexes" horizontal layout>
+        <div class="slides-arrow">
+            <a class="slides-prev" onclick="prevSlide()">❮</a>
+        </div>
 <?php
 for ($i = 0; $i < $row_count; $i++) {
 echo <<<EOL
@@ -48,11 +51,11 @@ echo <<<EOL
 EOL;
 }
 ?>
+        <div class="slides-arrow">
+            <a class="slides-next" onclick="nextSlide()">❯</a>
+        </div>
     </div>
     <div class="slides-body" horizontal layout>
-        <div class="slides-arrow">
-            <a class="slides-prev" onclick="prevSlide()">❮</a>
-        </div>
         <div class="slides-content">
 <?php
 for ($i = 0; $i < $row_count; $i++) {
@@ -70,9 +73,6 @@ echo <<<EOL
 EOL;
 }
 ?>
-        </div>
-        <div class="slides-arrow">
-            <a class="slides-next" onclick="nextSlide()">❯</a>
         </div>
     </div>
 </div>
