@@ -12,6 +12,7 @@ $snippet = array();
 $image_path = array();
 $url = array();
 $source = array();
+$source_bgcolor = array();
 $row_count = 0;
 
 # QUERY RESULT
@@ -25,20 +26,22 @@ $result_headline = $conn->query($sql);
 if ($result_headline->num_rows > 0) {
     while($row_headline = $result_headline->fetch_assoc()) {
         $headline_id = $row_headline["id"];
-        #$sql = "SELECT heading, snippet, news.url as url, image.url as image, source.name as source FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id ORDER BY RAND() LIMIT 3";
-        $sql = "SELECT heading, news.url as url, snippet, image.thumbnail as image, source.name as source FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
+        #$sql = "SELECT heading, snippet, news.url as url, image.url as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id ORDER BY RAND() LIMIT 3";
+        $sql = "SELECT heading, news.url as url, snippet, image.thumbnail as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $image_path[] = array();
             $heading[] = array();
             $snippet[] = array();
             $source[] = array();
+            $source_bgcolor[] = array();
             $url[] = array();
             while($row = $result->fetch_assoc()) {
                 $image_path[$row_count][] = $row["image"];
                 $heading[$row_count][] = $row["heading"];
                 $snippet[$row_count][] = $row["snippet"];
                 $source[$row_count][] = $row["source"];
+                $source_bgcolor[$row_count][] = $row["bg_color"];
                 $url[$row_count][] = $row["url"];
             }
             $row_count += 1;
@@ -55,11 +58,11 @@ $conn->close();
     for ($i=0; $i < $row_count; $i++) {
         if (!empty($image_path[$i][0])) {
             require_once "single_card_with_image.php";
-            build_single_card_with_image($i, $image_path[$i][0], $heading[$i], $source[$i], $url[$i]);
+            build_single_card_with_image($i, $image_path[$i][0], $heading[$i], $source[$i], $source_bgcolor[$i], $url[$i]);
         }
         else {
             require_once "single_card_without_image.php";
-            build_single_card_without_image($i, $heading[$i], $snippet[$i], $source[$i], $url[$i]);
+            build_single_card_without_image($i, $heading[$i], $snippet[$i], $source[$i], $source_bgcolor[$i], $url[$i]);
         }
     }
 echo <<<EOL
