@@ -28,14 +28,14 @@ a:visited {
     display: flex;
     flex-direction: row;
     min-height: 280px;
-    max-height: 360px;
+    max-height: 500px;
 }
 
 .text-card {
     display: flex;
     flex-direction: column;
     min-height: 220px;
-    max-height: 300px;
+    max-height: 400px;
 }
 
 
@@ -64,8 +64,6 @@ a:visited {
     flex: 1;
 }
 
-
-
 .image-card-heading, .text-card-heading {
     max-height: 120px;
     text-align: left;
@@ -74,14 +72,11 @@ a:visited {
 
 .image-card-control, .text-card-control  {
     padding-right: 40px;
-    display: inline-block;
-    text-align: center;
 }
 
 .image-card-nav, .text-card-nav {
-    font-size: 24px;
-    font-weight: bolder;
-    vertical-align: bottom;
+    display: flex;
+    flex-direction: row;
     float: right;
 }
 
@@ -89,6 +84,7 @@ a:visited {
     text-align: left;
     font-size: 1.6em;
 }
+
 
 
 .card-image {
@@ -103,6 +99,25 @@ a:visited {
 }
 
 .card-snippet {
+}
+
+.card-source {
+}
+
+.card-source {
+    border-radius: 12px;
+    min-width: 80px;
+    max-height: 40px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.card-source.active {
+    color: white;
 }
 
 .card-padding {
