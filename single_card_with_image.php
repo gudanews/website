@@ -48,7 +48,7 @@ EOL;
 for ($i = 0; $i < count($source); $i++) {
 echo <<<EOL
                     <li class="nav-item">
-                        <a class="nav-link card-$id-source" onclick="currentCard($id, $i)">
+                        <a class="nav-link card-$id-source" onclick="showCard($id, $i)">
                             $source[$i]
                         </a>
                     </li>

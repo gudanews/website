@@ -1,5 +1,5 @@
 <?php
-$MAX_RECORD = 20;
+$MAX_RECORD = 40;
 $servername = "192.168.1.49";
 $username = "gudaman";
 $password = "GudaN3w2";
@@ -65,16 +65,12 @@ $conn->close();
     }
 echo <<<EOL
 <script>
-    var cardIndex = 0;
+    var initCardIndex = 0;
     for (x = 0; x < $row_count; x++) {
-        showCard(x, 0);
+        showCard(x, initCardIndex);
     }
 
-    function currentCard(index, n) {
-        showCard(index, n);
-    }
-
-    function showCard(index, variant) {
+    function showCard(index, current) {
         var image_classname = "card-".concat(index, "-image");
         var heading_classname = "card-".concat(index, "-heading");
         var snippet_classname = "card-".concat(index, "-snippet");
@@ -95,17 +91,17 @@ echo <<<EOL
         for (i = 0; i < sources.length; i++) {
             sources[i].className = sources[i].className.replace(" active", "");
         }
-        if (variant < images.length) {
-            images[variant].style.display = "block";
+        if (current < images.length) {
+            images[current].style.display = "block";
         }
-        if (variant < headings.length) {
-            headings[variant].style.display = "block";
+        if (current < headings.length) {
+            headings[current].style.display = "block";
         }
-        if (variant < snippets.length) {
-            snippets[variant].style.display = "block";
+        if (current < snippets.length) {
+            snippets[current].style.display = "block";
         }
-        if (variant < sources.length) {
-            sources[variant].className += " active";
+        if (current < sources.length) {
+            sources[current].className += " active";
         }
     }
 </script>
