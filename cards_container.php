@@ -91,7 +91,7 @@ echo <<<EOL
             snippets[i].style.display = "none";
         }
         for (i = 0; i < sources.length; i++) {
-            sources[i].className = sources[i].className.replace(" active", "");
+            sources[i].classList.remove("active");
         }
         if (current < images.length) {
             images[current].style.display = "block";
@@ -103,7 +103,7 @@ echo <<<EOL
             snippets[current].style.display = "block";
         }
         if (current < sources.length) {
-            sources[current].className += " active";
+            sources[current].classList.add("active");
         }
     }
 </script>
