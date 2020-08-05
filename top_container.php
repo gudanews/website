@@ -18,8 +18,8 @@
             	   </button>
                 </form>
             </div>
-            <div class="menu-btn">
-                <div class="menu-btn__burger"></div>
+            <div class="top-menu">
+                <div class="top-menu-button"></div>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@ function myFunction() {
     }
 }
 
-const menuBtn = document.querySelector('.menu-btn');
+const menuBtn = document.querySelector('.top-menu');
 let menuOpen = false;
 menuBtn.addEventListener('click', () => {
     if(!menuOpen) {
