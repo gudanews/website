@@ -1,5 +1,5 @@
 <?php
-$MAX_RECORD = 40;
+$MAX_RECORD = 20;
 $MAX_HEADING_LENGTH = 88;
 $MAX_SNIPPET_LENGTH = 156;
 $servername = "192.168.1.49";
@@ -40,7 +40,8 @@ if ($result_headline->num_rows > 0) {
             $url[] = array();
             while($row = $result->fetch_assoc()) {
                 $image_path[$row_count][] = $row["image"];
-                $heading[$row_count][] = string_crop($row["heading"], $MAX_HEADING_LENGTH);
+                #$heading[$row_count][] = string_crop($row["heading"], $MAX_HEADING_LENGTH);
+                $heading[$row_count][] = translate_to_chinese($row["heading"]);
                 $snippet[$row_count][] = string_crop($row["snippet"], $MAX_SNIPPET_LENGTH);
                 $source[$row_count][] = $row["source"];
                 $source_bgcolor[$row_count][] = $row["bg_color"];

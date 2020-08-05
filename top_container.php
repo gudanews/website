@@ -1,5 +1,5 @@
 <body>
-    <div class="top" id="top">
+    <div class="top-bar" id="top-bar">
         <div class="top-container">
             <div class="top-logo">
                 <a href="index.php">
@@ -30,14 +30,14 @@
 
 window.onscroll = function() {myFunction()};
 
-var top = document.getElementById("top");
-var sticky = top.offsetTop;
+var top_bar = document.getElementById("top-bar");
+var sticky = top_bar.offsetTop;
 
 function myFunction() {
     if (window.pageYOffset > sticky) {
-        top.classList.add("sticky");
+        top_bar.classList.add("sticky");
     } else {
-        top.classList.remove("sticky");
+        top_bar.classList.remove("sticky");
     }
 }
 
