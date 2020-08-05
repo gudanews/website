@@ -7,7 +7,7 @@ these make the slideshow work
 }
 
 .slide-navigation {
-    padding: 1rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -51,15 +51,14 @@ these make the slideshow work
 .slide-body {
     min-height: 60rem;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     text-align: center;
 }
 
 .slide-content {
     max-width: 96%;
     min-width: 88%;
-    padding: 1rem;
+    margin: 0.5rem auto;
 }
 
 .slide {
@@ -76,10 +75,11 @@ these make the slideshow work
 .slide-image-body {
     object-fit: cover;
     border-radius: 2rem;
+    margin: auto;
 }
 
 .slide-info {
-    margin-top: 2rem;
+    margin: 1rem;
     padding: 2rem;
     border-radius: 1rem;
     background-color: rgba(228, 228, 228, 0.8);
@@ -87,7 +87,6 @@ these make the slideshow work
 
 .slide-heading {
     padding-bottom: 1rem;
-    text-align: center;
     font-size: 3rem;
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-weight: bolder;
