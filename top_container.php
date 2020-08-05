@@ -1,5 +1,5 @@
 <body>
-    <div class="top">
+    <div class="top" id="top">
         <div class="top-container">
             <div class="top-logo">
                 <a href="index.php">
@@ -10,6 +10,8 @@
             <div class="padding">
             </div>
             <div class="top-search">
+                <div class="padding">
+                </div>
                 <form action="" class="top-search-form">
                     <input class="top-search-input" type="search" name="search" pattern=".*\S.*" required autocomplete="off">
                     </input>

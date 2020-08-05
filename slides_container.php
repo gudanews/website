@@ -103,13 +103,13 @@ function resetInterval() {
 function showSlide(id) {
     for (i = 0; i < slide.length; i++) {
         slide[i].style.display = "none";
-        slide[i].className = slide[i].className.replace(" showing", "");
-        slide_index[i].className = slide_index[i].className.replace(" active", "");
+        slide[i].classList.remove("showing");
+        slide_index[i].classList.remove("active");
     }
     currentSlide = (slide.length + id) % slide.length;
     slide[currentSlide].style.display = "block";
-    slide[currentSlide].className += " showing";
-    slide_index[currentSlide].className += " active";
+    slide[currentSlide].classList.add("showing");
+    slide_index[currentSlide].classList.add("active");
     resetInterval();
 }
 

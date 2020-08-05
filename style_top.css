@@ -68,10 +68,13 @@ Author: GudaNews.com
 }
 
 .top-search {
+    display: flex;
+    flex-direction: row;
     min-width: 50%;
     max-width: 70%;
+    height: 5rem;
     word-wrap: none;
-	padding: 0.2rem;
+    margin: 0.5rem;
 }
 
 .top-search-form {
@@ -83,8 +86,8 @@ Author: GudaNews.com
 
 .top-search-input {
 	background: transparent;
-	border-radius: 1.5rem;
-	box-shadow: 0 0 0 0.4rem #FFFFFF inset;
+	border-radius: 3rem;
+	box-shadow: 0 0 0 0.4rem white inset;
 	padding: 0.75rem;
 	transform: translate(0.5rem,0.5rem) scale(0.5);
 	transform-origin: 100% 0;
@@ -93,17 +96,12 @@ Author: GudaNews.com
 	appearance: none;
 }
 
-
-
-
-
-
 .top-search-input, .top-search-button, .top-search-button:before, .top-search-button:after {
 	transition: all 0.25s ease-out;
 }
 .top-search-input, .top-search-button {
-	width: 3rem;
-	height: 3rem;
+	width: 5rem;
+	height: 5rem;
 }
 .top-search-input:invalid:not(:focus), .top-search-button {
 	cursor: pointer;
@@ -170,7 +168,7 @@ Author: GudaNews.com
 
 /* Active state */
 .top-search-input:focus + .top-search-button, .top-search-input:valid + .top-search-button {
-    background: red;
+    background: gray;
 	border-radius: 0 0.375rem 0.375rem 0;
 	transform: scale(1);
 }
@@ -187,65 +185,55 @@ Author: GudaNews.com
 }
 .top-search-input:focus + .top-search-button:active,
 .top-search-input:valid + .top-search-button:active {
-	transform: translateY(01.rem);
+	transform: translateY(01rem);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 .top-menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 5rem;
-  height: 5rem;
-  cursor: pointer;
-  transition: all .5s ease-in-out;
-  border: 0.3rem solid #fff;
+    margin: 0.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    border: 0.5rem solid white;
 }
 .top-menu-button {
-  width: 3.6rem;
-  height: 0.4rem;
-  background: #fff;
-  border-radius: 0.3rem;
-  transition: all .5s ease-in-out;
+    width: 3.5rem;
+    height: 0.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    transition: all .5s ease-in-out;
 }
-.top-menu-button::before,
-.top-menu-button::after {
-  content: '';
-  position: absolute;
-  width: 3.6rem;
-  height: 0.4rem;
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.2rem 0.5rem rgba(255,101,47,.2);
-  transition: all .5s ease-in-out;
+.top-menu-button::before, .top-menu-button::after {
+    content: "";
+    position: absolute;
+    width: 3.5rem;
+    height: 0.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(255,101,47,0.2);
+    transition: all 0.5s ease-in-out;
 }
+/* INITIAL SET APART */
 .top-menu-button:before {
-  transform: translateY(-1.5rem);
+    transform: translateY(-1rem);
 }
 .top-menu-button:after {
-  transform: translateY(1.5rem);
+    transform: translateY(1rem);
 }
 /* AINIMATION */
 .top-menu.open .top-menu-button {
-  transform: translateX(-5rem);
-  background: transparent;
-  box-shadow: none;
+    transform: translateX(-5rem);
+    background: transparent;
+box-shadow: none;
 }
 .top-menu.open .top-menu-button::before {
-  transform: rotate(45deg) translate(3.5rem, -3.5rem);
+    transform: rotate(45deg) translate(3.5rem, -3.5rem);
 }
 .top-menu.open .top-menu-button::after {
-  transform: rotate(-45deg) translate(3.5rem, 3.5rem);
+    transform: rotate(-45deg) translate(3.5rem, 3.5rem);
 }
