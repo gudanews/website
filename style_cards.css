@@ -54,7 +54,7 @@ a:visited {
 .text-card-info {
     display: flex;
     flex-direction: column;
-    padding: 0 1rem;
+    padding-left: 1rem;
     width: 100%;
     flex: 1;
 }
