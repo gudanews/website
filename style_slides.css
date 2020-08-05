@@ -1,0 +1,96 @@
+/*
+essential styles:
+these make the slideshow work
+*/
+
+.slides-container {
+}
+
+.slides-indexes {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.slide-index {
+    margin: 10px;
+    opacity: 0.2;
+}
+
+.slide-index.active {
+    opacity: 1;
+}
+
+.slide-index-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.slides-arrow {
+    padding: 10px 40px 10px 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+/* Position the "next button" to the right */
+.slides-prev, .slides-next {
+    font-weight: bolder;
+    font-size: 4em;
+    -webkit-user-select: none;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.slides-prev:hover, .slides-next:hover {
+    background-color: rgba(168, 168, 168, 0.6);
+}
+
+
+.slides-body {
+    min-height: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.slides-content {
+    width: 90%;
+    padding: 20px 0 20px 0;
+}
+
+.slide-image {
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.slide-heading {
+    padding-top: 40px;
+    text-align: center;
+    font-size: 3rem;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-weight: bolder;
+}
+
+.slide {
+    -webkit-animation: fadeIn 2s;
+    animation: fadeIn 2s;
+    box-sizing: border-box;
+}
+
+.showing {
+    opacity: 1;
+    z-index: 2;
+}
+
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}

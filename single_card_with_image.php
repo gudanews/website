@@ -1,5 +1,5 @@
 <?php
-function build_single_card_with_image($id, $image, $heading, $source, $url) {
+function build_single_card_with_image($id, $image, $heading, $source, $bg_color, $url) {
 
 echo <<<EOL
 <div horizontal layout class="image-card">
@@ -43,20 +43,20 @@ echo <<<EOL
             <div class="image-card-meta">
             </div>
             <div class="image-card-nav">
-                <ul class="nav nav-pills card-header-pills">
 EOL;
 for ($i = 0; $i < count($source); $i++) {
 echo <<<EOL
-                    <li class="nav-item">
-                        <a class="nav-link card-$id-source" onclick="currentCard($id, $i)">
+                <div class="card-source card-$id-source" style="background-color: $bg_color[$i];">
+                    <a onclick="showCard($id, $i)">
+                        <p>
                             $source[$i]
-                        </a>
-                    </li>
+                        </p>
+                    </a>
+                </div>
 EOL;
 }
 
 echo <<<EOL
-                </ul>
             </div>
         </div>
     </div>

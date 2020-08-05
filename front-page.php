@@ -7,13 +7,12 @@ error_reporting(E_ALL);
 
 
 <div class = "homepage_body">
-
-  <?php include "home_page_slide_show.php"; ?>
-
-  <div class="homepage_cards">
-    <?php include "cards_container.php"; ?>
-  </div>
-
+    <div class="news-slides">
+        <?php include "slides_container.php"; ?>
+    </div>
+    <div class="news-cards">
+        <?php include "cards_container.php"; ?>
+    </div>
 </div>
 
 <?php get_footer();?>
