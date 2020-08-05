@@ -19,59 +19,50 @@ a:visited {
 
 .image-card, .text-card {
     border: 1px solid lightgray;
-    padding: 10px;
-    margin: 20px;
+    padding: 1rem;
+    margin: 2rem;
     border-radius: 12px;
 }
 
 .image-card {
     display: flex;
     flex-direction: row;
-    min-height: 280px;
-    max-height: 500px;
+    min-height: 12rem;
+    max-height: 30rem;
 }
 
 .text-card {
     display: flex;
     flex-direction: column;
-    min-height: 220px;
-    max-height: 400px;
+    min-height: 10rem;
+    max-height: 25rem;
 }
 
-
-
 .image-card-media {
-    padding: 10px;
-    max-width: 30%;
-    flex: 1;
+    padding: 0.5rem;
+    width: 30%;
     vertical-align: top;
 }
 
 .image-card-info {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    padding-left: 20px;
-    padding-bottom: 10px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
     flex: 1;
 }
 
 .text-card-info {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 0.5rem;
     width: 100%;
     flex: 1;
 }
 
-.image-card-heading, .text-card-heading {
-    max-height: 120px;
-    text-align: left;
-    font-size: 2.6rem;
-}
-
 .image-card-control, .text-card-control  {
-    padding-right: 40px;
+    padding-right: 2rem;
 }
 
 .image-card-nav, .text-card-nav {
@@ -85,41 +76,58 @@ a:visited {
     font-size: 1.6em;
 }
 
-
-
 .card-image {
     max-width: 100%;
     max-height: 100%;
     object-fit: fill;
-    border-radius: 10px;
+    border-radius: 1rem;
 }
 
 .card-heading {
-    font-weight: 500;
+    max-height: 20rem;
+    text-align: left;
 }
 
-.card-snippet {
+.heading-text {
+    line-height: 1.25;
+    padding: 0.2rem;
+    margin: 0;
+    max-height: 100%;
+    font-size: 2.4rem;
+    font-weight: 400;
+}
+
+.snippet-text {
+    line-height: 1.2;
+    padding: 0.2rem;
+    margin: 0;
+    max-height: 100%;
+    font-size: 1.5rem;
+    font-weight: 300;
 }
 
 .card-source {
-}
-
-.card-source {
-    border-radius: 12px;
-    min-width: 80px;
-    max-height: 40px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 10px;
-    color: black;
-    text-shadow: 0 0 2px white;
+    border-radius: 1rem;
+    min-width: 4.5rem;
+    max-height: 2.5rem;
+    margin: 0.5rem;
+    color: rgba(238, 238, 238, 0.6);
+    text-shadow: 0 0 0.2rem black;
+    box-shadow: 0 0 0.2rem gray;
     text-align: center;
-    vertical-align: middle;
 }
 
 .card-source.active {
     color: white;
-    text-shadow: 0 0 2px black;
+    text-shadow: 0 0 0.2rem black;
+}
+
+.source-text {
+    vertical-align: middle;
+    padding: 0.2rem;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
 
 .card-padding {

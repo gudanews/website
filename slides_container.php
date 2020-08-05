@@ -1,5 +1,7 @@
 <?php
-$MAX_RECORD =6;
+$MAX_RECORD = 6;
+$MAX_HEADING_LENGTH = 128;
+$MAX_SNIPPET_LENGTH = 178;
 $servername = "192.168.1.49";
 $username = "gudaman";
 $password = "GudaN3w2";
@@ -25,8 +27,8 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $image_path[] = $row["image"];
-        $heading[] = $row["heading"];
-        $snippet[] = $row["snippet"];
+        $heading[] = string_crop($row["heading"], $MAX_HEADING_LENGTH);
+        $snippet[] = string_crop($row["snippet"], $MAX_SNIPPET_LENGTH);
         $source[] = $row["source"];
         $url[] = $row["url"];
         $row_count += 1;
@@ -35,39 +37,46 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<div class="slides-container">
-    <div class="slides-indexes" horizontal layout>
-        <div class="slides-arrow">
-            <a class="slides-prev" onclick="prevSlide()">❮</a>
+<div class="slide-container">
+    <div class="slide-navigation" horizontal layout>
+        <div class="slide-arrow">
+            <a class="slide-prev" onclick="prevSlide()">❮</a>
         </div>
 <?php
 for ($i = 0; $i < $row_count; $i++) {
 echo <<<EOL
         <div class="slide-index">
             <a onclick="showSlide($i)">
-                <img class="slide-index-icon" src="$image_path[$i]" />
+                <img class="index-icon" src="$image_path[$i]" />
             </a>
         </div>
 EOL;
 }
 ?>
-        <div class="slides-arrow">
-            <a class="slides-next" onclick="nextSlide()">❯</a>
+        <div class="slide-arrow">
+            <a class="slide-next" onclick="nextSlide()">❯</a>
         </div>
     </div>
-    <div class="slides-body" horizontal layout>
-        <div class="slides-content">
+    <div class="slide-body" horizontal layout>
+        <div class="slide-content">
 <?php
 for ($i = 0; $i < $row_count; $i++) {
 echo <<<EOL
             <div class="slide">
-                <div>
-                    <img class="slide-image" src="$image_path[$i]" />
+                <div class="slide-image">
+                    <img class="slide-image-body" src="$image_path[$i]" />
                 </div>
-                <div>
-                    <p class="slide-heading">
-                        $heading[$i]
-                    </p>
+                <div class="slide-info">
+                    <div class="slide-heading">
+                        <p class="slide-heading-text">
+                            $heading[$i]
+                        </p>
+                    </div class="slide-snippet">
+                    <div>
+                        <p class="slide-snippet-text">
+                            $snippet[$i]
+                        </p>
+                    </div>
                 </div>
             </div>
 EOL;
@@ -80,27 +89,27 @@ EOL;
 
 <script>
 
-var slides = document.getElementsByClassName("slide");
-var slide_nav = document.getElementsByClassName("slide-index");
+var slide = document.getElementsByClassName("slide");
+var slide_index = document.getElementsByClassName("slide-index");
 var currentSlide = 0;
-var slideInterval = setInterval(nextSlide, 5000);
+var slideInterval = setInterval(nextSlide, 6000);
 showSlide(0);
 
 function resetInterval() {
     clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 5000);
+    slideInterval = setInterval(nextSlide, 6000);
 }
 
 function showSlide(id) {
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-        slides[i].className = slides[i].className.replace(" showing", "");
-        slide_nav[i].className = slide_nav[i].className.replace(" active", "");
+    for (i = 0; i < slide.length; i++) {
+        slide[i].style.display = "none";
+        slide[i].className = slide[i].className.replace(" showing", "");
+        slide_index[i].className = slide_index[i].className.replace(" active", "");
     }
-    currentSlide = (slides.length + id) % slides.length;
-    slides[currentSlide].style.display = "block";
-    slides[currentSlide].className += " showing";
-    slide_nav[currentSlide].className += " active";
+    currentSlide = (slide.length + id) % slide.length;
+    slide[currentSlide].style.display = "block";
+    slide[currentSlide].className += " showing";
+    slide_index[currentSlide].className += " active";
     resetInterval();
 }
 

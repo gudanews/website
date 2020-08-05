@@ -1,0 +1,9 @@
+:root {
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 432px;
+    --breakpoint-md: 576px;
+    --breakpoint-lg: 768px;
+    --breakpoint-xl: 600px;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}

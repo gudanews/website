@@ -4,14 +4,14 @@ function build_single_card_without_image($id, $heading, $snippet, $source, $bg_c
 echo <<<EOL
 <div horizontal layout class="text-card">
     <div class="text-card-info" vertical layout>
-        <div class="text-card-heading">
+        <div class="text-card-heading card-heading">
 EOL;
 
 for ($i = 0; $i < count($heading); $i++) {
 echo <<<EOL
             <div class="card-$id-heading">
                 <a href="$url[$i]">
-                    <p class="card-heading">
+                    <p class="heading-text">
                         $heading[$i]
                     </p>
                 </a>
@@ -26,9 +26,9 @@ EOL;
 
 for ($i = 0; $i < count($snippet); $i++) {
 echo <<<EOL
-            <div class="card-$id-snippet">
+            <div class="card-snippet card-$id-snippet">
                 <a href="$url[$i]">
-                    <p class="card-snippet">
+                    <p class="snippet-text">
                         $snippet[$i]
                     </p>
                 </a>
@@ -48,7 +48,7 @@ for ($i = 0; $i < count($source); $i++) {
 echo <<<EOL
                 <div class="card-source card-$id-source" style="background-color: $bg_color[$i];">
                     <a onclick="showCard($id, $i)">
-                        <p>
+                    <p class="source-text">
                             $source[$i]
                         </p>
                     </a>
