@@ -16,6 +16,11 @@ function string_crop($string, $length) {
     return $string;
 }
 
+function translate_to_chinese($text) {
+    ob_start();
+    passthru("wp-content/themes/gudanews/translate.py '" . $text . "'");
+    return ob_get_clean();
+}
 ?>
 
 
