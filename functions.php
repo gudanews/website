@@ -5,9 +5,13 @@ function load_stylesheets()
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all');
     wp_enqueue_style('bootstrap');
 
-    wp_register_style('style', get_template_directory_uri() . '/style.css', array(), false  , 'all');
-    wp_enqueue_style('style');
+    wp_register_style('style_top_nav', get_template_directory_uri() . '/style_top_nav.css', array(), false  , 'all');
+    wp_enqueue_style('style_top_nav');
+
+    wp_register_style('style_cards', get_template_directory_uri() . '/style_cards.css', array(), false  , 'all');
+    wp_enqueue_style('style_cards');
 }
+
 add_action('wp_enqueue_scripts', 'load_stylesheets');
 
 function load_javascripts()
