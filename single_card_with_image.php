@@ -19,7 +19,7 @@ EOL;
 echo <<<EOL
     </div>
     <div class="image-card-info" vertical layout>
-    <div class="image-card-heading card-heading">
+        <div class="image-card-heading card-heading">
 
 EOL;
 
@@ -62,9 +62,6 @@ echo <<<EOL
     </div>
 
 </div>
-
-
-
 EOL;
 }
 ?>
