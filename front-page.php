@@ -21,19 +21,21 @@ function translate_to_chinese($text) {
     passthru("wp-content/themes/gudanews/translate.py '" . $text . "'");
     return ob_get_clean();
 }
+$q = $_GET['q'];
+$cwd = get_template_directory_uri();
+
+echo "<div class=\"body\">";
+
+include "container_top.php";
+
+# Display records
+if (!isset($q)) {
+    include "container_slides.php";
+}
+include "container_cards.php";
+
+echo "</div>";
+
+get_footer();
+
 ?>
-
-
-<div class="body">
-    <!-- <div class="top-bar">
-        <?php include "top_container.php"; ?>
-    </div> -->
-    <div class="news-slides">
-        <?php include "slides_container.php"; ?>
-    </div>
-    <div class="news-cards">
-        <?php include "cards_container.php"; ?>
-    </div>
-</div>
-
-<?php get_footer();?>

@@ -61,9 +61,6 @@ echo <<<EOL
         </div>
     </div>
 </div>
-
-
-
 EOL;
 }
 ?>
