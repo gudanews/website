@@ -30,9 +30,6 @@
                 <a href="#">Services</a>
             </li>
             <li>
-                <a href="#">Clients</a>
-            </li>
-            <li>
                 <a href="#">Contact</a>
             </li>
         </ul>
@@ -56,20 +53,10 @@ function myFunction() {
 
 menuBtn = document.getElementById('top-menu');
 menuNav = document.getElementById('top-nav');
-
 menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('open');
     menuNav.classList.toggle('open');
 });
-
-
-function openNav() {
-  // document.getElementById("main").style.marginTop = "250px";
-  // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
-function closeNav() {
-  // document.getElementById("main").style.marginTop= "0";
-  // document.body.style.backgroundColor = "white";
-}
 </script>
