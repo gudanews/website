@@ -1,14 +1,11 @@
 <?php
 $MAX_RECORD = 40;
-$MAX_HEADING_LENGTH = 88;
-$MAX_SNIPPET_LENGTH = 156;
 $servername = "192.168.1.49";
 $username = "gudaman";
 $password = "GudaN3w2";
 $name = "gudanews";
 
 $day_minus_2d = date('Y-m-d', strtotime('-2 days'));
-$day_minus_2w = date('Y-m-d', strtotime('-14 days'));
 
 $heading = array();
 $snippet = array();
@@ -25,17 +22,12 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT id FROM headline WHERE datetime > '" . $day_minus_2d . "' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
-
-if (isset($q)) {
-    $sql = "SELECT id FROM headline WHERE datetime > '" . $day_minus_2w . "' AND heading LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
-}
-
 $result_headline = $conn->query($sql);
 if ($result_headline->num_rows > 0) {
     while($row_headline = $result_headline->fetch_assoc()) {
         $headline_id = $row_headline["id"];
         #$sql = "SELECT heading, snippet, news.url as url, image.url as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id ORDER BY RAND() LIMIT 3";
-        $sql = "SELECT heading, news.url as url, snippet, image.url as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
+	$sql = "SELECT heading, news.url as url, snippet, image.thumbnail as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $image_path[] = array();
@@ -46,9 +38,8 @@ if ($result_headline->num_rows > 0) {
             $url[] = array();
             while($row = $result->fetch_assoc()) {
                 $image_path[$row_count][] = $row["image"];
-                $heading[$row_count][] = string_crop($row["heading"], $MAX_HEADING_LENGTH);
-                #$heading[$row_count][] = translate_to_chinese($row["heading"]);
-                $snippet[$row_count][] = string_crop($row["snippet"], $MAX_SNIPPET_LENGTH);
+                $heading[$row_count][] = $row["heading"];
+                $snippet[$row_count][] = $row["snippet"];
                 $source[$row_count][] = $row["source"];
                 $source_bgcolor[$row_count][] = $row["bg_color"];
                 $url[$row_count][] = $row["url"];
@@ -60,9 +51,11 @@ if ($result_headline->num_rows > 0) {
 $conn->close();
 ?>
 
+
+
+<div class="cards-container">
 <?php
     for ($i=0; $i < $row_count; $i++) {
-        echo "<div class=\"cards-container\">";
         if (!empty($image_path[$i][0])) {
             require_once "single_card_with_image.php";
             build_single_card_with_image($i, $image_path[$i][0], $heading[$i], $source[$i], $source_bgcolor[$i], $url[$i]);
@@ -71,7 +64,6 @@ $conn->close();
             require_once "single_card_without_image.php";
             build_single_card_without_image($i, $heading[$i], $snippet[$i], $source[$i], $source_bgcolor[$i], $url[$i]);
         }
-        echo "</div>";
     }
 echo <<<EOL
 <script>
@@ -99,7 +91,7 @@ echo <<<EOL
             snippets[i].style.display = "none";
         }
         for (i = 0; i < sources.length; i++) {
-            sources[i].classList.remove("active");
+            sources[i].className = sources[i].className.replace(" active", "");
         }
         if (current < images.length) {
             images[current].style.display = "block";
@@ -111,7 +103,7 @@ echo <<<EOL
             snippets[current].style.display = "block";
         }
         if (current < sources.length) {
-            sources[current].classList.add("active");
+            sources[current].className += " active";
         }
     }
 </script>
