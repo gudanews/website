@@ -184,10 +184,6 @@ Author: GudaNews.com
 .top-search-input:valid:not(:focus) + .top-search-button:focus {
 	background: #0c48db;
 }
-.top-search-input:focus + .top-search-button:active,
-.top-search-input:valid + .top-search-button:active {
-	transform: translateY(0);
-}
 
 .top-menu {
     margin: 0.75rem 0.5rem 0.25rem 0.5rem;
