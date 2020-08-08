@@ -62,11 +62,18 @@ function myFunction() {
     }
 }
 
-menuBtn = document.getElementById('top-menu');
-menuNav = document.getElementById('top-nav');
+let body_bgcolor = document.body.style.backgroundColor;
+let menuBtn = document.getElementById('top-menu');
+let menuNav = document.getElementById('top-nav');
 menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('open');
     menuNav.classList.toggle('open');
+    if (menuBtn.classList.contains('open')) {
+         document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+    else {
+        document.body.style.backgroundColor = body_bgcolor;
+    }
 });
 
 </script>
