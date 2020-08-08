@@ -72,10 +72,14 @@ these make the slideshow work
     z-index: 2;
 }
 
-.slide-image-body {
+.slide-image {
+    margin: 0 2rem;
+}
+
+.slide-image img {
+    width: 100%;
     object-fit: cover;
     border-radius: 2rem;
-    margin: auto;
 }
 
 .slide-info {
