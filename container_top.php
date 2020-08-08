@@ -3,7 +3,7 @@
     <div class="top-bar">
         <div class="top-logo">
             <a href="index.php">
-                <img class="image-logo" src="<?php echo $cwd?>/gudanews_logo.jpg">
+                <img class="image-logo" src="<?php echo $cwd;?>/gudanews_logo.jpg">
                 </img>
             </a>
         </div>
