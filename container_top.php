@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="top-search">
-            <form action="" class="top-search-form">
+            <form action="" class="top-search-form" action="index.php">
                 <input class="top-search-input" type="search" name="q" pattern=".*\S.*" required autocomplete="off">
                 </input>
                 <button class="top-search-button" type="submit">
