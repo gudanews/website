@@ -236,7 +236,7 @@ Author: GudaNews.com
 	height: 0;
 	background-color: black;
 	text-align: right;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.25s ease-in-out;
 	visibility: hidden;
     opacity: 0;
 }
