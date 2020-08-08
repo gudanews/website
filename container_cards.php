@@ -61,15 +61,20 @@ $conn->close();
 ?>
 
 <?php
-    for ($i=0; $i < $row_count; $i++) {
+    for ($card=0; $card < $row_count; $card++) {
         echo "<div class=\"cards-container\">";
-        if (!empty($image_path[$i][0])) {
-            require_once "single_card_with_image.php";
-            build_single_card_with_image($i, $image_path[$i][0], $heading[$i], $source[$i], $source_bgcolor[$i], $url[$i]);
+        $current_id = $card;
+        $current_image =$image_path[$card][0];
+        $current_heading = $heading[$card];
+        $current_snippet = $snippet[$card];
+        $current_source = $source[$card];
+        $current_source_color = $source_bgcolor[$card];
+        $current_url = $url[$card];
+        if (!empty($current_image)) {
+            include "single_card_with_image.php";
         }
         else {
-            require_once "single_card_without_image.php";
-            build_single_card_without_image($i, $heading[$i], $snippet[$i], $source[$i], $source_bgcolor[$i], $url[$i]);
+            include "single_card_without_image.php";
         }
         echo "</div>";
     }

@@ -8,12 +8,12 @@
             </a>
         </div>
         <div class="top-search">
-            <form action="" class="top-search-form" action="index.php">
-                <input class="top-search-input" type="search" name="q" pattern=".*\S.*" required autocomplete="off">
+            <form class="top-search-form">
+                <input id="top-search-input" class="top-search-input" type="search" name="q" pattern=".*\S.*" required autocomplete="off">
                 </input>
-                <button class="top-search-button" type="submit">
+                <button class="top-search-button">
                     <span></span>
-        	   </button>
+                </button>
             </form>
         </div>
         <div class="top-menu" id="top-menu">
@@ -37,6 +37,17 @@
 </div>
 
 <script>
+
+<?php
+if (isset($q)) {
+echo <<<EOL
+    var search_input = document.getElementById("top-search-input");
+    search_input.focus();
+    search_input.value = "$q";
+    search_input.blur();
+EOL;
+}
+?>
 
 window.onscroll = function() {myFunction()};
 

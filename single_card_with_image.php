@@ -1,41 +1,36 @@
 <?php
-function build_single_card_with_image($id, $image, $heading, $source, $bg_color, $url) {
-
 echo <<<EOL
 <div horizontal layout class="image-card">
     <div class="image-card-media">
 EOL;
 
-for ($i = 0; $i < count($url); $i++) {
+for ($i = 0; $i < count($current_url); $i++) {
 echo <<<EOL
-        <div class="card-$id-image">
-            <a href="$url[$i]">
-                <img src="$image" class="card-image" />
+        <div class="card-$current_id-image">
+            <a href="$current_url[$i]">
+                <img src="$current_image" class="card-image" />
             </a>
         </div>
 EOL;
 }
-
 echo <<<EOL
     </div>
     <div class="image-card-info" vertical layout>
         <div class="image-card-heading card-heading">
 
 EOL;
-
-for ($i = 0; $i < count($heading); $i++) {
+for ($i = 0; $i < count($current_heading); $i++) {
 echo <<<EOL
-            <div class="card-$id-heading">
-                <a href="$url[$i]">
+            <div class="card-$current_id-heading">
+                <a href="$current_url[$i]">
                     <p class="heading-text">
-                        $heading[$i]
+                        $current_heading[$i]
                     </p>
                 </a>
             </div>
 
 EOL;
 }
-
 echo <<<EOL
         </div>
         <div class="card-padding"></div>
@@ -44,18 +39,17 @@ echo <<<EOL
             </div>
             <div class="image-card-nav">
 EOL;
-for ($i = 0; $i < count($source); $i++) {
+for ($i = 0; $i < count($current_source); $i++) {
 echo <<<EOL
-                <div class="card-source card-$id-source" style="background-color: $bg_color[$i];">
-                    <a onclick="showCard($id, $i)">
+                <div class="card-source card-$current_id-source" style="background-color: $current_source_color[$i];">
+                    <a onclick="showCard($current_id, $i)">
                         <p class="source-text">
-                            $source[$i]
+                            $current_source[$i]
                         </p>
                     </a>
                 </div>
 EOL;
 }
-
 echo <<<EOL
             </div>
         </div>
@@ -63,5 +57,4 @@ echo <<<EOL
 
 </div>
 EOL;
-}
 ?>
