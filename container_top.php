@@ -3,7 +3,7 @@
     <div class="top-bar">
         <div class="top-logo">
             <a href="index.php">
-                <img class="image-logo" src="<?php echo $cwd?>/gudanews_logo.jpg">
+                <img class="image-logo" src="<?php echo $cwd;?>/gudanews_logo.jpg">
                 </img>
             </a>
         </div>
@@ -62,8 +62,8 @@ function myFunction() {
     }
 }
 
-menuBtn = document.getElementById('top-menu');
-menuNav = document.getElementById('top-nav');
+let menuBtn = document.getElementById('top-menu');
+let menuNav = document.getElementById('top-nav');
 menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('open');
     menuNav.classList.toggle('open');
