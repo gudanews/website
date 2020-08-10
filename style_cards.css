@@ -2,7 +2,7 @@
 Theme Name: GudaNews Theme
 Author: GudaNews.com
 */
-.image-card a, .text-carda a {
+.image-card a, .text-card a {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     color: rgba(0, 0, 0, 0.8);
 }
@@ -32,8 +32,6 @@ Author: GudaNews.com
 }
 
 .text-card {
-    display: flex;
-    flex-direction: column;
     min-height: 10rem;
     max-height: 25rem;
 }
@@ -56,7 +54,6 @@ Author: GudaNews.com
     flex-direction: column;
     padding-left: 1rem;
     width: 100%;
-    flex: 1;
 }
 
 .image-card-control, .text-card-control  {
