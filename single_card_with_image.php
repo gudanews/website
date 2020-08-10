@@ -7,7 +7,7 @@ EOL;
 for ($i = 0; $i < count($current_url); $i++) {
 echo <<<EOL
         <div class="card-$current_id-image">
-            <a href="$current_url[$i]">
+            <a target=”_blank” href="$current_url[$i]">
                 <img src="$current_image" class="card-image" />
             </a>
         </div>
@@ -22,7 +22,7 @@ EOL;
 for ($i = 0; $i < count($current_heading); $i++) {
 echo <<<EOL
             <div class="card-$current_id-heading">
-                <a href="$current_url[$i]">
+                <a target=”_blank” href="$current_url[$i]">
                     <p class="heading-text">
                         $current_heading[$i]
                     </p>
