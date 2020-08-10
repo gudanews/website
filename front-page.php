@@ -22,17 +22,22 @@ function translate_to_chinese($text) {
     return ob_get_clean();
 }
 $q = $_GET['q'];
+$uuid = $_GET['uuid'];
 $cwd = get_template_directory_uri();
 
 echo "<div class=\"body\">";
 
 include "container_top.php";
 
-# Display records
-if (!isset($q)) {
-    include "container_slides.php";
+if (!isset($uuid)) {
+    # Display records
+    if (!isset($q)) {
+        include "container_slides.php";
+    }
+    include "container_cards.php";
+} else {
+    include "news.php";
 }
-include "container_cards.php";
 
 echo "</div>";
 

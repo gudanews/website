@@ -10,6 +10,7 @@ $name = "gudanews";
 $day_minus_2d = date('Y-m-d', strtotime('-2 days'));
 $day_minus_2w = date('Y-m-d', strtotime('-14 days'));
 
+$news_id = array();
 $heading = array();
 $snippet = array();
 $image_path = array();
@@ -35,9 +36,10 @@ if ($result_headline->num_rows > 0) {
     while($row_headline = $result_headline->fetch_assoc()) {
         $headline_id = $row_headline["id"];
         #$sql = "SELECT heading, snippet, news.url as url, image.url as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id ORDER BY RAND() LIMIT 3";
-        $sql = "SELECT heading, news.url as url, snippet, image.thumbnail as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
+        $sql = "SELECT news.uuid, heading, news.url as url, snippet, image.url as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE headline_id = " . $headline_id;
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
+            $news_id[] = array();
             $image_path[] = array();
             $heading[] = array();
             $snippet[] = array();
@@ -45,6 +47,7 @@ if ($result_headline->num_rows > 0) {
             $source_bgcolor[] = array();
             $url[] = array();
             while($row = $result->fetch_assoc()) {
+                $news_id[$row_count][] = $row["uuid"];
                 $image_path[$row_count][] = $row["image"];
                 $heading[$row_count][] = string_crop($row["heading"], $MAX_HEADING_LENGTH);
                 #$heading[$row_count][] = translate_to_chinese($row["heading"]);
@@ -64,7 +67,8 @@ $conn->close();
     for ($card=0; $card < $row_count; $card++) {
         echo "<div class=\"cards-container\">";
         $current_id = $card;
-        $current_image =$image_path[$card][0];
+        $current_news_id = $news_id[$card];
+        $current_image = $image_path[$card][0];
         $current_heading = $heading[$card];
         $current_snippet = $snippet[$card];
         $current_source = $source[$card];

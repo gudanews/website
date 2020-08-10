@@ -14,8 +14,11 @@ function load_stylesheets()
     wp_register_style('style_top', get_template_directory_uri() . '/style_top.css', array(), null, 'all');
     wp_enqueue_style('style_top');
 
-    wp_register_style('style_base', get_template_directory_uri() . '/style.css', array(), false, 'all');
+    wp_register_style('style_base', get_template_directory_uri() . '/style.css', array(), null, 'all');
     wp_enqueue_style('style_base');
+
+    wp_register_style('style_news', get_template_directory_uri() . '/style_news.css', array(), null, 'all');
+    wp_enqueue_style('style_news');
 
 }
 
