@@ -21,7 +21,7 @@ Author: GudaNews.com
     border: 0.1rem solid lightgray;
     padding: 1rem;
     margin: 2rem;
-    border-radius: 1.5rem;
+    border-radius: 0.5rem;
 }
 
 .image-card {
@@ -74,7 +74,7 @@ Author: GudaNews.com
 .card-image {
     width: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 }
 
 .card-heading {
