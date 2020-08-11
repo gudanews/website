@@ -3,8 +3,8 @@ $MAX_RECORD = 6;
 $MAX_HEADING_LENGTH = 128;
 $MAX_SNIPPET_LENGTH = 178;
 $servername = "192.168.1.49";
-$username = "gudaman";
-$password = "GudaN3w2";
+$username = "gudababy";
+$password = "good";
 $name = "gudanews";
 
 $day_minus_1d = date("Y-m-d", strtotime("-1 days"));

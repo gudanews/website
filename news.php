@@ -3,8 +3,8 @@
 $MAX_HEADING_LENGTH = 88;
 $MAX_SNIPPET_LENGTH = 156;
 $servername = "192.168.1.49";
-$username = "gudaman";
-$password = "GudaN3w2";
+$username = "gudababy";
+$password = "good";
 $name = "gudanews";
 
 # QUERY RESULT
