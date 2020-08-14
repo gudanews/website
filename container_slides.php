@@ -1,6 +1,6 @@
 <?php
 $MAX_RECORD = 6;
-$MAX_HEADING_LENGTH = 128;
+$MAX_TITLE_LENGTH = 128;
 $MAX_SNIPPET_LENGTH = 178;
 $servername = "192.168.1.49";
 $username = "gudababy";
@@ -9,7 +9,7 @@ $name = "gudanews";
 
 $day_minus_1d = date("Y-m-d", strtotime("-1 days"));
 
-$heading = array();
+$title = array();
 $snippet = array();
 $image_path = array();
 $url = array();
@@ -22,12 +22,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT heading, snippet, hl.url, image.path as image, source.name as source FROM headline hl INNER JOIN image ON hl.image_id = image.id INNER JOIN source ON hl.source_id = source.id WHERE hl.image_id > 0 AND snippet <> 'NULL' AND datetime > '" . $day_minus_1d . "' ORDER BY datetime DESC LIMIT " . $MAX_RECORD;
+$sql = "SELECT title, snippet, news.url, image.path as image, source.short_name as source FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN source ON news.source_id = source.id WHERE news.image_id > 0 AND snippet <> 'NULL' AND datetime_created > '" . $day_minus_1d . "' ORDER BY datetime_created DESC LIMIT " . $MAX_RECORD;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $image_path[] = $row["image"];
-        $heading[] = string_crop($row["heading"], $MAX_HEADING_LENGTH);
+        $title[] = string_crop($row["title"], $MAX_TITLE_LENGTH);
         $snippet[] = string_crop($row["snippet"], $MAX_SNIPPET_LENGTH);
         $source[] = $row["source"];
         $url[] = $row["url"];
@@ -69,7 +69,7 @@ echo <<<EOL
                 <div class="slide-info">
                     <div class="slide-heading">
                         <p class="slide-heading-text">
-                            $heading[$i]
+                            $title[$i]
                         </p>
                     </div class="slide-snippet">
                     <div>

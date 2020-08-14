@@ -19,12 +19,12 @@ echo <<<EOL
         <div class="image-card-heading card-heading">
 
 EOL;
-for ($i = 0; $i < count($current_heading); $i++) {
+for ($i = 0; $i < count($current_title); $i++) {
 echo <<<EOL
             <div class="card-$current_id-heading">
                 <a target=”_blank” href="$current_url[$i]">
                     <p class="heading-text">
-                        $current_heading[$i]
+                        $current_title[$i]
                     </p>
                 </a>
             </div>
