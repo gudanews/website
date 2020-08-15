@@ -23,10 +23,10 @@ these make the slideshow work
 }
 
 .index-icon {
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
     object-fit: cover;
-    border-radius: 1.5rem;
+    border-radius: 3rem;
 }
 
 .slide-arrow {
@@ -38,7 +38,7 @@ these make the slideshow work
 .slide-prev, .slide-next {
     padding: 1rem;
     font-weight: bolder;
-    font-size: 4rem;
+    font-size: 3rem;
     -webkit-user-select: none;
 }
 
@@ -79,7 +79,7 @@ these make the slideshow work
 .slide-image img {
     width: 100%;
     object-fit: cover;
-    border-radius: 2rem;
+    border-radius: 1rem;
 }
 
 .slide-info {

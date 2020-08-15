@@ -4,12 +4,12 @@ echo <<<EOL
     <div class="text-card-info" vertical layout>
         <div class="text-card-heading card-heading">
 EOL;
-for ($i = 0; $i < count($current_heading); $i++) {
+for ($i = 0; $i < count($current_title); $i++) {
 echo <<<EOL
             <div class="card-$current_id-heading">
                 <a href="index.php?uuid=$current_news_id[$i]">
                     <p class="heading-text">
-                        $current_heading[$i]
+                        $current_title[$i]
                     </p>
                 </a>
             </div>
