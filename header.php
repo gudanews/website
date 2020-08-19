@@ -23,12 +23,12 @@ img.emoji {
 }
 </style>
 	<link rel="stylesheet" id="wp-block-library-css" href="http://73.158.80.39/wp-includes/css/dist/block-library/style.min.css?ver=5.4.2" type="text/css" media="all">
-<link rel="stylesheet" id="bootstrap-css" href="http://73.158.80.39/wp-content/themes/gudanews/css/bootstrap.min.css" type="text/css" media="all">
-<link rel="stylesheet" id="style_cards-css" href="http://73.158.80.39/wp-content/themes/gudanews/style_cards.css" type="text/css" media="all">
-<link rel="stylesheet" id="style_slides-css" href="http://73.158.80.39/wp-content/themes/gudanews/style_slides.css" type="text/css" media="all">
-<link rel="stylesheet" id="style_top-css" href="http://73.158.80.39/wp-content/themes/gudanews/style_top.css" type="text/css" media="all">
-<link rel="stylesheet" id="style_base-css" href="http://73.158.80.39/wp-content/themes/gudanews/style.css?ver=5.4.2" type="text/css" media="all">
-<script type="text/javascript" src="http://73.158.80.39/wp-content/themes/gudanews/scripts.js?ver=1"></script>
+<link rel="stylesheet" id="bootstrap-css" href="css/bootstrap/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="style_cards-css" href="css/style_cards.css" type="text/css" media="all">
+<link rel="stylesheet" id="style_slides-css" href="css/style_slides.css" type="text/css" media="all">
+<link rel="stylesheet" id="style_top-css" href="css/style_top.css" type="text/css" media="all">
+<link rel="stylesheet" id="style_base-css" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/scripts.js"></script>
 <link rel="https://api.w.org/" href="http://73.158.80.39/wp-json/">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://73.158.80.39/xmlrpc.php?rsd">
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://73.158.80.39/wp-includes/wlwmanifest.xml">
