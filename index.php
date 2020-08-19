@@ -1,7 +1,8 @@
-<?php get_header();
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+<?php
+include "header.php";
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 function string_crop($string, $length) {
     $string = strip_tags($string);
@@ -22,20 +23,18 @@ function translate_to_chinese($text) {
     return ob_get_clean();
 }
 $q = $_GET['q'];
-$cwd = get_template_directory_uri();
 
 echo "<div class=\"body\">";
 
-include "container_top.php";
+include "container/container_top.php";
 
 # Display records
 if (!isset($q)) {
-    include "container_slides.php";
+    include "container/container_slides.php";
 }
-include "container_cards.php";
+include "container/container_cards.php";
 
 echo "</div>";
 
-get_footer();
-
+include "footer.php";
 ?>

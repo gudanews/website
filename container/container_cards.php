@@ -71,10 +71,10 @@ $conn->close();
         $current_source_color = $source_color[$card];
         $current_url = $url[$card];
         if (!empty($current_image)) {
-            include "single_card_with_image.php";
+            include "card/single_card_with_image.php";
         }
         else {
-            include "single_card_without_image.php";
+            include "card/single_card_without_image.php";
         }
         echo "</div>";
     }
