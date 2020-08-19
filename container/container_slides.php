@@ -22,7 +22,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+<<<<<<< HEAD:container_slides.php
 $sql = "SELECT title, snippet, news.url, image.url as image, source.short_name as source FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN source ON news.source_id = source.id WHERE news.image_id > 0 AND snippet <> 'NULL' AND datetime_created > '" . $day_minus_1d . "' ORDER BY datetime_created DESC LIMIT " . $MAX_RECORD;
+=======
+$sql = "SELECT title, snippet, news.url, image.path as image, source.short_name as source FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN source ON news.source_id = source.id WHERE news.image_id > 0 AND snippet <> 'NULL' AND news.datetime_created > '" . $day_minus_1d . "' ORDER BY news.datetime_created DESC LIMIT " . $MAX_RECORD;
+>>>>>>> master:container/container_slides.php
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
