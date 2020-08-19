@@ -1,0 +1,13 @@
+body{
+    font-family: "Times New Roman";
+}
+.content-news {
+    padding-top: 10rem;
+}
+.image-news {
+    text-align: center;
+}
+.heading-news {
+    font-size: 50px;
+    text-align: center;
+}

@@ -5,6 +5,8 @@
 
 
 include "header.php";
+include "user.php";
+
 
 function string_crop($string, $length) {
     $string = strip_tags($string);
@@ -25,8 +27,6 @@ function translate_to_chinese($text) {
     return ob_get_clean();
 }
 $q = $_GET['q'];
-
-echo "<div class=\"body\">";
 
 include "container/container_top.php";
 
