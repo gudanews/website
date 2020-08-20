@@ -1,11 +1,8 @@
 <?php
+
 $MAX_RECORD = 6;
 $MAX_TITLE_LENGTH = 128;
 $MAX_SNIPPET_LENGTH = 178;
-$servername = "192.168.1.49";
-$username = "gudababy";
-$password = "good";
-$name = "gudanews";
 
 $day_minus_1d = date("Y-m-d", strtotime("-1 days"));
 
@@ -17,7 +14,7 @@ $source = array();
 $row_count = 0;
 
 # QUERY RESULT
-$conn = new mysqli($servername, $username, $password, $name);
+$conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
