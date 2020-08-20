@@ -1,11 +1,8 @@
 <?php
+
 $MAX_RECORD = 40;
 $MAX_TITLE_LENGTH = 88;
 $MAX_SNIPPET_LENGTH = 156;
-$servername = "192.168.1.49";
-$username = "gudababy";
-$password = "good";
-$name = "gudanews";
 
 $day_minus_2d = date('Y-m-d', strtotime('-2 days'));
 $day_minus_2w = date('Y-m-d', strtotime('-14 days'));
@@ -20,23 +17,26 @@ $news_id = array();
 $row_count = 0;
 
 # QUERY RESULT
-$conn = new mysqli($servername, $username, $password, $name);
+$conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 $sql = "SELECT id FROM news WHERE datetime_created > '" . $day_minus_2d . "' ORDER BY datetime_created DESC LIMIT " . $MAX_RECORD;
-
 if (isset($q)) {
     $sql = "SELECT id FROM news WHERE datetime_created > '" . $day_minus_2w . "' AND title LIKE '%" . $q . "%' OR snippet LIKE '%" . $q . "%' ORDER BY datetime_created DESC LIMIT " . $MAX_RECORD;
 }
+elseif (isset($lang)) {
+    $sql = "SELECT id FROM news WHERE datetime_created > '" . $day_minus_2d . "' AND translation_id > 0 ORDER BY datetime_created DESC LIMIT " . $MAX_RECORD;
+}
+$result_cards = $conn->query($sql);
 
-$result_topic = $conn->query($sql);
-if ($result_topic->num_rows > 0) {
-    while($row_topic = $result_topic->fetch_assoc()) {
-        $topic_id = $row_topic["id"];
-        #$sql = "SELECT title, snippet, news.url as url, image.url as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id ORDER BY RAND() LIMIT 3";
-        $sql = "SELECT title, uuid, news.url as url, snippet, image.url as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE news.id = " . $topic_id;
+if ($result_cards->num_rows > 0) {
+    while($row_cards = $result_cards->fetch_assoc()) {
+        $cards_id = $row_cards["id"];
+        $sql = "SELECT title, news.url as url, snippet, image.path as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE news.id = " . $cards_id;
+        if (isset($lang)) {
+            $sql = "SELECT translation.title as title, news.url as url, translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id INNER JOIN translation ON translation_id = translation.id WHERE news.id = " . $cards_id;
+        }
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $news_id[] = array();
