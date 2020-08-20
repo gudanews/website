@@ -7,7 +7,7 @@ EOL;
 for ($i = 0; $i < count($current_title); $i++) {
 echo <<<EOL
             <div class="card-$current_id-heading">
-                <a href="news.php?uuid=$current_news_id[$i]">
+                <a href="index.php?p=news&uuid=$current_news_id[$i]$url_lang">
                     <p class="heading-text">
                         $current_title[$i]
                     </p>
@@ -22,7 +22,7 @@ EOL;
 for ($i = 0; $i < count($current_snippet); $i++) {
 echo <<<EOL
             <div class="card-snippet card-$current_id-snippet">
-                <a href="news.php?uuid=$current_news_id[$i]">
+                <a href="index.php?p=news&uuid=$current_news_id[$i]$url_lang">
                     <p class="snippet-text">
                         $current_snippet[$i]
                     </p>
