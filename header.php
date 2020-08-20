@@ -7,6 +7,7 @@
     <link rel="stylesheet" id="style_cards-css" href="css/style_cards.css" type="text/css" media="all">
     <link rel="stylesheet" id="style_slides-css" href="css/style_slides.css" type="text/css" media="all">
     <link rel="stylesheet" id="style_top-css" href="css/style_top.css" type="text/css" media="all">
+    <link rel="stylesheet" id="style_news-css" href="css/style_news.css" type="text/css" media="all">
     <link rel="stylesheet" id="style_base-css" href="css/style.css" type="text/css" media="all">
     <script type="text/javascript" src="js/scripts.js"></script>
 </head>

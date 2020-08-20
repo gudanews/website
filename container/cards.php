@@ -33,9 +33,9 @@ $result_cards = $conn->query($sql);
 if ($result_cards->num_rows > 0) {
     while($row_cards = $result_cards->fetch_assoc()) {
         $cards_id = $row_cards["id"];
-        $sql = "SELECT title, news.url as url, snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE news.id = " . $cards_id;
+        $sql = "SELECT title, uuid, news.url as url, snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE news.id = " . $cards_id;
         if (isset($lang)) {
-            $sql = "SELECT translation.title as title, news.url as url, translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id INNER JOIN translation ON translation_id = translation.id WHERE news.id = " . $cards_id;
+            $sql = "SELECT translation.title as title, uuid, news.url as url, translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id INNER JOIN translation ON translation_id = translation.id WHERE news.id = " . $cards_id;
         }
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -61,27 +61,30 @@ if ($result_cards->num_rows > 0) {
     }
 }
 $conn->close();
-?>
 
-<?php
-    for ($card=0; $card < $row_count; $card++) {
-        echo "<div class=\"cards-container\">";
-        $current_id = $card;
-        $current_image =$image_path[$card][0];
-        $current_title = $title[$card];
-        $current_snippet = $snippet[$card];
-        $current_source = $source[$card];
-        $current_source_color = $source_color[$card];
-        $current_url = $url[$card];
-        $current_news_id = $news_id[$card];
-        if (!empty($current_image)) {
-            include "card/single_card_with_image.php";
-        }
-        else {
-            include "card/single_card_without_image.php";
-        }
-        echo "</div>";
+$url_lang = "";
+if (isset($lang)) {
+    $url_lang = "&lang=1";
+}
+
+for ($card=0; $card < $row_count; $card++) {
+    echo "<div class=\"cards-container\">";
+    $current_id = $card;
+    $current_image =$image_path[$card][0];
+    $current_title = $title[$card];
+    $current_snippet = $snippet[$card];
+    $current_source = $source[$card];
+    $current_source_color = $source_color[$card];
+    $current_url = $url[$card];
+    $current_news_id = $news_id[$card];
+    if (!empty($current_image)) {
+        include "card/card_with_image.php";
     }
+    else {
+        include "card/card_without_image.php";
+    }
+    echo "</div>";
+}
 echo <<<EOL
 <script>
     var initCardIndex = 0;

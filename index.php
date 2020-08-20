@@ -9,17 +9,22 @@ include "header.php";
 
 include "php/user.php";
 
-$q = $_GET['q'];
-$lang = $_GET['lang'];
+$p = $_GET["p"]; # Page
+$q = $_GET["q"]; # Query
+$lang = $_GET["lang"]; # Language
+$uuid = $_GET['uuid']; # uuid
 
-include "container/container_top.php";
-# Display records
-if (!isset($q)) {
-    include "container/container_slides.php";
+include "container/top.php"; # Adding top sticky
+
+if (isset($p)) {
+    if ($p == "news") {
+        include "container/news.php";
+    }
 }
-include "container/container_cards.php";
-
-echo "</div>";
+elseif (!isset($q)) {
+    include "container/slides.php";
+}
+include "container/cards.php";
 
 include "footer.php";
 ?>
