@@ -1,6 +1,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="shortcut icon" href="images/misc/favicon.ico">
     <link rel="dns-prefetch" href="//s.w.org">
     <link rel="stylesheet" id="bootstrap-css" href="css/bootstrap/bootstrap.min.css" type="text/css" media="all">
