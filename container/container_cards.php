@@ -13,6 +13,7 @@ $image_path = array();
 $url = array();
 $source = array();
 $source_color = array();
+$news_id = array();
 $row_count = 0;
 
 # QUERY RESULT
@@ -37,8 +38,8 @@ if ($result_cards->num_rows > 0) {
             $sql = "SELECT translation.title as title, news.url as url, translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id INNER JOIN translation ON translation_id = translation.id WHERE news.id = " . $cards_id;
         }
         $result = $conn->query($sql);
-
         if ($result->num_rows > 0) {
+            $news_id[] = array();
             $image_path[] = array();
             $title[] = array();
             $snippet[] = array();
@@ -46,6 +47,7 @@ if ($result_cards->num_rows > 0) {
             $source_color[] = array();
             $url[] = array();
             while($row = $result->fetch_assoc()) {
+                $news_id[$row_count][] = $row["uuid"];
                 $image_path[$row_count][] = $row["image"];
                 $title[$row_count][] = string_crop($row["title"], $MAX_TITLE_LENGTH);
                 #$title[$row_count][] = translate_to_chinese($row["heading"]);
@@ -71,6 +73,7 @@ $conn->close();
         $current_source = $source[$card];
         $current_source_color = $source_color[$card];
         $current_url = $url[$card];
+        $current_news_id = $news_id[$card];
         if (!empty($current_image)) {
             include "card/single_card_with_image.php";
         }
