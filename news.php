@@ -36,18 +36,18 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT news.id as id, views, title, snippet, news.url as url, image.url as image FROM news INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '" . $uuid . "'";
+$sql = "SELECT news.id as id, content, views, title, snippet, news.url as url, image.url as image FROM news INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '" . $uuid . "'";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        #$sql = "SELECT heading, snippet, news.url as url, image.url as image, source.name as source, bg_color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id ORDER BY RAND() LIMIT 3";
         $image = $row["image"];
         $title = string_crop($row["title"], $MAX_HEADING_LENGTH);
         $snippet = string_crop($row["snippet"], $MAX_SNIPPET_LENGTH);
         $url = $row["url"];
         $views = $row["views"];
         $id = $row["id"];
+        $content = file_get_contents("http://192.168.1.49/" . $row["content"]);
         ###$userid = $row["userid"];
     }
 }
@@ -62,7 +62,7 @@ echo <<<EOL
         <img src="$image"></img>
         </div>
         <div class="body-news">
-        $snippet
+        $content
         </div>
     </div>
 EOL;
