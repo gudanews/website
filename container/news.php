@@ -16,7 +16,11 @@ if ($result->num_rows > 0) {
         $url = $row["url"];
         $views = $row["views"];
         $id = $row["id"];
-        $content = file_get_contents($row["content"]);
+        $content_raw = file_get_contents($row["content"]);
+	$content = "";
+	if (!empty($content_raw)) { 
+            $content = "<p>" . str_replace("\n", "</p><p>", $content_raw) . "</p>";
+	}
     }
 }
 $conn->close();
