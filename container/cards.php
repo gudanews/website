@@ -33,9 +33,9 @@ $result_cards = $conn->query($sql);
 if ($result_cards->num_rows > 0) {
     while($row_cards = $result_cards->fetch_assoc()) {
         $cards_id = $row_cards["id"];
-        $sql = "SELECT title, uuid, news.url as url, snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE news.id = " . $cards_id;
+        $sql = "SELECT title, uuid, news.url as url, snippet, image.url as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id WHERE news.id = " . $cards_id;
         if (isset($lang)) {
-            $sql = "SELECT translation.title as title, uuid, news.url as url, translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id INNER JOIN translation ON translation_id = translation.id WHERE news.id = " . $cards_id;
+            $sql = "SELECT translation.title as title, uuid, news.url as url, translation.snippet as snippet, image.url as image, source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id INNER JOIN translation ON translation_id = translation.id WHERE news.id = " . $cards_id;
         }
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {

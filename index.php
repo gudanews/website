@@ -23,6 +23,6 @@ elseif (isset($p) && ($p == "news")) {
     include "container/news.php";
 }
 include "container/cards.php";
-
+include "container/bottom.php";
 include "footer.php";
 ?>
