@@ -4,9 +4,9 @@ $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT news.id as id, content, views, title, news.url as url, image.url as image FROM news INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '" . $uuid . "'";
+$sql = "SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '" . $uuid . "'";
 if (isset($lang)) {
-    $sql = "SELECT news.id as id, translation.content, views, translation.title, news.url as url, image.url as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation ON news.translation_id = translation.id WHERE news.uuid = '" . $uuid . "'";
+    $sql = "SELECT news.id as id, translation.content, views, translation.title, news.url as url, image.path as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation ON news.translation_id = translation.id WHERE news.uuid = '" . $uuid . "'";
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -16,7 +16,11 @@ if ($result->num_rows > 0) {
         $url = $row["url"];
         $views = $row["views"];
         $id = $row["id"];
-        $content = file_get_contents("http://192.168.1.49/" . $row["content"]);
+        $content_raw = file_get_contents($row["content"]);
+	$content = "";
+	if (!empty($content_raw)) { 
+            $content = "<p>" . str_replace("\n", "</p><p>", $content_raw) . "</p>";
+	}
     }
 }
 $conn->close();

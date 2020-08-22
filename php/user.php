@@ -13,10 +13,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT IGNORE INTO user SET ip_address = '" . $ip . "'";
-$result = $conn->query($sql);
-
-$sql = "UPDATE user SET request = request + 1 WHERE ip_address = '" . $ip . "'";
+$sql = "INSERT INTO user (ip_address, request) VALUES ('" . $ip . "', 1) ON DUPLICATE KEY UPDATE request = request + 1";
 $result = $conn->query($sql);
 
 $conn->close();

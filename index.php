@@ -16,13 +16,11 @@ $uuid = $_GET['uuid']; # uuid
 
 include "container/top.php"; # Adding top sticky
 
-if (isset($p)) {
-    if ($p == "news") {
-        include "container/news.php";
-    }
-}
-elseif (!isset($q)) {
+if (!isset($q) && !isset($p)) {
     include "container/slides.php";
+}
+elseif (isset($p) && ($p == "news")) {
+    include "container/news.php";
 }
 include "container/cards.php";
 
