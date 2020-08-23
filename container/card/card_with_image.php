@@ -1,4 +1,8 @@
 <?php
+$datetime = strtotime($current_datetime[0]);
+$new_date = date("D M d, h:i A", $datetime);
+print strtoupper($new_date);
+
 echo <<<EOL
 <div horizontal layout class="image-card">
     <div class="image-card-media">
@@ -16,6 +20,7 @@ EOL;
 echo <<<EOL
     </div>
     <div class="image-card-info" vertical layout>
+
         <div class="image-card-heading card-heading">
 
 EOL;

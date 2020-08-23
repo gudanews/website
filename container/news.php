@@ -4,7 +4,7 @@ $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '" . $uuid . "'";
+$sql = "SELECT news.id as id, content, views, title, news.url as url, image.url as image FROM news INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '" . $uuid . "'";
 if (isset($lang)) {
     $sql = "SELECT news.id as id, translation.content, views, translation.title, news.url as url, image.path as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation ON news.translation_id = translation.id WHERE news.uuid = '" . $uuid . "'";
 }
@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
         $id = $row["id"];
         $content_raw = file_get_contents($row["content"]);
 	$content = "";
-	if (!empty($content_raw)) { 
+	if (!empty($content_raw)) {
             $content = "<p>" . str_replace("\n", "</p><p>", $content_raw) . "</p>";
 	}
     }
@@ -38,7 +38,8 @@ echo <<<EOL
         </div>
     </div>
 EOL;
-
+?>
+<?php
 # QUERY RESULT
 $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
@@ -82,8 +83,3 @@ function dolike(nid, uid) {
 
 
 <button href="javascript:void(0)" onclick="dolike(<?php echo $id;?>, <?php echo $userid; ?>)">Like</button>
-
-<?php
-include "footer.php";
-
-?>

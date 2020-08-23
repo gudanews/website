@@ -48,24 +48,4 @@ EOL;
 }
 ?>
 
-window.onscroll = function() {myFunction()};
-
-var top_bar = document.getElementById("top-container");
-var sticky = top_bar.offsetTop;
-
-function myFunction() {
-    if (window.pageYOffset > sticky) {
-        top_bar.classList.add("sticky");
-    } else {
-        top_bar.classList.remove("sticky");
-    }
-}
-
-let menuBtn = document.getElementById('top-menu');
-let menuNav = document.getElementById('top-nav');
-menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('open');
-    menuNav.classList.toggle('open');
-});
-
 </script>

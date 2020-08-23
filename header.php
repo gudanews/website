@@ -11,6 +11,8 @@
     <link rel="stylesheet" id="style_bottom-css" href="css/style_bottom.css" type="text/css" media="all">
     <link rel="stylesheet" id="style_base-css" href="css/style.css" type="text/css" media="all">
     <script type="text/javascript" src="js/scripts.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"</link>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
 
 <?php
