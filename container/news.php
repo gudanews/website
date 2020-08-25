@@ -6,7 +6,7 @@ if ($conn->connect_error) {
 }
 $sql = "SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '" . $uuid . "'";
 if (isset($lang)) {
-    $sql = "SELECT news.id as id, translation.content, views, translation.title, news.url as url, image.path as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation ON news.translation_id = translation.id WHERE news.uuid = '" . $uuid . "'";
+    $sql = "SELECT news.id as id, translation.content as content, views, translation.title, news.url as url, image.path as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation ON news.translation_id = translation.id WHERE news.uuid = '" . $uuid . "'";
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -17,8 +17,9 @@ if ($result->num_rows > 0) {
         $views = $row["views"];
         $id = $row["id"];
         $content_raw = file_get_contents($row["content"]);
+//        $content_raw = file_get_contents("http://192.168.1.49/" . $row["content"]);
 	$content = "";
-	if (!empty($content_raw)) { 
+	if (!empty($content_raw)) {
             $content = "<p>" . str_replace("\n", "</p><p>", $content_raw) . "</p>";
 	}
     }
@@ -26,19 +27,24 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 echo <<<EOL
-    <div class="content-news">
-        <div class="heading-news">
-        $title
-        </div>
-        <div class="image-news">
-        <img src="$image"></img>
-        </div>
-        <div class="body-news">
-        $content
-        </div>
+<div class="news-card-container">
+    <div class="news-card-title">
+        <p class="news-title">$title</p>
     </div>
+    <div class="news-card-image">
+        <img class="news-image" src="$image"></img>
+    </div>
+    <div class="news-card-content">
+        <p>$content</p>
+    </div>
+    <div class="news-card-info">
+        <i class="fas fa-eye fa-1x">&nbsp;$views&nbsp;</i>
+        <button href="javascript:void(0)" onclick="">Like</button>
+    </div>
+</div>
 EOL;
-
+?>
+<?php
 # QUERY RESULT
 $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
@@ -56,10 +62,10 @@ if ($result->num_rows > 0) {
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-//
-// $sql = "UPDATE news SET views = views + 1 WHERE id = '" . $id . "'";
-// $result = $conn->query($sql);
-//
+
+$sql = "UPDATE news SET views = views + 1 WHERE id = '" . $id . "'";
+$result = $conn->query($sql);
+
 $conn->close();
 ?>
 <script>
@@ -80,10 +86,3 @@ function dolike(nid, uid) {
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
-<button href="javascript:void(0)" onclick="dolike(<?php echo $id;?>, <?php echo $userid; ?>)">Like</button>
-
-<?php
-include "footer.php";
-
-?>

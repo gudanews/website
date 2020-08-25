@@ -1,6 +1,6 @@
 <?php
 
-$MAX_RECORD = 6;
+$MAX_RECORD = 5;
 $MAX_TITLE_LENGTH = 128;
 $MAX_SNIPPET_LENGTH = 178;
 
@@ -20,13 +20,19 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT title, snippet, news.url, image.path as image, source.short_name as source FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN source ON news.source_id = source.id WHERE news.image_id > 0 AND snippet <> 'NULL' AND news.datetime_created > '" . $day_minus_1d . "' ORDER BY news.datetime_created DESC LIMIT " . $MAX_RECORD;
+if (isset($lang)) {
+    $sql = "SELECT translation.title as title, translation.snippet as snippet, news.url, image.path as image, source.short_name as source FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN source ON news.source_id = source.id INNER JOIN translation ON news.translation_id = translation.id WHERE news.image_id > 0 AND is_indexed AND news.datetime_created > '" . $day_minus_1d . "' ORDER BY news.datetime_created DESC LIMIT " . $MAX_RECORD;
+}
+
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $image_path[] = $row["image"];
-        $title[] = string_crop($row["title"], $MAX_TITLE_LENGTH);
-        $snippet[] = string_crop($row["snippet"], $MAX_SNIPPET_LENGTH);
+        $title[] = $row["title"];
+        $snippet[] = $row["snippet"];
+//        $title[] = string_crop($row["title"], $MAX_TITLE_LENGTH);
+//        $snippet[] = string_crop($row["snippet"], $MAX_SNIPPET_LENGTH);
         $source[] = $row["source"];
         $url[] = $row["url"];
         $row_count += 1;

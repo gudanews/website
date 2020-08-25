@@ -35,8 +35,21 @@ echo <<<EOL
         <div class="card-padding"></div>
         <div class="text-card-control" horizontal layout>
             <div class="text-card-meta">
+EOL;
+for ($i = 0; $i < count($current_source); $i++) {
+echo <<<EOL
+                <div class="card-date">
+                    <p class="datetime-text">
+                        <i class="far fa-clock">
+                                $current_datetime[$i]
+                        ‎‎‎</i>
+                    </p>
+                </div>
+EOL;
+}
+echo <<<EOL
             </div>
-            <div class="text-card-nav">
+            <div class="image-card-nav">
 EOL;
 for ($i = 0; $i < count($current_source); $i++) {
 echo <<<EOL

@@ -1,4 +1,6 @@
 <?php
+
+
 echo <<<EOL
 <div horizontal layout class="image-card">
     <div class="image-card-media">
@@ -16,6 +18,7 @@ EOL;
 echo <<<EOL
     </div>
     <div class="image-card-info" vertical layout>
+
         <div class="image-card-heading card-heading">
 
 EOL;
@@ -36,6 +39,19 @@ echo <<<EOL
         <div class="card-padding"></div>
         <div class="image-card-control" horizontal layout>
             <div class="image-card-meta">
+EOL;
+for ($i = 0; $i < count($current_source); $i++) {
+echo <<<EOL
+                <div class="card-date">
+                    <p class="datetime-text">
+                        <i class="far fa-clock">
+                                $current_datetime[$i]
+                        ‎‎‎</i>
+                    </p>
+                </div>
+EOL;
+}
+echo <<<EOL
             </div>
             <div class="image-card-nav">
 EOL;
