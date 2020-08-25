@@ -39,19 +39,24 @@ echo <<<EOL
         <div class="card-padding"></div>
         <div class="image-card-control" horizontal layout>
             <div class="image-card-meta">
-            </div>
-            <div class="image-card-nav">
-            <div class="card-date">
-            <div class="card-date-image">
-            <i class="far fa-clock">&nbsp;&nbsp;&nbsp;‎‎‎</i>
 EOL;
-$datetime = strtotime($current_datetime[0]);
-$new_date = date("D M d, h:i A", $datetime);
-print strtoupper($new_date);
 for ($i = 0; $i < count($current_source); $i++) {
 echo <<<EOL
-        </div>
+                <div class="card-date">
+                    <p class="datetime-text">
+                        <i class="far fa-clock">
+                                $current_datetime[$i]
+                        ‎‎‎</i>
+                    </p>
+                </div>
+EOL;
+}
+echo <<<EOL
             </div>
+            <div class="image-card-nav">
+EOL;
+for ($i = 0; $i < count($current_source); $i++) {
+echo <<<EOL
                 <div class="card-source card-$current_id-source" style="background-color: $current_source_color[$i];">
                     <a onclick="showCard($current_id, $i)">
                         <p class="source-text">
@@ -60,7 +65,6 @@ echo <<<EOL
                     </a>
                 </div>
 EOL;
-
 }
 echo <<<EOL
             </div>

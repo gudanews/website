@@ -6,6 +6,9 @@ Author: GudaNews.com
     font-family: Roboto,Helvetica,Arial,sans-serif;
     color: rgba(0, 0, 0, 0.8);
 }
+.image-card p, .text-card p {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+}
 .image-card a:hover, .text-card a:hover {
     color: rgba(88, 88, 88, 0.8);
 }
@@ -57,7 +60,13 @@ Author: GudaNews.com
 }
 
 .image-card-control, .text-card-control  {
+    display: flex;
+    flex-direction: row;
     padding-right: 1rem;
+}
+
+.image-card-meta, .text-card-meta {
+    flex: 1;
 }
 
 .image-card-nav, .text-card-nav {
@@ -96,6 +105,11 @@ Author: GudaNews.com
     padding: 0.1rem;
     margin: 0;
     max-height: 100%;
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+.datetime-text {
     font-size: 0.75rem;
     font-weight: 300;
 }
