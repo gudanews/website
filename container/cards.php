@@ -57,7 +57,7 @@ if ($result_cards->num_rows > 0) {
                 $source[$row_count][] = $row["source"];
                 $source_color[$row_count][] = $row["color"];
                 $url[$row_count][] = $row["url"];
-                $datetime_created[$row_count][] = strtoupper(date("D M d, h:i A", strtotime($row["datetime_created"])));
+                $datetime_created[$row_count][] = strtoupper(date("D m/d, H:i", strtotime($row["datetime_created"]))) . " EST";
             }
             $row_count += 1;
         }
