@@ -127,3 +127,9 @@ Author: GudaNews.com
 .card-padding {
     flex: 1;
 }
+.card-date {
+    padding-right: 7rem;
+    padding-top: 1rem;
+}
+.card-date-image {
+}

@@ -57,10 +57,10 @@ if ($result->num_rows > 0) {
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-//
-// $sql = "UPDATE news SET views = views + 1 WHERE id = '" . $id . "'";
-// $result = $conn->query($sql);
-//
+
+$sql = "UPDATE news SET views = views + 1 WHERE id = '" . $id . "'";
+$result = $conn->query($sql);
+
 $conn->close();
 ?>
 <script>
@@ -82,4 +82,4 @@ function dolike(nid, uid) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-<button href="javascript:void(0)" onclick="dolike(<?php echo $id;?>, <?php echo $userid; ?>)">Like</button>
+<i class="fas fa-eye fa-3x"><?php echo " ", $views;?></i><button href="javascript:void(0)" onclick="dolike(<?php echo $id;?>, <?php echo $userid; ?>)">Like</button>
