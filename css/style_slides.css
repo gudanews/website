@@ -7,14 +7,14 @@ these make the slideshow work
 }
 
 .slide-navigation {
-    padding: 0.5rem;
+    padding: 0.25rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
 .slide-index {
-    margin: 0.5rem;
+    margin: 0.25rem;
     opacity: 0.2;
 }
 
@@ -23,22 +23,22 @@ these make the slideshow work
 }
 
 .index-icon {
-    width: 6rem;
-    height: 6rem;
+    width: 3rem;
+    height: 3rem;
     object-fit: cover;
-    border-radius: 3rem;
+    border-radius: 1.5rem;
 }
 
 .slide-arrow {
-    padding: 1rem;
+    padding: 0.5rem;
     display: inline-block;
     vertical-align: middle;
 }
 /* Position the "next button" to the right */
 .slide-prev, .slide-next {
-    padding: 1rem;
+    padding: 0.5rem;
     font-weight: bolder;
-    font-size: 3rem;
+    font-size: 1.5rem;
     -webkit-user-select: none;
 }
 
@@ -49,7 +49,7 @@ these make the slideshow work
 
 
 .slide-body {
-    min-height: 60rem;
+    min-height: 30rem;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -58,7 +58,7 @@ these make the slideshow work
 .slide-content {
     max-width: 96%;
     min-width: 88%;
-    margin: 0.5rem auto;
+    margin: 0.25rem auto;
 }
 
 .slide {
@@ -73,25 +73,25 @@ these make the slideshow work
 }
 
 .slide-image {
-    margin: 0 2rem;
+    margin: 0 1rem;
 }
 
 .slide-image img {
     width: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 }
 
 .slide-info {
-    margin: 1rem;
-    padding: 2rem;
-    border-radius: 1rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
     background-color: rgba(228, 228, 228, 0.8);
 }
 
 .slide-heading {
-    padding-bottom: 1rem;
-    font-size: 3rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-weight: bolder;
 }
@@ -100,15 +100,15 @@ these make the slideshow work
     line-height: 1.5;
     margin: 0;
     max-height: 100%;
-    font-size: 2.8rem;
+    font-size: 1.4rem;
     font-weight: 600;
 }
 
 .slide-snippet-text {
     line-height: 1.3;
-    padding: 0.2rem;
+    padding: 0.1rem;
     max-height: 100%;
-    font-size: 1.8rem;
+    font-size: 0.9rem;
     font-weight: 400;
 }
 

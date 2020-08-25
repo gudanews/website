@@ -2,7 +2,7 @@
   <div class="translation">
   <div class="chinese">
       <div class="dropup">
-      <button i class="fas fa-language fa-5x dropbtn"></i></button>
+      <button><i class="fas fa-language fa-2x dropbtn"></i></button>
         <div class="dropup-content">
           <a href="index.php">English</a>
           <a href="?lang=1">Chinese</a>

@@ -34,8 +34,20 @@
         </ul>
     </div>
 </div>
+<div class="top-container-padding" id="top-container">
+</div>
 
 <script>
+
+var top_bar = document.getElementById("top-container");
+var sticky = top_bar.offsetTop;
+
+let menuBtn = document.getElementById('top-menu');
+let menuNav = document.getElementById('top-nav');
+menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    menuNav.classList.toggle('open');
+});
 
 <?php
 if (isset($q)) {

@@ -6,52 +6,53 @@ Author: GudaNews.com
 	font-size: calc(16px + (24 - 16)*(100vw - 320px)/(1920 - 320));
 } */
 
-
 @media screen and (prefers-color-scheme: dark) {
-	body, input {
-		color: #f1f1f1;
-	}
-	body {
-		background: #171717;
-	}
-	.top-search-input {
-		box-shadow: 0 0 0 0.4rem #f1f1f1 inset;
-	}
-	.top-search-input:focus,
-	.top-search-input:valid {
-		background: #3d3d3d;
-		box-shadow: 0 0 0 0.1rem #3d3d3d inset;
-	}
-	.top-search-button {
-		background: #f1f1f1;
-	}
+    body, input {
+        color: #f1f1f1;
+    }
+    body {
+        background: #171717;
+    }
+    .top-search-input {
+        box-shadow: 0 0 0 0.4rem #f1f1f1 inset;
+    }
+    .top-search-input:focus,
+    .top-search-input:valid {
+        background: #3d3d3d;
+        box-shadow: 0 0 0 0.1rem #3d3d3d inset;
+    }
+    .top-search-button {
+        background: #f1f1f1;
+    }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
 
 .top-container {
-	z-index: 1;
-	display: flex;
-	flex-direction: column;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+.top-container-padding {
+    width: 100%;
+    height: 3rem;
+}
 .top-bar {
-  display: flex;
-  flex-direction: row;
-  padding: 0 1rem;
-  background: #000000;
-  width: 100%;
-  height: 6rem;
+    display: flex;
+    flex-direction: row;
+    padding: 0 0.5rem;
+    background: #000000;
+    width: 100%;
+    height: 3rem;
 }
 
 .top-logo {
     padding: 0;
-    width: 10rem;
-    height: 6rem;
+    width: 5rem;
+    height: 3rem;
 }
 
 .image-logo {
@@ -68,9 +69,9 @@ Author: GudaNews.com
     flex-direction: row;
     min-width: 40%;
     max-width: 60%;
-    height: 4rem;
+    height: 2rem;
     word-wrap: none;
-    margin: 1.5rem 0.5rem 0.5rem auto;
+    margin: 0.75rem 0.25rem 0.25rem auto;
 }
 
 .top-search-form {
@@ -78,24 +79,24 @@ Author: GudaNews.com
 	display: flex;
 	flex-direction: row;
 	white-space: nowrap;
-	min-width: 20rem;
+	min-width: 10rem;
 }
 
 .top-search-input, .top-search-button {
 	padding: 0;
 	margin: 0;
-	height: 4rem;
+	height: 2rem;
 }
 
 .top-search-input {
 	margin-left: auto;
-	padding-left: 1rem;
-	width: 4rem;
-	font-size: 3rem;
+	padding-left: 0.5rem;
+	width: 2rem;
+	font-size: 1.5rem;
 	background: transparent;
-	box-shadow: 0 0 0 0.75rem white inset;
-	border-radius: 2.5rem;
-	transform: translate(5rem, 0.9rem) scale(0.6);
+	box-shadow: 0 0 0 0.375rem white inset;
+	border-radius: 1.25rem;
+	transform: translate(2.5rem, 0.45rem) scale(0.6);
 	transform-origin: 100% 0;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -103,10 +104,10 @@ Author: GudaNews.com
 }
 
 .top-search-button {
-	width: 8rem;
+	width: 4rem;
 	background: white;
-	border-radius: 0 0.75rem 0.75rem 0 / 0 1.5rem 1.5rem 0;
-	transform:  translate(5rem, 0.6rem) scale(0.2,0.2) rotate(25deg) ;
+	border-radius: 0 0.375rem 0.375rem 0 / 0 0.75rem 0.75rem 0;
+	transform:  translate(2.5rem, 0.3rem) scale(0.2,0.2) rotate(25deg) ;
 	transform-origin: 0 50%;
 }
 
@@ -127,8 +128,8 @@ Author: GudaNews.com
 }
 .top-search-input:focus, .top-search-input:valid {
 	background: white;
-	border-radius: 1rem 0 0 1rem;
-	box-shadow: 0 0 0 0.1rem #d9d9d9 inset;
+	border-radius: 0.5rem 0 0 0.5rem;
+	box-shadow: 0 0 0 0.05rem #d9d9d9 inset;
 	transform: scale(1);
 }
 
@@ -140,19 +141,19 @@ Author: GudaNews.com
 }
 .top-search-button:before {
 	border-radius: 50%;
-	box-shadow: 0 0 0 0.45rem white inset;
-	top: 0.3rem;
-	left: 1rem;
-	width: 2.4rem;
-	height: 2.4rem;
+	box-shadow: 0 0 0 0.225rem white inset;
+	top: 0.15rem;
+	left: 0.5rem;
+	width: 1.2rem;
+	height: 1.2rem;
 }
 .top-search-button:after {
 	background: #f1f1f1;
-	border-radius: 0 0.25rem 0.25rem 0;
-	top: -0.8rem;
-	left: 3.25rem;
-	width: 1.6rem;
-	height: 0.8rem;
+	border-radius: 0 0.125rem 0.125rem 0;
+	top: -0.4rem;
+	left: 1.625rem;
+	width: 0.8rem;
+	height: 0.4rem;
 	transform: rotate(25deg);
 	transform-origin: 0 100%;
 }
@@ -170,7 +171,7 @@ Author: GudaNews.com
 /* Active state */
 .top-search-input:focus + .top-search-button, .top-search-input:valid + .top-search-button {
     background: transparent;
-	border-radius: 0 1rem 1rem 0;
+	border-radius: 0 0.5rem 0.5rem 0;
 	transform: scale(1);
 }
 .top-search-input:focus + .top-search-button:before,
@@ -186,22 +187,22 @@ Author: GudaNews.com
 }
 
 .top-menu {
-    margin: 1.75rem 0.5rem 0.25rem 0.5rem;
+    margin: 0.875rem 0.25rem 0.125rem 0.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 4rem;
-    height: 4rem;
+    width: 2rem;
+    height: 2rem;
     cursor: pointer;
 }
 
 .top-menu-button, .top-menu-button::before, .top-menu-button::after {
-    width: 3rem;
-    height: 0.4rem;
+    width: 1.5rem;
+    height: 0.2rem;
     background: white;
-    border-radius: 0.4rem;
+    border-radius: 0.2rem;
     transition: all 0.25s ease-in-out;
-	box-shadow: 0 0.2rem 0.5rem rgba(255,101,47,0.2);
+	box-shadow: 0 0.1rem 0.25rem rgba(255,101,47,0.2);
 }
 .top-menu-button::before, .top-menu-button::after {
     content: "";
@@ -209,10 +210,10 @@ Author: GudaNews.com
 }
 /* INITIAL SET APART */
 .top-menu-button:before {
-    transform: translateY(-0.8rem);
+    transform: translateY(-0.4rem);
 }
 .top-menu-button:after {
-    transform: translateY(0.8rem);
+    transform: translateY(0.4rem);
 }
 /* AINIMATION */
 .top-menu.open .top-menu-button {
@@ -238,20 +239,20 @@ Author: GudaNews.com
 }
 
 .top-nav.open {
-	height: 20rem;
+	height: 10rem;
 	visibility: visible;
     opacity: 1;
 }
 
 .top-nav a {
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 1.5rem;
   color: #818181;
 }
 
 .top-nav li {
 	list-style: none;
-	padding: 1rem 3rem;
+	padding: 0.5rem 1.5rem;
 }
 
 .top-nav a:hover {

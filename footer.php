@@ -1,15 +1,5 @@
 <script>
 
-var top_bar = document.getElementById("top-container");
-var sticky = top_bar.offsetTop;
-
-let menuBtn = document.getElementById('top-menu');
-let menuNav = document.getElementById('top-nav');
-menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('open');
-    menuNav.classList.toggle('open');
-});
-
 //Get the button
 var mybutton = document.getElementById("topBtn");
 
@@ -17,11 +7,11 @@ var mybutton = document.getElementById("topBtn");
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-    if (window.pageYOffset > sticky) {
-        top_bar.classList.add("sticky");
-    } else {
-        top_bar.classList.remove("sticky");
-    }
+//    if (window.pageYOffset > sticky) {
+//        top_bar.classList.add("sticky");
+//    } else {
+//        top_bar.classList.remove("sticky");
+//    }
  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     mybutton.style.display = "block";
   } else {
