@@ -1,21 +1,21 @@
 <script>
 
 //Get the button
-var mybutton = document.getElementById("topBtn");
+var mybutton = document.getElementById('topBtn');
 
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
 //    if (window.pageYOffset > sticky) {
-//        top_bar.classList.add("sticky");
+//        top_bar.classList.add('sticky');
 //    } else {
-//        top_bar.classList.remove("sticky");
+//        top_bar.classList.remove('sticky');
 //    }
  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
+    mybutton.style.display = 'block';
   } else {
-    mybutton.style.display = "none";
+    mybutton.style.display = 'none';
   }
 }
 

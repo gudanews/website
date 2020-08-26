@@ -1,8 +1,8 @@
 <?php
-$SERVERNAME = "192.168.1.49";
-$USERNAME = "gudababy";
-$PASSWORD = "good";
-$DBNAME = "gudanews";
+$SERVERNAME = '192.168.1.49';
+$USERNAME = 'gudababy';
+$PASSWORD = 'good';
+$DBNAME = 'gudanews';
 
 function string_crop($string, $length) {
     $string = strip_tags($string);
@@ -19,7 +19,7 @@ function string_crop($string, $length) {
 
 function translate_to_chinese($text) {
     ob_start();
-    passthru("script/translate.py '" . $text . "'");
+    passthru("script/translate.py '$text'");
     return ob_get_clean();
 }
 ?>

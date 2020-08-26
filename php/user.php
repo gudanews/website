@@ -1,4 +1,7 @@
 <?php
+
+require_once SITE_ROOT.'php/include.php';
+
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['HTTP_CLIENT_IP'];
 } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -10,10 +13,11 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  die('Connection failed: ' . $conn->connect_error);
 }
 
-$sql = "INSERT INTO user (ip_address, request) VALUES ('" . $ip . "', 1) ON DUPLICATE KEY UPDATE request = request + 1";
+$sql = "INSERT INTO user (ip_address, request) VALUES ('$ip', 1) ON DUPLICATE KEY UPDATE request = request + 1";
+
 $result = $conn->query($sql);
 
 $conn->close();
