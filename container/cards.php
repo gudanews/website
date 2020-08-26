@@ -2,7 +2,12 @@
 
 require_once SITE_ROOT.'php/include.php';
 
-$RECORD_PER_PAGE = 20;
+$url_lang = '';
+if (isset($lang)) {
+    $url_lang = '&lang=1';
+}
+
+$RECORD_PER_PAGE = 40;
 $MAX_TITLE_LENGTH = 88;
 $MAX_SNIPPET_LENGTH = 156;
 
@@ -40,7 +45,6 @@ $result_cards = $conn->query($sql);
 if ($result_cards->num_rows > 0) {
     while($row_cards = $result_cards->fetch_assoc()) {
         $cards_id = $row_cards['id'];
-        $cards_previous = $card_id - 1;
         $sql = <<<SQL
     SELECT title, uuid, news.datetime_created as datetime_created, news.url as url, snippet, image.thumbnail as image,
     source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source 
@@ -87,11 +91,6 @@ SQL;
     }
 }
 $conn->close();
-
-$url_lang = '';
-if (isset($lang)) {
-    $url_lang = '&lang=1';
-}
 
 echo <<<EOL
 <script>
