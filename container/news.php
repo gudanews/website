@@ -26,10 +26,6 @@ if ($result->num_rows > 0) {
         $url = $row['url'];
         $views = $row['views'];
         $id = $row['id'];
-	echo "*****";
-	echo $id;
-	echo $row['content'];
-	echo "*****";
         $content_raw = file_get_contents($row['content']);
 //        $content_raw = file_get_contents("http://192.168.1.49/$row[content]");
 	$content = '';
