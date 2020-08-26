@@ -74,7 +74,6 @@ SQL;
                 $current_source_color[] = $row['color'];
                 $current_url[] = $row['url'];
                 $current_datetime[] = strtoupper(date('D M d, h:i A', strtotime($row['datetime_created'])));
-
             }
             $current_image = $image[0];
             if (!empty($current_image)) {
