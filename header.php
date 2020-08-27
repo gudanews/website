@@ -4,6 +4,7 @@
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
     <link rel='shortcut icon' href='images/misc/favicon.ico'>
     <link rel='stylesheet' id='bootstrap-css' href='css/bootstrap/bootstrap.min.css' type='text/css' media='all'>
+    <link rel='stylesheet' id='style-css' href='css/style.css' type='text/css' media='all'>
     <link rel='stylesheet' id='style_cards-css' href='css/style_cards.css' type='text/css' media='all'>
     <link rel='stylesheet' id='style_slides-css' href='css/style_slides.css' type='text/css' media='all'>
     <link rel='stylesheet' id='style_top-css' href='css/style_top.css' type='text/css' media='all'>
