@@ -83,24 +83,24 @@ echo <<<EOL
             }
         }
     }
-    var first_time = false;
+    var first_time = true;
     function initCards() {
         var initCardIndex = 0;
         var cards = document.querySelectorAll('div.cards-container > div');
         window.alert('total find ' + cards.length + ' cards ');
         for (x = 0; x < cards.length ; x++) {
             if (isImageCard(x)) {
-            window.alert('card[' + x + '] is image card');
+//                window.alert('card[' + x + '] is image card');
                 showImageCard(x, initCardIndex);
             }
             else {
-                window.alert('card[' + x + '] is text card');
+//                window.alert('card[' + x + '] is text card');
                 showTextCard(x, initCardIndex);
             }
         }
     }
     if (first_time) {
-        window.alert('First time init cards');
+//        window.alert('First time init cards');
         initCards();
         first_time = false;
     }
