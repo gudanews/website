@@ -5,11 +5,6 @@
 
 require_once '../../php/include.php';
 
-$url_lang = '';
-if (isset($lang)) {
-    $url_lang = '&lang=1';
-}
-
 $RECORD_PER_PAGE = 10;
 $MAX_TITLE_LENGTH = 88;
 $MAX_SNIPPET_LENGTH = 156;
@@ -17,7 +12,8 @@ $MAX_SNIPPET_LENGTH = 156;
 $day_minus_2d = date('Y-m-d', strtotime('-2 days'));
 $day_minus_2w = date('Y-m-d', strtotime('-14 days'));
 
-$pageno = $_POST['pageno'] ?? 1 ;
+$pageno = $_POST['pageno'] ?? 1;
+$lang = $_POST['lang'] ?? 0;
 $offset = ($pageno - 1) * $RECORD_PER_PAGE;
 
 $card_count = $offset;
@@ -37,7 +33,7 @@ if (isset($q)) {
     title LIKE '%$q%' OR snippet LIKE '%$q%' ORDER BY datetime_created DESC LIMIT $offset, $RECORD_PER_PAGE
 SQL;
 }
-elseif (isset($lang)) {
+elseif ($lang == 1) {
     $sql = <<<SQL
     SELECT id, datetime_created, datetime_updated FROM news WHERE datetime_created > '$day_minus_2d' AND
     translation_id > 0 ORDER BY datetime_created DESC LIMIT $offset, $RECORD_PER_PAGE
@@ -53,7 +49,7 @@ if ($result_cards->num_rows > 0) {
     source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source 
     ON source_id = source.id WHERE news.id = $cards_id
 SQL;
-        if (isset($lang)) {
+        if ($lang == 1) {
             $sql = <<<SQL
     SELECT translation.title as title, uuid, news.datetime_created as datetime_created, news.url as url,
     translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color 

@@ -11,7 +11,7 @@ $sql = <<<SQL
     SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news 
     INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '$uuid'
 SQL;
-if (isset($lang)) {
+if ($lang == 1) {
     $sql = <<<SQL
     SELECT news.id as id, translation.content as content, views, translation.title, news.url as url,
     image.path as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation

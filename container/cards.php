@@ -2,11 +2,6 @@
 
 require_once SITE_ROOT.'php/include.php';
 
-$url_lang = '';
-if (isset($lang)) {
-    $url_lang = '&lang=1';
-}
-
 echo <<<EOL
 <div class='cards-container' id='cards'>
 EOL;
@@ -22,7 +17,7 @@ echo <<<EOL
                 $.ajax({
                     type: 'POST',
                     url: 'container/card/pagination.php',
-                    data: { pageno: nextPage },
+                    data: { pageno: nextPage, lang: $lang },
                     success: function(data){
                         if(data != ''){							 
                             $('#cards').append(data);
@@ -87,7 +82,7 @@ echo <<<EOL
     function initCards() {
         var initCardIndex = 0;
         var cards = document.querySelectorAll('div.cards-container > div');
-        window.alert('total find ' + cards.length + ' cards ');
+//        window.alert('total find ' + cards.length + ' cards ');
         for (x = 0; x < cards.length ; x++) {
             if (isImageCard(x)) {
 //                window.alert('card[' + x + '] is image card');
