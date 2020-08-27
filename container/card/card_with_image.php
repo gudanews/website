@@ -1,7 +1,6 @@
 <?php
 
 echo <<<EOL
-<div class='cards-container'>
     <div horizontal layout class='image-card'>
         <div class='image-card-media'>
 EOL;
@@ -71,6 +70,5 @@ echo <<<EOL
             </div>
         </div>
     </div>
-</div>
 EOL;
 ?>

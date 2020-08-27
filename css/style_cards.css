@@ -149,3 +149,18 @@ Author: GudaNews.com
 }
 .card-date-image {
 }
+
+
+#container div{
+    border: 1px solid lightgrey;
+    height: 80px;
+    margin-bottom: 5px;
+    padding: 50px 0px 0px 0px;
+    text-align: center;
+}
+
+img#loader {
+    display: block;
+    margin: auto;
+}
+	
