@@ -27,7 +27,7 @@ $sql = <<<SQL
     WHERE news.image_id > 0 AND snippet <> 'NULL' AND news.datetime_created > '$day_minus_1d' 
     ORDER BY news.datetime_created DESC LIMIT $MAX_RECORD
 SQL;
-if (isset($lang)) {
+if ($lang == 1) {
     $sql = <<<SQL
     SELECT translation.title as title, translation.snippet as snippet, news.url, image.path as image, 
     source.short_name as source FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN 

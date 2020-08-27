@@ -11,7 +11,7 @@ include_once 'php/user.php';
 
 $p = $_GET['p']; # Page
 $q = $_GET['q']; # Query
-$lang = $_GET['lang']; # Language
+$lang = $_GET['lang'] ?? 0; # Language
 $uuid = $_GET['uuid']; # uuid
 
 include 'container/top.php'; # Adding top sticky
