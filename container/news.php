@@ -7,8 +7,6 @@ $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "UPDATE news SET views = views + 1 WHERE id = '$id'";
-$result = $conn->query($sql);
 $sql = <<<SQL
     SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news 
     INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '$uuid'
@@ -34,6 +32,8 @@ if ($row = $result->fetch_assoc()) {
         $content = '<p>' . str_replace('\n', '</p><p>', $content_raw) . '</p>';
     }
 }
+$sql = "UPDATE news SET views = views + 1 WHERE id = '$id'";
+$result = $conn->query($sql);
 $conn->close();
 ob_start();
 include_once SITE_ROOT.'php/like.php';
