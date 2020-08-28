@@ -4,6 +4,15 @@ $USERNAME = 'gudababy';
 $PASSWORD = 'good';
 $DBNAME = 'gudanews';
 
+$ip = '';
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
+
 function string_crop($string, $length) {
     $string = strip_tags($string);
     if (strlen($string) > $length) {

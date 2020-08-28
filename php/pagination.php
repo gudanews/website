@@ -3,7 +3,7 @@
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-require_once '../../php/include.php';
+require_once 'include.php';
 
 $RECORD_PER_PAGE = 10;
 $MAX_TITLE_LENGTH = 88;
@@ -77,10 +77,10 @@ if ($result_cards->num_rows > 0) {
             }
             $current_image = $image[0];
             if (!empty($current_image)) {
-                include 'card_with_image.php';
+                include '../container/card/card_with_image.php';
             }
             else {
-                include 'card_without_image.php';
+                include '../container/card/card_without_image.php';
             }
             $card_count += 1;
         }

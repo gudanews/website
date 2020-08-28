@@ -4,8 +4,6 @@ require_once SITE_ROOT.'php/include.php';
 
 echo <<<EOL
 <div class='cards-container' id='cards'>
-EOL;
-echo <<<EOL
 </div>
 <input type='hidden' id='pageno' value='0'></input>
 <img id="loader" class='card-loading' src="images/misc/loading.svg"></img>
@@ -16,7 +14,7 @@ echo <<<EOL
                 var nextPage = parseInt($('#pageno').val()) + 1;
                 $.ajax({
                     type: 'POST',
-                    url: 'container/card/pagination.php',
+                    url: 'php/pagination.php',
                     data: { pageno: nextPage, lang: $lang, q: '$q' },
                     success: function(data){
                         if(data != ''){							 
