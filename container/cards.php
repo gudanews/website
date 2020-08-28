@@ -17,7 +17,7 @@ echo <<<EOL
                 $.ajax({
                     type: 'POST',
                     url: 'container/card/pagination.php',
-                    data: { pageno: nextPage, lang: $lang },
+                    data: { pageno: nextPage, lang: $lang, q: '$q' },
                     success: function(data){
                         if(data != ''){							 
                             $('#cards').append(data);
