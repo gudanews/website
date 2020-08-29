@@ -8,14 +8,10 @@ parse_str($query, $params);
 
 if (isset($params['lang'])) {
     unset($params['lang']);
-    $query = http_build_query($params);
-    $link = "$parsed_url[scheme]://$parsed_url[host]$parsed_url[path]?$query";
 }
-else {
-    $params['lang'] = '1';
-    $query = http_build_query($params);
-    $link = "$parsed_url[scheme]://$parsed_url[host]$parsed_url[path]?$query";
-}
+$params['lang'] = $lang? 0: 1;
+$query = http_build_query($params);
+$link = "$parsed_url[scheme]://$parsed_url[host]$parsed_url[path]?$query";
 
 echo <<<EOL
 <div class='footer'>
