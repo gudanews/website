@@ -1,7 +1,5 @@
 <?php
 
-require_once SITE_ROOT.'php/include.php';
-
 $MAX_RECORD = 6;
 $MAX_TITLE_LENGTH = 128;
 $MAX_SNIPPET_LENGTH = 178;

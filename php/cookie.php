@@ -1,5 +1,5 @@
 <?php
 
-require_once SITE_ROOT.'php/include.php';
+require_once 'include.php';
 
 ?>

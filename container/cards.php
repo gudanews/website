@@ -1,7 +1,5 @@
 <?php
 
-require_once SITE_ROOT.'php/include.php';
-
 echo <<<EOL
 <div class='cards-container' id='cards'>
 </div>

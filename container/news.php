@@ -1,7 +1,5 @@
 <?php
 
-require_once SITE_ROOT.'php/include.php';
-
 # QUERY RESULT
 $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
@@ -32,8 +30,13 @@ if ($row = $result->fetch_assoc()) {
         $content = '<p>' . str_replace('\n', '</p><p>', $content_raw) . '</p>';
     }
 }
-$sql = "UPDATE news SET views = views + 1 WHERE id = '$id'";
-$result = $conn->query($sql);
+$last_access = $_COOKIE['last_access'] ?? time();
+$cookie_duration = time() + (86400 * 30);
+setcookie('last_access', time(), $cookie_duration, "/"); // 86400 = 1 day
+if ((time() - $last_access) > 2) { // Adding 1 view per 2 seconds
+    $sql = "UPDATE news SET views = views + 1 WHERE id = '$id'";
+    $result = $conn->query($sql);
+}
 $conn->close();
 ob_start();
 include_once SITE_ROOT.'php/like.php';

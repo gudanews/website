@@ -1,7 +1,5 @@
 <?php
 
-require_once SITE_ROOT.'php/include.php';
-
 // Create connection
 $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 // Check connection
