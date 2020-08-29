@@ -7,7 +7,7 @@ require_once 'include.php';
 
 //$user = $_GET['user'] ?? $user;
 $uuid = $_GET['uuid'] ?? $uuid;
-$action = $_GET['action'] ?? 'view';
+$action = $_GET['action'] ?? 'init';
 
 # QUERY RESULT
 $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
@@ -24,7 +24,7 @@ if ($action == 'update') {
     $sql = 'DELETE FROM news_likes WHERE news_id = 0';
     $result = $conn->query($sql);
 }
-else { // $action = 'view'
+else { // $action = 'init'
     $sql = <<<SQL
         SELECT COUNT(*) as count FROM news_likes INNER JOIN news ON
         news.id = news_likes.news_id INNER JOIN user ON user.id = news_likes.user_id
@@ -32,19 +32,21 @@ else { // $action = 'view'
     SQL;
     if ($result = $conn->query($sql)) {
         $like = $result->fetch_row()[0];
-        echo $like . ',';
     }
 }
+
 $sql = <<<SQL
     SELECT COUNT(*) as count FROM news_likes INNER JOIN news ON
     news.id = news_likes.news_id WHERE news.uuid = '$uuid';
 SQL;
+$count = 0;
 if ($result = $conn->query($sql)) {
     $count = $result->fetch_row()[0];
 }
 
 $conn->close();
 
-echo $count;
-
+if ($action == 'update') {
+    echo $count;
+}
 ?>

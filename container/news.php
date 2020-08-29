@@ -38,10 +38,11 @@ if ((time() - $last_access) > 2) { // Adding 1 view per 2 seconds
     $result = $conn->query($sql);
 }
 $conn->close();
-ob_start();
+
 include_once SITE_ROOT.'php/like.php';
-ob_end_clean();
+
 $icon = ($like) ? 'fas' : 'far';
+
 echo <<<EOL
 <div class='news-card-container'>
     <div class='news-card-title'>
