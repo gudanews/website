@@ -1,5 +1,5 @@
 .news-title, .news-content {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: "Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
 }
 .news-card-container {
     padding-top: 2rem;
@@ -7,8 +7,9 @@
 }
 .news-card-title {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 700;
     text-align: center;
+    line-height: 1.75;
 }
 .news-card-image {
     padding: 1rem;
@@ -19,6 +20,7 @@
 }
 .news-card-content {
     font-size: 1.15em;
+    line-height: 1.5;
     padding: 0.75rem;
 }
 

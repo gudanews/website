@@ -3,7 +3,7 @@ Theme Name: GudaNews Theme
 Author: GudaNews.com
 */
 .image-card a, .text-card a {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: "Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
     color: rgba(0, 0, 0, 0.8);
 }
 .image-card p, .text-card p {
