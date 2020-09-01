@@ -27,7 +27,7 @@ if ($row = $result->fetch_assoc()) {
 //    $content_raw = file_get_contents("http://192.168.1.49/$row[content]");
     $content = '';
     if (!empty($content_raw)) {
-        $content = '<p>' . str_replace('\n', '</p><p>', $content_raw) . '</p>';
+        $content = '<p>' . str_replace("\n", '</p><p>', $content_raw) . '</p>';
     }
 }
 $last_access = $_COOKIE['last_access'] ?? time();
