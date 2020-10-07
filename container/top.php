@@ -1,3 +1,18 @@
+<?php
+$current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$parsed_url = parse_url($current_url);
+$query = $parsed_url['query'];
+parse_str($query, $params);
+
+if (isset($params['lang'])) {
+    unset($params['lang']);
+}
+$params['lang'] = $lang? 0: 1;
+$query = http_build_query($params);
+$link = "$parsed_url[scheme]://$parsed_url[host]$parsed_url[path]?$query";
+
+echo <<<EOL
 <div class='top-container' id='top-container'>
     <div class='top-bar'>
         <div class='top-logo'>
@@ -14,6 +29,12 @@
                     <span></span>
                 </button>
             </form>
+        </div>
+        <div class='top-translation'>
+            <a href='$link'>
+                <img class='image-translation' src='images/misc/translation_icon.png'>
+                </img>
+            </a>
         </div>
         <div class='top-menu' id='top-menu'>
             <div class='top-menu-button'></div>
@@ -48,8 +69,8 @@ menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('open');
     menuNav.classList.toggle('open');
 });
+EOL;
 
-<?php
 if (isset($q)) {
 echo <<<EOL
     var search_input = document.getElementById('top-search-input');

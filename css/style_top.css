@@ -186,6 +186,19 @@ Author: GudaNews.com
 	background: #0c48db;
 }
 
+.top-translation {
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.75rem 0.5rem 0.25rem 0.1rem;
+}
+
+.image-translation {
+    max-height: 100%;
+    object-fit: fill;
+}
+
+
 .top-menu {
     margin: 0.875rem 0.25rem 0.125rem 0.25rem;
     display: flex;
