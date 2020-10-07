@@ -27,7 +27,7 @@ if ($conn->connect_error) {
 if (empty($q)) {
     $sql = <<<SQL
     SELECT id, datetime_created, datetime_updated FROM news WHERE datetime_created > '$day_minus_2d'
-    AND is_indexed ORDER BY datetime_created DESC LIMIT $offset, $RECORD_PER_PAGE
+    AND is_indexed AND category_id < 10 ORDER BY datetime_created DESC LIMIT $offset, $RECORD_PER_PAGE
     SQL;
 }
 else {

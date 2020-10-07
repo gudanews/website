@@ -6,20 +6,27 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $sql = <<<SQL
-    SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news 
-    INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '$uuid'
+    SELECT news.id as id, content, views, title, news.url as url, image.path as image,
+    source.full_name as source, source.image_path as source_image, news.datetime_created as datetime FROM news 
+    INNER JOIN image ON news.image_id = image.id
+    INNER JOIN source ON source.id = news.source_id WHERE news.uuid = '$uuid'
 SQL;
 if ($lang == 1) {
     $sql = <<<SQL
     SELECT news.id as id, translation.content as content, views, translation.title, news.url as url,
-    image.path as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation
-    ON news.translation_id = translation.id WHERE news.uuid = '$uuid'
+    image.path as image, source.full_name as source, source.image_path as source_image,
+    news.datetime_created as datetime FROM news
+    INNER JOIN image ON news.image_id = image.id INNER JOIN translation
+    ON news.translation_id = translation.id INNER JOIN source ON source.id = news.source_id WHERE news.uuid = '$uuid'
 SQL;
 }
 $result = $conn->query($sql);
 if ($row = $result->fetch_assoc()) {
     $image = $row['image'];
     $title = $row['title'];
+    $source = $row['source'];
+    $source_image = $row['source_image'];
+    $datetime = strtoupper(date('D m/d, H:i', strtotime($row['datetime']))).' EST';
     $url = $row['url'];
     $views = $row['views'];
     $id = $row['id'];
@@ -48,6 +55,14 @@ echo <<<EOL
     <div class='news-card-title'>
         <p class='news-title'>$title</p>
     </div>
+    <div class='news-card-metadata' horizontal layout>
+        <div>
+            <p class='news-source'>$source</p>
+        </div>
+        <div>
+            <p class='news-datetime'>$datetime</p>
+        </div>
+    </div>
     <div class='news-card-image'>
         <img class='news-image' src='$image'></img>
     </div>
@@ -55,6 +70,9 @@ echo <<<EOL
         <p>$content</p>
     </div>
     <div class='news-card-info'>
+        <div class='card-read-more'>
+            <a target='_blank' href="$url">Read From Source</a>
+        </div>
         <i class='fas fa-eye fa-1x'>&nbsp;&nbsp;$views&nbsp;&nbsp;
         </i>
         <a href='javascript:void(0)' onclick='dolike("$uuid")'>

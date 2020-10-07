@@ -11,6 +11,20 @@
     text-align: center;
     line-height: 1.75;
 }
+.news-card-metadata {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    text-align: left;
+}
+.news-source {
+    font-size: 1rem;
+    padding: 1rem;
+}
+.news-datetime {
+    font-size: 1rem;
+    padding: 1rem;
+}
 .news-card-image {
     padding: 1rem;
     text-align: center;
@@ -19,11 +33,22 @@
     max-width: 100%;
 }
 .news-card-content {
-    font-size: 1.15em;
+    font-size: 1.15rem;
     line-height: 1.5;
     padding: 0.75rem;
 }
 
 .news-card-info {
     text-align: center;
+}
+
+.card-read-more {
+   border: 0.1rem solid lightgray;
+   padding: 0.5rem;
+   margin: 1rem;
+   border-radius: 3rem;
+}
+
+.card-read-more a {
+   color: black;
 }
