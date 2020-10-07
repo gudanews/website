@@ -79,7 +79,7 @@ Author: GudaNews.com
 	display: flex;
 	flex-direction: row;
 	white-space: nowrap;
-	min-width: 10rem;
+	min-width: 6rem;
 }
 
 .top-search-input, .top-search-button {
