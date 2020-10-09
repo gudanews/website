@@ -11,5 +11,6 @@ html, body {
   /* overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
     max-width: 100%;
+    background-color: #fafafa;
+    letter-spacing: .01em;
 }
-
