@@ -6,7 +6,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $sql = <<<SQL
-    SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news 
+    SELECT news.id as id, content, views, title, news.url as url, image.path as image FROM news
     INNER JOIN image ON news.image_id = image.id WHERE news.uuid = '$uuid'
 SQL;
 if ($lang == 1) {
@@ -44,6 +44,7 @@ include_once SITE_ROOT.'php/like.php';
 $icon = ($like) ? 'fas' : 'far';
 
 echo <<<EOL
+<title>Gudanews - $title</title>
 <div class='news-card-container'>
     <div class='news-card-title'>
         <p class='news-title'>$title</p>
@@ -74,4 +75,3 @@ function dolike(uuid) {
 	});
 }
 </script>
-
