@@ -57,6 +57,7 @@ if(empty($author)){
     $author = "Unknown";
 }
 echo <<<EOL
+<title>Gudanews - $title</title>
 <div class='news-card-container'>
     <div class='news-card-title'>
         <p class='news-title'>$title</p>
