@@ -6,24 +6,27 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $sql = <<<SQL
-    SELECT news.id as id, content, views, title, news.url as url, image.path as image,
-    source.full_name as source, source.image_path as source_image, news.datetime_created as datetime FROM news 
-    INNER JOIN image ON news.image_id = image.id
+    SELECT news.id as id, author, category.name as category, content, views, title, news.url as url, image.path as image,
+    source.full_name as source, source.image_path as source_image, news.datetime_created as datetime FROM news
+    INNER JOIN image ON news.image_id = image.id INNER JOIN category ON category.id = news.category_id
     INNER JOIN source ON source.id = news.source_id WHERE news.uuid = '$uuid'
 SQL;
 if ($lang == 1) {
     $sql = <<<SQL
-    SELECT news.id as id, translation.content as content, views, translation.title, news.url as url,
+    SELECT news.id as id, author, category.name as category, translation.content as content, views, translation.title, news.url as url,
     image.path as image, source.full_name as source, source.image_path as source_image,
     news.datetime_created as datetime FROM news
-    INNER JOIN image ON news.image_id = image.id INNER JOIN translation
-    ON news.translation_id = translation.id INNER JOIN source ON source.id = news.source_id WHERE news.uuid = '$uuid'
+    INNER JOIN image ON news.image_id = image.id INNER JOIN translation ON news.translation_id = translation.id
+    INNER JOIN category ON category.id = news.category_id INNER JOIN source ON source.id = news.source_id
+    WHERE news.uuid = '$uuid'
 SQL;
 }
 $result = $conn->query($sql);
 if ($row = $result->fetch_assoc()) {
     $image = $row['image'];
     $title = $row['title'];
+    $author = $row['author'];
+    $category = ucfirst($row['category']);
     $source = $row['source'];
     $source_image = $row['source_image'];
     $datetime = strtoupper(date('D m/d, H:i', strtotime($row['datetime']))).' EST';
@@ -50,6 +53,9 @@ include_once SITE_ROOT.'php/like.php';
 
 $icon = ($like) ? 'fas' : 'far';
 
+if(empty($author)){
+    $author = "Unknown";
+}
 echo <<<EOL
 <div class='news-card-container'>
     <div class='news-card-title'>
@@ -65,6 +71,10 @@ echo <<<EOL
     </div>
     <div class='news-card-image'>
         <img class='news-image' src='$image'></img>
+        <figcaption>Image by $author via $source.</figcaption>
+        <div class='news-card-author'>
+        <strong>$category - $author</strong>
+        </div>
     </div>
     <div class='news-card-content'>
         <p>$content</p>
@@ -92,4 +102,3 @@ function dolike(uuid) {
 	});
 }
 </script>
-
