@@ -2,9 +2,9 @@
     border-color: #3A3A3;
     color: #3A3A3;
     border-radius: 25px;
-    padding: 10px;
-    padding-left: 500px;
-    padding-right: 500px;
+    padding: 0.75rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     transition-duration: 0.4s;
 }
 .news-title, .news-content {
