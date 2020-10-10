@@ -194,8 +194,9 @@ Author: GudaNews.com
 }
 
 .image-translation {
-    max-height: 100%;
     object-fit: fill;
+    width: auto;
+    height: 100%;
 }
 
 

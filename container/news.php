@@ -82,7 +82,9 @@ echo <<<EOL
     </div>
     <div class='news-card-info'>
         <div class='card-read-more'>
-            <a target='_blank' href="$url">Read From Source</a>
+            <form action="$url" target="_blank">
+        <input class="read-more-button" id="read-more-button1" type="submit" value="Read From Source" />
+        </form>
         </div>
         <i class='fas fa-eye fa-1x'>&nbsp;&nbsp;$views&nbsp;&nbsp;
         </i>
