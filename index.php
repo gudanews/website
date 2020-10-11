@@ -3,7 +3,7 @@
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
- define(SITE_ROOT, './');
+define(SITE_ROOT, './');
  
 require_once 'php/include.php';
 

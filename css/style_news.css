@@ -23,16 +23,18 @@
 .news-card-metadata {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
+    padding: 0.25rem;
     text-align: left;
 }
-.news-source {
-    font-size: 1rem;
-    padding: 1rem;
+.news-source img{
+    object-fit: cover;
+    border-radius: 0.5rem;
+    height: 3rem;
+    width: 3rem;
 }
 .news-datetime {
+    padding-left: 5rem;
     font-size: 1rem;
-    padding: 1rem;
 }
 .news-card-image {
     padding: 1rem;

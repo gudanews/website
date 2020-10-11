@@ -29,6 +29,7 @@ if ($row = $result->fetch_assoc()) {
     $category = ucfirst($row['category']);
     $source = $row['source'];
     $source_image = $row['source_image'];
+//    $source_image = 'http://192.168.1.49/'. $row['source_image'];
     $datetime = strtoupper(date('m/d, H:i', strtotime($row['datetime']))).' EST';
     $url = $row['url'];
     $views = $row['views'];
@@ -63,11 +64,11 @@ echo <<<EOL
         <p class='news-title'>$title</p>
     </div>
     <div class='news-card-metadata' horizontal layout>
-        <div>
-            <img class='news-source' src='$source_image'></img>
+        <div class='news-source'>
+            <img src='$source_image'></img>
         </div>
-        <div>
-            <p class='news-datetime'>$datetime</p>
+        <div class='news-datetime'>
+            <p>$datetime</p>
         </div>
     </div>
     <div class='news-card-image'>
