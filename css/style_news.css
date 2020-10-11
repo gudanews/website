@@ -27,10 +27,10 @@
     text-align: left;
 }
 .news-source img{
+    height: 2rem;
+    width: 2rem;
     object-fit: cover;
     border-radius: 0.5rem;
-    height: 3rem;
-    width: 3rem;
 }
 .news-datetime {
     padding-left: 5rem;
