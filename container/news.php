@@ -68,8 +68,9 @@ echo <<<EOL
             <img src='$source_image'></img>
         </div>
         <div class='news-datetime'>
-            <p>$datetime</p>
+            <i class="far fa-clock">$datetime</i>
         </div>
+        </i>
     </div>
     <div class='news-card-image'>
         <img class='news-image' src='$image'></img>

@@ -12,6 +12,7 @@
     <link rel='stylesheet' id='style_news-css' href='css/style_news.css' type='text/css' media='all'>
     <link rel='stylesheet' id='style_bottom-css' href='css/style_bottom.css' type='text/css' media='all'>
     <link rel='stylesheet' id='style_base-css' href='css/style.css' type='text/css' media='all'>
+    <link rel='stylesheet' id='style_contact-us' href='css/contact_us.css' type='text/css' media='all'>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.14.0/css/all.css'>
     <script src='js/scripts.js' type='text/javascript'></script>
     <script src="js/jquery.min.js" type="text/javascript"></script>
