@@ -1,8 +1,17 @@
-<html>
-<head>
-    <title>GudaNews- Contact Us</title>
-</head>
+<?php
+define(SITE_ROOT, './');
 
+require_once 'php/include.php';
+
+include_once 'header.php';
+echo <<<EOL
+<link rel='stylesheet' id='style_contact-us' href='css/contact_us.css' type='text/css' media='all'>
+<title>GudaNews- Contact Us</title>
+EOL;
+include_once 'php/user.php';
+
+include_once 'container/top.php'; # Adding top sticky
+echo <<<EOL
 <body>
 
     <div class="contact-title">
@@ -22,7 +31,11 @@
         </form>
     </div>
 
-
-
-
 </body>
+EOL;
+
+include_once 'container/bottom.php';
+
+include_once 'footer.php';
+
+?>

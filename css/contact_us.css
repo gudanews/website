@@ -6,10 +6,10 @@ body {
 }
 .contact-title {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 1rem;
     color: #000000;
     text-transform: uppercase;
-    transition: all 4s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 .contact-title h1 {
     font-size: 3rem;
@@ -18,9 +18,9 @@ body {
 
 .form-control {
     text-align: center;
-    margin-top: 5rem;
-    transition: all 4s ease-in-out;
-    width: 90rem;
+    margin-top: 1rem;
+    transition: all 1s ease-in-out;
+    width: 22.5rem;
     background: transparent;
     border: none;
     outline: none;

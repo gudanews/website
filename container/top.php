@@ -50,7 +50,7 @@ echo <<<EOL
                 <a href='#'>Services</a>
             </li>
             <li>
-                <a href='#'>Contact</a>
+                <a href='contact_us.php'>Contact</a>
             </li>
         </ul>
     </div>
