@@ -19,7 +19,7 @@ echo <<<EOL
     </div>
 
     <div class="contact-form">
-        <form id="contact-form" method="post" action="contact_form_handler.php">
+        <form id="contact-form" method="post" action="php/contact_form_handler.php">
         <input name="name" type="text" class="form-control" autocomplete="off" placeholder="Your Name" required>
         <br>
         <input name="email" type="email" class="form-control" autocomplete="off" placeholder="Your Email" required>
