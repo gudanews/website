@@ -17,7 +17,7 @@ echo <<<EOL
     <div class='top-bar'>
         <div class='top-logo'>
             <a href='index.php'>
-                <img class='image-logo' src='images/misc/gudanews_logo.jpg'>
+                <img class='image-logo' src='images/misc/gudanews_logo.png'>
                 </img>
             </a>
         </div>
@@ -44,10 +44,10 @@ echo <<<EOL
     <div class='top-nav' id='top-nav'>
         <ul class='top-nav-list'>
             <li>
-                <a href='#'>About</a>
+                <a href='about_us.php'>About</a>
             </li>
             <li>
-                <a href='#'>Services</a>
+                <a href='terms_of_service.php'>Terms Of Service</a>
             </li>
             <li>
                 <a href='contact_us.php'>Contact</a>
