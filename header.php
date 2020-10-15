@@ -2,8 +2,9 @@
 <head>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-    <meta property='og:image' content='images/misc/favicon.ico'>
-    <link rel='shortcut icon' href='images/misc/favicon.ico'>
+    <meta property='og:image' content='images/misc/gudanews_logo.png'>
+    <link rel='shortcut icon' href='images/misc/gudanews_logo.png'>
+    <link href="images/misc/favicon.ico" rel="apple-touch-icon" type="image/png">
     <link rel='stylesheet' id='bootstrap-css' href='css/bootstrap/bootstrap.min.css' type='text/css' media='all'>
     <link rel='stylesheet' id='style-css' href='css/style.css' type='text/css' media='all'>
     <link rel='stylesheet' id='style_cards-css' href='css/style_cards.css' type='text/css' media='all'>
