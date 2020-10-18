@@ -35,7 +35,7 @@ include_once 'container/top.php';
             the left wing became more and more liberal. As no political parties are absolutely correct, we thought people should
             be grant the option to hear from the other side freely.
 
-            <p>Things become worse as we realize the propoganda education inside US school system as parents. Students are can no
+            <p>Things become worse when we as parents realize the propoganda education inside US school system. Students can no
             longer express their ideas within campus if they hold a different political view. Before actions can be taken by
             government, we will try to defend our political balance to our children. Propoganda will only turn our future
             generations into zombies.
