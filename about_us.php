@@ -29,25 +29,25 @@ include_once 'container/top.php';
         <div class="about_us_content">
             <p>Welcome to GudaNews. We hope you’re enjoying your time browsing least-bias uncensored news from our site.
 
-            <p>We’re a family owned startup with two lovely middleschoolers. Our stories started a few months ago when we saw
-            a lot of controversial news flying around. It was difficult to get the truth as biased news sources reported the
-            same news in completely different manners. People on the right wing became more and more conservative. People on
-            the left wing became more and more liberal. As no political parties are absolutely correct, we thought people should
-            be grant the option to hear from the other side freely.
+            <p>We’re a family owned startup with two lovely middleschoolers from their initiative. Our stories started a few
+            months ago during the pandanmic. Spending more time reading news at home, we saw a lot of controversial reporting
+            flying around. It was difficult to get the truth as biased news sources reported the same news in completely
+            different manners. People on the right wing became more and more conservative. People on the left wing became more
+            and more liberal. As no political parties were absolutely correct, we thought people should be granted the option to
+            hear from the other side without border.
 
-            <p>Things become worse when we as parents realize the propoganda education inside US school system. Students can no
+            <p>Things become more complicated when we as parents start to realize the propoganda education inside US school system. Students can no
             longer express their ideas within campus if they hold a different political view. Before actions can be taken by
-            government, we will try to defend our political balance to our children. Propoganda will only turn our future
-            generations into zombies.
+            government, we will try to defend our children by providing a politically balanced environment. Propoganda will only turn our future
+            generations into brainwashed zombies.
 
-            <p>During this presidental voting season, media are completely crazy when writing their news stories. Social media
-            even started censoring legitimate news source and disabling users account. This is a huge shock to us and makes us
+            <p>During this presidental voting season, media are completely crazy when making up their news stories.
+            Social networks big techs even started censoring legitimate news source and disabling users account. This is a huge shock to us and makes us
             deeply worried about the freedom of speech in this country.
 
-            <p>GudaNews.com was created. Our mission, to bring least-biased uncensored news to our audience. Balanced information from
-            different source would give people an option to see the ideology and opinions of others who hold a different political
-            view. Instead of just relying your only one favorite news source, you will also be providing take a glimpse of all news
-            being read by most users.
+            <p>GudaNews.com was therefore created. Our mission is to bring least-biased uncensored news to our audience. Balanced information from
+            different source would share different ideology and opinions. Instead of just relying on the only one favorite news source,
+            our users can overview most popular news being read.
 
         </div>
         <!-- <div class="col-sm-5">
