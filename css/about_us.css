@@ -1,0 +1,31 @@
+*{
+    font-family: Roboto;
+}
+.text-center {
+    padding-top: 2rem;
+    font-weight: 900;
+}
+.image-timeline {
+    padding-top: 50px;
+    float: right;
+}
+.about_us_content {
+    padding-bottom: 2rem;
+    word-spacing: 0.22rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+body{
+    height: 100vh;
+    justify-content: center;
+}
+#aboutus h2{margin-bottom: 25px;}
+.img-wrap{width: 50%;}
+.img-wrap img{width: 100%;padding: 10px;border-radius: 50%;box-shadow: 0 0 10px #999999
+}
+.img-wrap {
+    margin: auto;
+ width: 60%;
+ padding: 10px;
+}

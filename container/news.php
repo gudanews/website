@@ -68,7 +68,7 @@ echo <<<EOL
             <img src='$source_image'></img>
         </div>
         <div class='news-datetime'>
-            <i class="far fa-clock">$datetime</i>
+            <i class="far fa-clock">&nbsp;$datetime</i>
         </div>
         </i>
     </div>
@@ -98,6 +98,12 @@ echo <<<EOL
 </div>
 EOL;
 ?>
+<!-- <div style="margin-left: 40rem;" class="share-button"></style>
+  <span><i class="fas fa-share-alt"></i> Share!</span>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=$url"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://twitter.com/share?url=$url&text=$content"><i class="fab fa-twitter"></i></a>
+  <a href="https://www.linkedin.com/shareArticle?url=$url&title=$title&source=$current_source"><i class="fab fa-linkedin-in"></i></a>
+</div> -->
 
 <script>
 function dolike(uuid) {

@@ -1,50 +1,190 @@
 body {
     margin: 0;
     padding: 0;
-    background: white;
     font-family: sans-serif;
 }
-.contact-title {
-    text-align: center;
-    margin-top: 1rem;
-    color: #000000;
-    text-transform: uppercase;
-    transition: all 1s ease-in-out;
-}
-.contact-title h1 {
-    font-size: 3rem;
-    line-height: 1rem;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
 }
 
-.form-control {
-    text-align: center;
-    margin-top: 1rem;
-    transition: all 1s ease-in-out;
-    width: 22.5rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid black;
-    font-size: 1rem;
-    margin-bottom: 1.6rem;
+.wrapper{
+  position: absolute;
+  margin-top: 7rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 550px;
+  padding: 30px;
+  border-radius: 5px;
+  height: 100%;
+  max-height: 44rem;
+  text-align: center;
+
 }
-input .form-control{
-    height: 4.5rem;
+
+.wrapper .title h1{
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
 }
-form .submit
-{
-    background: #ff5722;
-    border-color: transparent;
+
+.contact-form{
+  display: flex;
+}
+
+.input-fields{
+  display: flex;
+  flex-direction: column;
+  margin-right: 4%;
+}
+
+.input-fields,
+.msg{
+  width: 48%;
+}
+
+.input-fields .input,
+.msg textarea{
+  margin: 10px 0;
+  background: transparent;
+  border: 0px;
+  border-bottom: 2px solid #000000;
+  padding: 10px;
+  width: 100%;
+}
+
+.msg textarea{
+  height: 212px;
+}
+.btn {
+    margin-top: 3rem;
+    background: #EA6315;
+    padding: 15px;
+    border-radius: 5px;
     color: #fff;
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 0.2rem;
-    height: 5rem;
-    margin-top: 2rem;
-    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 10rem;
+}
+.btn:hover {
+    background: #A4430B;
+}
+.btn:after {
+    background: #A4430B;
 }
 
-form .submit:hover {
-    background-color: #f44336;
-    cursor: pointer;
+@media screen and (max-width: 600px){
+  .contact-form{
+    flex-direction: column;
+  }
+  .msg textarea{
+    height: 80px;
+  }
+  .input-fields,
+  .msg{
+    width: 100%;
+  }
+}
+
+.container {
+  margin-top: 100px;
+  padding: 32px;
+}
+
+.select-box {
+  display: flex;
+  width: 90vw;
+  flex-direction: column;
+}
+
+.select-box .options-container {
+  background: #2f3640;
+  color: #f5f6fa;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected {
+  background: #2f3640;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #f5f6fa;
+  position: relative;
+
+  order: 0;
+}
+
+.selected::after {
+  content: "";
+  background: url("arrow_down.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  height: 100%;
+  width: 32px;
+  right: 10px;
+  top: 5px;
+
+  transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box .options-container.active + .selected::after {
+  transform: rotateX(180deg);
+  top: -6px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+  width: 8px;
+  background: #0d141f;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #525861;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.select-box .option:hover {
+  background: #414b57;
+}
+
+.select-box label {
+  cursor: pointer;
+}
+
+.select-box .option .radio {
+  display: none;
+}
+.container {
+    text-align: center;
+    padding-left: 4.7vw;
+    margin-top: 0px;
+    font-size: 3.5vw;
+    letter-spacing: 0.7vw;
 }

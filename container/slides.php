@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 // $authorsize = sizeof($author[$i]);
 ?>
-<title>GUDANEWS.COM - Unbiased News Source</title>
+<title>GUDANEWS - Unbiased News Source</title>
 <div class='slide-container'>
     <div class='slide-navigation' horizontal layout>
         <div class='slide-arrow'>

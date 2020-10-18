@@ -1,7 +1,11 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
@@ -17,14 +21,15 @@ $mail = new PHPMailer(true);
 $name = $_POST['name'];
 $visitor_email = $_POST['email'];
 $message = $_POST['message'];
+$email_subject = $_POST['subject'];
 // $name = "John Smith";
 // $visitor_email = "abc@def.com";
 // $message = "This is a test";
-$email_subject = "New Form Submission";
+// $email_subject = "$subject";
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->SMTPSecure = "tls";
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
@@ -52,11 +57,16 @@ try {
     $mail->Subject = $email_subject;
     $mail->Body    = $message;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    // echo 'Message has been sent';
 
     $mail->send();
-    echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-header("Location: /index.php");
+echo <<<EL
+<script>
+location="/index.php";
+</script>
+EL;
+// header("Location: /index.php");
 ?>

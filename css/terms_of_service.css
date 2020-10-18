@@ -1,0 +1,27 @@
+body {
+    background-color: #fafafa;
+    box-sizing: inherit;
+    font-family: Roboto, Helvetica,Arial,sans-serif;
+    line-height: 1.43;
+    letter-spacing: .01071em;
+}
+.terms_of_service_title {
+    padding-top: 4vw;
+    padding-bottom: 0vw;
+    padding-left: 5vw;
+    font-size: 1.5rem;
+}
+.terms_of_service_content {
+    padding: 5vw;
+    font-size: .875rem;
+    --webkit-font-smoothing: antialiased;
+        /* margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px; */
+}
+.terms_of_service_sub_title {
+    padding-left: 5vw;
+    font-size: 1rem;
+    --webkit-font-smoothing: antialiased;
+}
