@@ -17,29 +17,44 @@ include_once 'container/top.php';
 <body>
 <section id="aboutus">
     <div class="container">
-        <div class="image-timeline">
+        <!-- <div class="image-timeline">
             <img src="images/misc/gudanews_timeline.png"/>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-sm-7">
                 <div class="about_us_title">
                 <h2 class="text-center">About Us</h2>
             </div>
         </div>
-            <div class="about_us_content">
-                <p>&emsp;Welcome to GudaNews. We Hope you’re enjoying your time browsing multi-bias news on our site.
+        <div class="about_us_content">
+            <p>Welcome to GudaNews. We hope you’re enjoying your time browsing least-bias uncensored news from our site.
 
-We’re a family owned business that founded GudaNews. Our stories started a few months ago when we saw a lot of controversial news flying around. It was difficult to get the truth as biased news sources reported the same news in completely different manners. People on the right wing became more and more conservative. People on the left wing became more and more liberal. As no political parties are absolutely correct, we thought it was only correct to give people the option to hear from the other side. GudaNews was created. Our mission, to bring multi-biased news to people. Multi-biased information would give people an option to see the ideology and opinions of others that had different political ideas as themself. Instead of just trusting your favorite news source, you can see how other sources are reporting the exact same event.
-<p>
+            <p>We’re a family owned startup with two lovely middleschoolers. Our stories started a few months ago when we saw
+            a lot of controversial news flying around. It was difficult to get the truth as biased news sources reported the
+            same news in completely different manners. People on the right wing became more and more conservative. People on
+            the left wing became more and more liberal. As no political parties are absolutely correct, we thought people should
+            be grant the option to hear from the other side freely.
 
-            </div>
+            <p>Things become worse as we realize the propoganda eduction inside US school system as parents. Students are can no
+            longer express their ideas within campus if they hold a different political view. Before actions can be taken by
+            government, we will try to defend our political balance to our children. Propoganda will only turn our future
+            generations into zombies.
+
+            <p>During this presidental voting season, media are completely crazy when writing their news stories. Social media
+            even started censoring legitimate news source and disabling users account. This is a huge shock to us and makes us
+            deeply worried about the freedom of speech in this country.
+
+            <p>GudaNews.com was created. Our mission, to bring least-biased uncensored news to our audience. Balanced information from
+            different source would give people an option to see the ideology and opinions of others who hold a different political
+            view. Instead of just relying your only one favorite news source, you will also be providing take a glimpse of all news
+            being read by most users.
+
         </div>
-            <div class="col-sm-5">
-                <div class="img-wrap">
-                    <img src="images/misc/gudanews_icon.png">
-                </div>
+        <!-- <div class="col-sm-5">
+            <div class="img-wrap">
+                <img src="images/misc/gudanews_icon.png">
             </div>
-        </div>
+        </div> -->
     </div>
     </section>
 </body>
