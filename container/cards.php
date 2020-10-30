@@ -1,7 +1,30 @@
 <?php
 
+# QUERY RESULT
+$conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+if (!empty($c)) {
+    $sql = <<<SQL
+    SELECT name from category WHERE id=$c;
+    SQL;
+}
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $category = $row['name'];
+    }
+}
+
+
+
 echo <<<EOL
 <div class='cards-container' id='cards'>
+<div class="category-title">
+<p>$category</p>
+</div>
 </div>
 <input type='hidden' id='pageno' value='0'></input>
 <img id="loader" class='card-loading' src="images/misc/loading.svg"></img>
@@ -13,12 +36,12 @@ echo <<<EOL
                 $.ajax({
                     type: 'POST',
                     url: 'php/pagination.php',
-                    data: { pageno: nextPage, lang: $lang, q: '$q' },
+                    data: { pageno: nextPage, lang: $lang, q: '$q' , c: '$c'},
                     success: function(data){
-                        if(data != ''){							 
+                        if(data != ''){
                             $('#cards').append(data);
                             $('#pageno').val(nextPage);
-                        } else {								 
+                        } else {
                             $('#loader').hide();
                         }
                     }

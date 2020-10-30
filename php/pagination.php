@@ -15,6 +15,7 @@ $day_minus_2w = date('Y-m-d', strtotime('-14 days'));
 $pageno = $_POST['pageno'] ?? 1;
 $lang = $_POST['lang'] ?? 0;
 $q = $_POST['q'] ?? '';
+$c = $_POST['c'] ?? '';
 $offset = ($pageno - 1) * $RECORD_PER_PAGE;
 
 $card_count = $offset;
@@ -24,16 +25,22 @@ $conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-if (empty($q)) {
+$selection = "SELECT id, datetime_created, datetime_updated FROM news";
+$condition = "datetime_created > ".$day_minus_2d." AND is_indexed";
+$orderby = "ORDER BY datetime_created DESC LIMIT ".$offset.", ".$RECORD_PER_PAGE;
+if (!empty($q)) {
     $sql = <<<SQL
-    SELECT id, datetime_created, datetime_updated FROM news WHERE datetime_created > '$day_minus_2d'
-    AND is_indexed AND category_id < 10 ORDER BY datetime_created DESC LIMIT $offset, $RECORD_PER_PAGE
+    $selection WHERE $condition AND title LIKE '%$q%' OR snippet LIKE '%$q%' $orderby
+    SQL;
+}
+elseif (!empty($c)) {
+    $sql = <<<SQL
+    $selection WHERE $condition AND category_id = $c $orderby
     SQL;
 }
 else {
     $sql = <<<SQL
-    SELECT id, datetime_created, datetime_updated FROM news WHERE datetime_created > '$day_minus_2w' AND
-    is_indexed AND title LIKE '%$q%' OR snippet LIKE '%$q%' ORDER BY datetime_created DESC LIMIT $offset, $RECORD_PER_PAGE
+    $selection WHERE $condition AND category_id < 10 $orderby
     SQL;
 }
 $result_cards = $conn->query($sql);
@@ -43,13 +50,13 @@ if ($result_cards->num_rows > 0) {
         $cards_id = $row_cards['id'];
         $sql = <<<SQL
         SELECT title, uuid, news.datetime_created as datetime_created, news.url as url, snippet, image.thumbnail as image,
-        source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source 
+        source.short_name as source, color FROM news INNER JOIN image ON image_id = image.id INNER JOIN source
         ON source_id = source.id WHERE news.id = $cards_id
         SQL;
         if ($lang == 1) {
             $sql = <<<SQL
             SELECT translation.title as title, uuid, news.datetime_created as datetime_created, news.url as url,
-            translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color 
+            translation.snippet as snippet, image.thumbnail as image, source.short_name as source, color
             FROM news INNER JOIN image ON image_id = image.id INNER JOIN source ON source_id = source.id
             INNER JOIN translation ON translation_id = translation.id WHERE news.id = $cards_id
             SQL;

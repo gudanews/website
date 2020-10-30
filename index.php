@@ -13,7 +13,7 @@ include_once 'php/user.php';
 
 include_once 'container/top.php'; # Adding top sticky
 
-if (!isset($q) && !isset($p)) {
+if (!isset($q) && !isset($p) && !isset($c)) {
     include_once 'container/slides.php';
 }
 elseif (isset($p) && ($p == 'news')) {

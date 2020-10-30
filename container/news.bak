@@ -1,0 +1,244 @@
+<?php
+
+
+$image_news = array();
+
+# QUERY RESULT
+$conn = new mysqli($SERVERNAME, $USERNAME, $PASSWORD, $DBNAME);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+$sql = <<<SQL
+    SELECT news.id as id, content, author, category.name as category, source.full_name as source, views, title, news.url as url, image.url as image FROM news
+    INNER JOIN image ON news.image_id = image.id INNER JOIN source ON news.source_id = source.id INNER JOIN category ON category.id = news.category_id WHERE news.uuid = '$uuid'
+
+SQL;
+if ($lang == 1) {
+    $sql = <<<SQL
+    SELECT news.id as id, author, category.name as category, source.full_name as source, translation.content as content, views, translation.title, news.url as url,
+    image.url as image FROM news INNER JOIN image ON news.image_id = image.id INNER JOIN translation
+    ON news.translation_id = translation.id INNER JOIN source ON news.source_id = source.id INNER JOIN category ON category.id = news.category_id WHERE news.uuid = '$uuid'
+SQL;
+}
+$result = $conn->query($sql);
+if ($row = $result->fetch_assoc()) {
+    $image = $row['image'];
+    $title = $row['title'];
+    $url = $row['url'];
+    $views = $row['views'];
+    $id = $row['id'];
+    $author = $row['author'];
+    $category = ucfirst($row['category']);
+    $source = $row['source'];
+    // $content_raw = file_get_contents($row['content']);
+    $content_raw = file_get_contents("http://192.168.1.49/$row[content]");
+    $content = '';
+    if (!empty($content_raw)) {
+        $content = '<p>' . str_replace('\n', '</p><p>', $content_raw) . '</p>';
+    }
+}
+
+?>
+<script>
+// var speechUtteranceChunker = function (utt, settings, callback) {
+//     settings = settings || {};
+//     var newUtt;
+//     var txt = (settings && settings.offset !== undefined ? utt.text.substring(settings.offset) : utt.text);
+//     if (utt.voice && utt.voice.voiceURI === 'native') { // Not part of the spec
+//         newUtt = utt;
+//         newUtt.text = txt;
+//         newUtt.addEventListener('end', function () {
+//             if (speechUtteranceChunker.cancel) {
+//                 speechUtteranceChunker.cancel = false;
+//             }
+//             if (callback !== undefined) {
+//                 callback();
+//             }
+//         });
+//     }
+//     else {
+//         var chunkLength = (settings && settings.chunkLength) || 160;
+//         var pattRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ');
+//         var chunkArr = txt.match(pattRegex);
+//
+//         if (chunkArr[0] === undefined || chunkArr[0].length <= 2) {
+//             //call once all text has been spoken...
+//             if (callback !== undefined) {
+//                 callback();
+//             }
+//             return;
+//         }
+//         var chunk = chunkArr[0];
+//         newUtt = new SpeechSynthesisUtterance(chunk);
+//         var x;
+//         for (x in utt) {
+//             if (utt.hasOwnProperty(x) && x !== 'text') {
+//                 newUtt[x] = utt[x];
+//             }
+//         }
+//         newUtt.addEventListener('end', function () {
+//             if (speechUtteranceChunker.cancel) {
+//                 speechUtteranceChunker.cancel = false;
+//                 return;
+//             }
+//             settings.offset = settings.offset || 0;
+//             settings.offset += chunk.length - 1;
+//             speechUtteranceChunker(utt, settings, callback);
+//         });
+//     }
+//
+//     if (settings.modifier) {
+//         settings.modifier(newUtt);
+//     }
+//     console.log(newUtt); //IMPORTANT!! Do not remove: Logging the object out fixes some onend firing issues.
+//     //placing the speak invocation inside a callback fixes ordering and onend issues.
+//     setTimeout(function () {
+//         speechSynthesis.speak(newUtt);
+//     }, 0);
+// };
+//create an utterance as you normally would...
+function read() {
+    var LongText = `<?php echo $content_raw?>`;
+
+    var utterance = new SpeechSynthesisUtterance(LongText);
+
+    //modify it as you normally would
+    // var voiceArr = speechSynthesis.getVoices();
+    // voiceArr.forEach(function (voice, i) {
+    //     if (i == 17) voiceSelected = voice.name;
+    // });
+    // utterance.voice = speechSynthesis.getVoices().filter(function (voice) {
+    //     return voice.name == voiceSelected;
+    // })[0];
+    // utterance.voice = voiceArr[2];
+
+
+    // utterance.text = LongText;
+
+
+    // utterance.lang = 'zh';
+    //pass it into the chunking function to have it played out.
+    //you can set the max number of characters by changing the chunkLength property below.
+    //a callback function can also be added that will fire once the entire text has been spoken.
+    // speechUtteranceChunker(utterance, {
+    //     chunkLength: 1000000
+    // }, function () {
+    //     //some code to execute when done
+    //     console.log('done');
+    //     speechSynthesis.cancel();
+    // });
+    // chinesespeak();
+    // window.speechSynthesis.onvoiceschanged = function() {
+    //     window.speechSynthesis.getVoices();
+    //     ...
+    // };
+    var voices = window.speechSynthesis.getVoices();
+    for(i = 0; i < voices.length ; i++) {
+        if(voices[i].lang === 'zh-CN') {
+            utterance.voice = voices[i];
+        }
+    }
+    console.log(voices.length);
+    console.log(utterance.voice.lang);
+    window.speechSynthesis.speak(utterance);
+
+
+}
+function toggle() {
+    var element = document.getElementById("play");
+    element.classList.toggle("fa-play");
+    element.classList.toggle("fa-pause");
+    if (!speechSynthesis.speaking) {
+        // speechSynthesis.cancel();
+        read();
+    }
+    else{
+        if (speechSynthesis.paused) {
+            speechSynthesis.resume();
+        }
+        else {
+            speechSynthesis.pause();
+        }
+    }
+}
+function resume() {
+    speechSynthesis.resume();
+}
+
+function chinesespeak(){
+    speechSynthesis.lang = 'zh-CN';
+}
+// window.unload(speechSynthesis.cancel());
+window.addEventListener('unload', function(event) {
+    speechSynthesis.cancel();
+});
+</script>
+
+<?php
+$last_access = $_COOKIE['last_access'] ?? time();
+$cookie_duration = time() + (86400 * 30);
+setcookie('last_access', time(), $cookie_duration, "/"); // 86400 = 1 day
+if ((time() - $last_access) > 2) { // Adding 1 view per 2 seconds
+    $sql = "UPDATE news SET views = views + 1 WHERE id = '$id'";
+    $result = $conn->query($sql);
+}
+$conn->close();
+
+include_once SITE_ROOT.'php/like.php';
+
+$icon = ($like) ? 'fas' : 'far';
+    if(empty($author)){
+        $author = "Unknown";
+    }
+echo <<<EOL
+<div class='newspage-source-image'>
+</div>
+<div class='news-card-container'>
+    <div class='news-card-title'>
+        <p class='news-title'>$title</p>
+    </div>
+    <div class='news-card-image'>
+        <img class='news-image' src='$image'></img>
+        <figcaption>Image by $author via $source.</figcaption>
+    </div>
+    <div class='news-card-author'>
+    <strong>$category - $author</strong>
+    </div>
+    <div class='news-card-date'>
+    <i class='far fa-clock'>
+            $current_datetime[$i]
+    ‎‎‎</i>
+    </div>
+    <div class='news-card-content'>
+        <p>$content</p>
+    </div>
+    <div class='news-card-info'>
+        <div class='card-read-more'>
+        <a target='_blank'href="$url"><strong>Read From Source</strong></a>
+        </div>
+        <i class='fas fa-eye fa-1x'>&nbsp;&nbsp;$views&nbsp;&nbsp;
+        </i>
+        <a href='javascript:void(0)' onclick='dolike("$uuid")'>
+            <i id='likes_icon' class='$icon fa-heart'>&nbsp;&nbsp;$count
+            </i>
+        </a>
+    </div>
+    <div>
+        <i id='play' class="fas fa-play" href='javascript:void(0)' onclick='toggle()'>&nbsp;&nbsp;Play/Stop
+        </i>
+    </div>
+    </div>
+</div>
+
+EOL;
+?>
+
+<script>
+function dolike(uuid) {
+	$.get('php/like.php?action=update&uuid=' + uuid, function(data){
+            $('#likes_icon').html('&nbsp;&nbsp;' + data);
+            $('#likes_icon').toggleClass('far fas')
+	});
+}
+</script>
+<title><?php echo $title?></title>

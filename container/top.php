@@ -47,11 +47,22 @@ echo <<<EOL
                 <a href='#'>About</a>
             </li>
             <li>
-                <a href='#'>Services</a>
+                <a href='contact_us.php'>Contact</a>
             </li>
             <li>
-                <a href='#'>Contact</a>
+                <a href='terms_of_service.php'>Terms Of Service</a>
             </li>
+            <div horizontal layout class="hamburger-bar-social-media-icons">
+                <div class="hamburger-bar-social-media-icons-instagram">
+                    <a href="https://www.instagram.com/gudanews/" target="_blank" class="fab fa-instagram"></a>
+                </div>
+                <div class="hamburger-bar-social-media-icons-twitter">
+                    <a href="https://twitter.com/realGudaNews" target="_blank" class="fab fa-twitter"></a>
+                </div>
+                <div class="hamburger-bar-social-media-icons-tumblr">
+                    <a href="https://gudanews.tumblr.com/" target="_blank" class="fab fa-tumblr"></a>
+                </div>
+            </div>
         </ul>
     </div>
 </div>

@@ -84,6 +84,7 @@ echo <<<EOL
         <div class='card-read-more'>
             <a target='_blank' href="$url">Read From Source</a>
         </div>
+        <br>
         <i class='fas fa-eye fa-1x'>&nbsp;&nbsp;$views&nbsp;&nbsp;
         </i>
         <a href='javascript:void(0)' onclick='dolike("$uuid")'>

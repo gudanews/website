@@ -15,6 +15,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 
 $p = $_GET['p']; # Page
 $q = $_GET['q']; # Query
+$c = $_GET['c']; # Category
 $lang = $_GET['lang'] ?? ($_COOKIE['lang'] ?? 0); # Language
 $uuid = $_GET['uuid']; # uuid
 //$last_access = $_COOKIE['last_access'] ?? time();

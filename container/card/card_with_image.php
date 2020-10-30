@@ -1,3 +1,4 @@
+
 <?php
 
 echo <<<EOL
@@ -13,6 +14,7 @@ echo <<<EOL
                 </a>
             </div>
 EOL;
+
 }
 echo <<<EOL
         </div>
@@ -48,14 +50,24 @@ echo <<<EOL
                             ‎‎‎</i>
                         </p>
                     </div>
+                    <div style="" class="share-button">
+                      <span><i class="fas fa-share-alt"></i> Share!</span>
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=https://gudanews.com/index.php?p=news&uuid=$current_news_id[$i]&lang=$lang"><i class="fab fa-facebook-f"></i></a>
+                      <a href="https://twitter.com/share?url=https://gudanews.com/index.php?p=news&uuid=$current_news_id[$i]&lang=$lang"><i class="fab fa-twitter"></i></a>
+                      <a href="https://www.linkedin.com/shareArticle?url=$url&title=$title&source=$current_source"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+
 EOL;
 }
 echo <<<EOL
+
                 </div>
                 <div class='image-card-nav'>
 EOL;
 for ($i = 0; $i < count($current_source); $i++) {
 echo <<<EOL
+
                     <div class='card-source card-$current_id-source' style='background-color: $current_source_color[$i];'>
                         <a onclick='showImageCard($current_id, $i)'>
                             <p class='source-text'>
@@ -63,6 +75,8 @@ echo <<<EOL
                             </p>
                         </a>
                     </div>
+
+
 EOL;
 }
 echo <<<EOL
