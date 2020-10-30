@@ -29,7 +29,8 @@ if ($row = $result->fetch_assoc()) {
     $category = ucfirst($row['category']);
     $source = $row['source'];
     $source_image = $row['source_image'];
-    $datetime = strtoupper(date('D m/d, H:i', strtotime($row['datetime']))).' EST';
+//    $source_image = 'http://192.168.1.49/'. $row['source_image'];
+    $datetime = strtoupper(date('m/d, H:i', strtotime($row['datetime']))).' EST';
     $url = $row['url'];
     $views = $row['views'];
     $id = $row['id'];
@@ -57,18 +58,19 @@ if(empty($author)){
     $author = "Unknown";
 }
 echo <<<EOL
-<title>Gudanews - $title</title>
+<title>$title - GUDANEWS.COM</title>
 <div class='news-card-container'>
     <div class='news-card-title'>
         <p class='news-title'>$title</p>
     </div>
     <div class='news-card-metadata' horizontal layout>
-        <div>
-            <p class='news-source'>$source</p>
+        <div class='news-source'>
+            <img src='$source_image'></img>
         </div>
-        <div>
-            <p class='news-datetime'>$datetime</p>
+        <div class='news-datetime'>
+            <i class="far fa-clock">$datetime</i>
         </div>
+        </i>
     </div>
     <div class='news-card-image'>
         <img class='news-image' src='$image'></img>
@@ -82,7 +84,9 @@ echo <<<EOL
     </div>
     <div class='news-card-info'>
         <div class='card-read-more'>
-            <a target='_blank' href="$url">Read From Source</a>
+            <form action="$url" target="_blank">
+        <input class="read-more-button" id="read-more-button1" type="submit" value="Read From Source" />
+        </form>
         </div>
         <br>
         <i class='fas fa-eye fa-1x'>&nbsp;&nbsp;$views&nbsp;&nbsp;

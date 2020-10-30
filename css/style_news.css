@@ -1,3 +1,12 @@
+.read-more-button {
+    border-color: #3A3A3;
+    color: #3A3A3;
+    border-radius: 25px;
+    padding: 0.75rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    transition-duration: 0.4s;
+}
 .news-title, .news-content {
     font-family: "Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
 }
@@ -14,16 +23,19 @@
 .news-card-metadata {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
+    padding: 0.25rem;
     text-align: left;
 }
-.news-source {
-    font-size: 1rem;
-    padding: 1rem;
+.news-source img{
+    height: 2rem;
+    width: 2rem;
+    object-fit: cover;
+    border-radius:50%;
+    border:2px solid #545454;
 }
 .news-datetime {
+    padding-left: 5rem;
     font-size: 1rem;
-    padding: 1rem;
 }
 .news-card-image {
     padding: 1rem;

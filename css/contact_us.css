@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    font-family: sans-serif;
+}
+.contact-title {
+    text-align: center;
+    margin-top: 3rem;
+    color: #000000;
+    text-transform: uppercase;
+    transition: all 4s ease-in-out;
+}
+.contact-title h1 {
+    font-size: 3rem;
+    line-height: 1rem;
+}
+
+.form-control {
+    text-align: center;
+    margin-top: 5rem;
+    transition: all 4s ease-in-out;
+    width: 90rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    font-size: 1rem;
+    margin-bottom: 1.6rem;
+}
+input .form-control{
+    height: 4.5rem;
+}
+form .submit
+{
+    background: #ff5722;
+    border-color: transparent;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+    height: 5rem;
+    margin-top: 2rem;
+    transition-duration: 0.4s;
+}
+
+form .submit:hover {
+    background-color: #f44336;
+    cursor: pointer;
+}
